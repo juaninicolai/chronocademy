@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Navbar() {
     return <nav>
-        <div className={"flex justify-between w-full px-4"}>
+        <div className={"flex justify-between w-full px-8"}>
             <div>
                 <Image
                     src="/logo.svg"
@@ -12,7 +12,7 @@ export default function Navbar() {
                     height={76}
                 />
             </div>
-            <div className={"flex space-x-4"}>
+            <div id={"nav-links"} className={"flex space-x-4 items-center"}>
                 <Link href={"#about"}>About us</Link>
                 <Link href={"#features"}>Features</Link>
                 <Link href={"#faq"}>FAQ</Link>
