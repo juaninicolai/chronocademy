@@ -54,6 +54,9 @@ const config: Config = {
         'h3': ['16px', { lineHeight: '1.5' }],
         'paragraph': ['12px', { lineHeight: '1.5' }],
       },
+      padding: {
+        '24': '96px', // Add custom padding value
+      },
     },
   },
   plugins: [],
