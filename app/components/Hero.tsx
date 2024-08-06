@@ -11,20 +11,25 @@ export default function Hero() {
                     className={"text-primary-blue-300"}>learn & teach</span></h1>
                 <p className={"font-roboto text-2xl"}>Earn time credits by teaching, spend them to learn. No <br/>money
                     needed.</p>
-                <div className={"flex justify-around space-x-2"}>
-                    <input className={"p-4 rounded-lg"}
-                        type={"text"}
-                        placeholder={"Enter your name"}
-                    />
-                    <input
-                        className={"p-4 rounded-lg"}
-                        type={"email"}
-                        placeholder={"Enter your email"}
-                    />
-                    <button
-                        className={"bg-primary-blue-500 text-secondary-white-500 font-roboto text-xl p-4 rounded-lg flex items-center space-x-2"}>
-                        Join the waiting list <FaArrowRight className={"ml-2"}/>
-                    </button>
+                <div className={"space-y-2"}>
+                    <div className={"flex space-x-2"}>
+                        <input className={"p-4 rounded-lg"}
+                               type={"text"}
+                               placeholder={"Enter your name"}
+                        />
+                        <input
+                            className={"p-4 rounded-lg"}
+                            type={"email"}
+                            placeholder={"Enter your email"}
+                        />
+                        <button
+                            className={"bg-primary-blue-500 text-secondary-white-500 font-roboto text-xl p-4 rounded-lg flex items-center space-x-2"}>
+                            Join the waiting list <FaArrowRight className={"ml-2"}/>
+                        </button>
+                    </div>
+                    <div className={"flex justify-center"}>
+                        <p id={"info-disclaimer"}>We&apos;ll never share your info with anyone.</p>
+                    </div>
                 </div>
             </div>
             <div id={"hero-image"} className={"py-24"}>
