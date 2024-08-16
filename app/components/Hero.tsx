@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa';
 export default function Hero() {
     return (
         <div id={"hero-section"}
-             className={"flex justify-between w-full bg-gradient-to-r from-primary-orange-200 to-primary-orange-400"}>
+             className={"flex justify-between bg-gradient-to-r from-primary-orange-200 to-primary-orange-400"}>
             <div id={"hero-text"} className={"flex flex-col justify-center pl-28 space-y-8 py-20"}>
                 <h3 className={"font-roboto text-2xl"}>The platform where time becomes knowledge</h3>
                 <h1 className={"text-6xl font-bold"}>Transform the way <br/>you <span
