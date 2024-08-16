@@ -9,7 +9,7 @@ export default function Hero() {
                 <h3 className={"font-roboto text-2xl"}>The platform where time becomes knowledge</h3>
                 <h1 className={"text-6xl font-bold"}>Transform the way <br/>you <span
                     className={"text-primary-blue-300"}>learn & teach</span></h1>
-                <p className={"font-roboto text-2xl"}>Earn time credits by teaching, spend them to learn. No <br/>money
+                <p className={"font-roboto text-2xl"}>Earn time credits by teaching, spend them to learn. <br/>No money
                     needed.</p>
                 <div className={"space-y-2"}>
                     <div className={"flex space-x-2"}>
