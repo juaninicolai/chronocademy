@@ -13,7 +13,7 @@ const Box: React.FC<BoxProps> = ({ color, image, title, body }) => {
         <div className={`flex flex-col gap-3 p-12 px-11 flex-1 rounded-lg ${color}`}>
             <div className={"flex items-center gap-3"}>
                 <Image src={image} alt={title} width={40} height={40}/>
-                <p id={"box-title"}>{title}</p>
+                <p id={"box-title"} className={"font-bold"}>{title}</p>
             </div>
             <p id={"box-body"}>{body}</p>
         </div>
