@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@/app/components/Box";
 
 export default function HowItWorks() {
-    return <div className={"flex flex-col justify-center items-center py-16"}>
+    return <div id={"how-it-works"} className={"flex flex-col justify-center items-center py-16"}>
         <h1 className={"font-bold text-4xl text-secondary-black-500"}>How it works</h1>
         <h2 className={"font-roboto text-h1 py-4"}>Learn how to earn and spend time credits on Chronocademy with
             our easy step-by-step guide.</h2>
