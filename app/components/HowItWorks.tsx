@@ -14,7 +14,7 @@ export default function HowItWorks() {
                 body={
                     <>
                         Use some of your time to teach<br/>any of your skills to someone<br/>else and earn Chrono
-                        credits for<br/>it.
+                        credits for it.
                     </>
                 }
             />
@@ -25,7 +25,7 @@ export default function HowItWorks() {
                 body={
                     <>
                         Use your Chrono credits to learn<br/>a skill from someone else or to<br/>unlock rewards or
-                        services<br/>offered by Chronocademy.
+                        services offered by Chronocademy.
                     </>
                 }
             />

@@ -5,12 +5,14 @@ export default function Navbar() {
     return <nav>
         <div className={"flex justify-between px-8 pl-28 pr-28"}>
             <div>
-                <Image
-                    src="/logo.svg"
-                    alt="chronocademy logo"
-                    width={140}
-                    height={76}
-                />
+                <Link href={"/"}>
+                    <Image
+                        src="/logo.svg"
+                        alt="chronocademy logo"
+                        width={140}
+                        height={76}
+                    />
+                </Link>
             </div>
             <div id={"nav-links"} className={"flex space-x-4 items-center"}>
                 <Link href={"#how-it-works"}>How it works</Link>
