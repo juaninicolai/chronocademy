@@ -9,25 +9,25 @@ const features = [
         src: "/skills_exchange.svg",
         alt: "skills icon",
         text: "Skill Exchange",
-        dialogText: "Earn and spend Chrono to foster a community-driven approach to education"
+        dialogText: "Teach what you know and learn what you want. We connect users, allowing them to exchange skills directly through time-based credits."
     },
     {
         src: "/google_meet.svg",
         alt: "google meet icon",
-        text: "Google Meet Integration",
-        dialogText: "Scheduling and video conferencing through Google Calendar and Google Meet"
+        text: "Calendar and video Integration",
+        dialogText: "Schedule and conduct lessons with integrated Calendar and Video platform, making it easy for users to connect, schedule, and learn."
     },
     {
         src: "/chrono_wallet.svg",
         alt: "chrono wallet icon",
         text: "Chrono Wallet",
-        dialogText: "Track your earned and spent time credits easily."
+        dialogText: "The Chrono Wallet gives you a clear overview of your balance, helping you monitor your transactions and ensure smooth exchanges on the platform."
     },
     {
         src: "/flexible_payments.svg",
         alt: "flexible payments icon",
-        text: "Flexible Payments",
-        dialogText: "Convert Chrono to cash or purchase additional credits."
+        text: "Flexible Transactions",
+        dialogText: "Use Chrono credits or real money to pay for classes. Keep your Chrono credits in your Wallet or convert them into cash."
     },
 ];
 
