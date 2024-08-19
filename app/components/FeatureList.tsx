@@ -48,8 +48,10 @@ export default function FeatureList() {
                     >
                         <ListItem src={feature.src} alt={feature.alt} text={feature.text}/>
                         <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
-                            <p className={"w-40 text-center"}>{feature.dialogText}</p>
-                            <IoIosArrowUp onClick={() => toggleDialog(index)} />
+                            <div className={"flex flex-col items-center justify-center space-y-2"}>
+                                <p className={"text-center"}>{feature.dialogText}</p>
+                                <IoIosArrowUp onClick={() => toggleDialog(index)}/>
+                            </div>
                         </dialog>
                         <IoIosArrowDown/>
                     </div>
