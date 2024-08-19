@@ -5,6 +5,7 @@ import Hero from "@/app/components/Hero";
 import React, { ReactNode } from "react";
 import FeatureList from "@/app/components/FeatureList";
 import HowItWorks from "@/app/components/HowItWorks";
+import { Inter, Roboto } from 'next/font/google';
 
 export const metadata: Metadata = {
     title: "Chronocademy",
@@ -14,15 +15,26 @@ export const metadata: Metadata = {
     },
 };
 
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter'
+});
+
+const roboto = Roboto({
+    weight: '400',
+    subsets: ['latin'],
+    variable: '--font-roboto'
+});
+
 export default function RootLayout({children}: Readonly<{ children: ReactNode; }>) {
     return (
         <html lang="en">
-            <body className={"w-full"}>{children}
-                <Navbar/>
-                <Hero/>
-                <FeatureList/>
-                <HowItWorks/>
-            </body>
+        <body className={`${inter.variable} w-full`}>{children}
+        <Navbar/>
+        <Hero/>
+        <FeatureList/>
+        <HowItWorks/>
+        </body>
         </html>
     );
 }

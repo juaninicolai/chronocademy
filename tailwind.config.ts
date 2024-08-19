@@ -39,13 +39,10 @@ const config: Config = {
         'white-500': '#FFFFFF',
       }
     },
-    screens: {
-      sm: "480px",
-      "lg": "1024px"
-    },
+    //TODO responsive design
     fontFamily: {
-      tahoma: ['Tahoma', 'sans-serif'],
-      roboto: ['Roboto', 'sans-serif'],
+      inter: ['var(--font-inter)', 'sans-serif'],
+      roboto: ['var(--font-roboto)', 'sans-serif'],
     },
     extend: {
       fontSize: {
@@ -53,9 +50,6 @@ const config: Config = {
         'h2': ['20px', { lineHeight: '1.5' }],
         'h3': ['16px', { lineHeight: '1.5' }],
         'paragraph': ['12px', { lineHeight: '1.5' }],
-      },
-      padding: {
-        '24': '96px', // Add custom padding value
       },
     },
   },

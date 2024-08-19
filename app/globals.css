@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  @apply text-h1 font-inter;
+}
+
+h2 {
+  @apply text-h2 font-inter;
+}
+
+h3 {
+  @apply text-h3 font-inter;
+}
+
+p {
+  @apply text-paragraph font-roboto;
+}
