@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Navbar() {
     return <nav>
-        <div className={"flex justify-between px-8 pl-28 pr-28"}>
+        <div className={"flex justify-between px-28"}>
             <div>
                 <Link href={"/"}>
                     <Image
