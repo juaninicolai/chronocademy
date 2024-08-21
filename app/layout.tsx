@@ -6,6 +6,7 @@ import React, { ReactNode } from "react";
 import FeatureList from "@/app/components/FeatureList";
 import HowItWorks from "@/app/components/HowItWorks";
 import { Inter, Roboto } from 'next/font/google';
+import FAQs from "@/app/components/FAQs";
 
 export const metadata: Metadata = {
     title: "Chronocademy",
@@ -30,10 +31,11 @@ export default function RootLayout({children}: Readonly<{ children: ReactNode; }
     return (
         <html lang="en">
         <body className={`${inter.variable} w-full`}>{children}
-        <Navbar/>
-        <Hero/>
-        <FeatureList/>
-        <HowItWorks/>
+            <Navbar/>
+            <Hero/>
+            <FeatureList/>
+            <HowItWorks/>
+            <FAQs/>
         </body>
         </html>
     );
