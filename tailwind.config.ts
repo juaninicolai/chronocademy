@@ -46,9 +46,9 @@ const config: Config = {
     },
     extend: {
       fontSize: {
-        'h1': ['24px', { lineHeight: '1.5'}],
-        'h2': ['20px', { lineHeight: '1.5' }],
-        'h3': ['16px', { lineHeight: '1.5' }],
+        'h1': ['28px', { lineHeight: '1.5'}],
+        'h2': ['24px', { lineHeight: '1.5' }],
+        'h3': ['20px', { lineHeight: '1.5' }],
         'paragraph': ['12px', { lineHeight: '1.5' }],
       },
     },
