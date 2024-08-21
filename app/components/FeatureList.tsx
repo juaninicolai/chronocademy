@@ -43,13 +43,13 @@ export default function FeatureList() {
             <ul className="flex justify-around py-1">
                 {features.map((feature, index) => (
                     <div key={index}
-                         className="flex flex-col items-center space-y-4 relative"
+                         className="flex flex-col items-center space-y-4 relative w-1/6 pb-8"
                          onClick={() => toggleDialog(index)}
                     >
                         <ListItem src={feature.src} alt={feature.alt} text={feature.text}/>
                         <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
                             <div className={"flex flex-col items-center justify-center space-y-2"}>
-                                <p className={"text-center"}>{feature.dialogText}</p>
+                                <p className={"text-center line-clamp-4"}>{feature.dialogText}</p>
                                 <IoIosArrowUp onClick={() => toggleDialog(index)}/>
                             </div>
                         </dialog>
