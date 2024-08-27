@@ -27,8 +27,8 @@ export default function Hero() {
                             Join the waiting list <FaArrowRight className={"ml-2"}/>
                         </button>
                     </div>
-                    <div className={"flex justify-center"}>
-                        <p id={"info-disclaimer"}>We&apos;ll never share your info with anyone.</p>
+                    <div className={"flex"}>
+                        <p id={"info-disclaimer"}>Your information is safe with us.</p>
                     </div>
                 </div>
             </div>
