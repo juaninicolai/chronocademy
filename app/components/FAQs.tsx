@@ -17,7 +17,7 @@ export default function FAQs() {
                         currency called Chrono. Users can earn Chrono by teaching skills they are proficient in and spend Chrono
                         to learn new skills from others.<br/><br/>
                         Chronocademy addresses a critical gap in the education market by providing an accessible,
-                        flexible, and cost-effective way for people to learn and share knowledge. The platform's time-based
+                        flexible, and cost-effective way for people to learn and share knowledge. The platform&apos;s time-based
                         currency ensures that everyone has an equal opportunity to teach and learn, regardless of their
                         financial situation.<br/><br/>
                     </h4>
