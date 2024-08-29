@@ -4,9 +4,6 @@ export default function FAQs() {
             <h1 className={"font-inter text-4xl text-secondary-black-500 py-4 text-center font-extrabold"}>
                 Frequently Asked Questions
             </h1>
-            {/* <h2 className={"font-roboto text-secondary-black-500 py-4 text-center"}>
-                Get the answers to your questions straight away
-            </h2>*/}
             <div className={"font-roboto text-h3"}>
                 <details className="py-4 cursor-pointer font-medium">
                     <summary>What is Chronocademy? 
