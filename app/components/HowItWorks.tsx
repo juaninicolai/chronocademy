@@ -12,7 +12,7 @@ export default function HowItWorks() {
             </h2>
             <div className="flex flex-wrap justify-center gap-10 pt-16">
                 <Box
-                    color="bg-gradient-to-r from-primary-blue-400 to-primary-blue-100"
+                    color="bg-gradient-to-r from-primary-blue-100 to-primary-blue-400"
                     image="/earn_chrono.svg"
                     title="Earn Chronos"
                     body={
@@ -24,7 +24,7 @@ export default function HowItWorks() {
                     }
                 />
                 <Box
-                    color="bg-gradient-to-r from-primary-green-400 to-primary-green-100"
+                    color="bg-gradient-to-r from-primary-green-100 to-primary-green-400"
                     image="/spend_chronos.svg"
                     title="Spend Chronos"
                     body={
@@ -36,7 +36,7 @@ export default function HowItWorks() {
                     }
                 />
                 <Box
-                    color="bg-gradient-to-r from-secondary-yellow-400 to-secondary-yellow-100"
+                    color="bg-gradient-to-r from-secondary-yellow-100 to-secondary-yellow-400"
                     image="/buy_chronos.svg"
                     title="Trade Chronos"
                     body={
