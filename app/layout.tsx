@@ -7,6 +7,7 @@ import FeatureList from "@/app/components/FeatureList";
 import HowItWorks from "@/app/components/HowItWorks";
 import { Inter, Roboto } from 'next/font/google';
 import FAQs from "@/app/components/FAQs";
+import AboutUs from "@/app/components/AboutUs";
 
 export const metadata: Metadata = {
     title: "Chronocademy",
@@ -36,6 +37,7 @@ export default function RootLayout({children}: Readonly<{ children: ReactNode; }
             <FeatureList/>
             <HowItWorks/>
             <FAQs/>
+            <AboutUs/>
         </body>
         </html>
     );
