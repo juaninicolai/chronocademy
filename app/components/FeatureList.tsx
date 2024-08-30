@@ -39,7 +39,7 @@ export default function FeatureList() {
     };
 
     return (
-        <div>
+        <div id={"features"}>
             <ul className="flex justify-around py-1">
                 {features.map((feature, index) => (
                     <div key={index}

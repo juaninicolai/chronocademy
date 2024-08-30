@@ -1,6 +1,6 @@
 export default function FAQs() {
     return (
-        <div className={"px-28"}>
+        <div id={"faqs"} className={"px-28"}>
             <h1 className={"font-inter text-4xl text-secondary-black-500 py-4 text-center font-extrabold"}>
                 Frequently Asked Questions
             </h1>
