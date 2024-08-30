@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AboutUs() {
     return (
-        <div className={"px-28 py-4"}>
+        <div className={"px-28 py-4 bg-gradient-to-r from-primary-blue-100 to-primary-blue-300"}>
         <div className={"text-center"}>
             <h1 className={"font-inter text-4xl text-secondary-black-500 py-4 text-center font-extrabold"}>About us</h1>
             <h2 className="font-roboto text-h2 py-4 text-center">Get to know us better</h2>
