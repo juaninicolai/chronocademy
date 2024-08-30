@@ -16,7 +16,7 @@ export default function Navbar() {
             </div>
             <div id={"nav-links"} className={"flex space-x-4 items-center text-primary-blue-500"}>
                 <Link href={"#how-it-works"}>How it works</Link>
-                <Link href={"#faq"}>FAQ</Link>
+                <Link href={"#faqs"}>FAQ</Link>
                 <Link href={"#about-us"}>About us</Link>
             </div>
         </div>
