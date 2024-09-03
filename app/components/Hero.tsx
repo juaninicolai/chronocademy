@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FaArrowRight } from 'react-icons/fa';
+import CTA from "@/app/components/CTA";
 
 export default function Hero() {
     return (
@@ -10,27 +10,9 @@ export default function Hero() {
                 <h1 className={"text-6xl font-bold"}>Transform the way <br/>you <span
                     className={"text-primary-blue-300"}>learn & teach</span></h1>
                 <p className={"font-roboto text-2xl"}>Earn time credits by teaching, spend them to learn. <br/>No money
-                    needed.</p>
-                <div className={"space-y-2"}>
-                    <div className={"flex space-x-2"}>
-                        <input className={"p-4 rounded-lg"}
-                               type={"text"}
-                               placeholder={"Enter your name"}
-                        />
-                        <input
-                            className={"p-4 rounded-lg"}
-                            type={"email"}
-                            placeholder={"Enter your email"}
-                        />
-                        <button
-                            className={"bg-primary-blue-500 text-secondary-white-500 font-roboto text-xl p-4 rounded-lg flex items-center space-x-2"}>
-                            Join the waiting list <FaArrowRight className={"ml-2"}/>
-                        </button>
-                    </div>
-                    <div className={"flex"}>
-                        <p id={"info-disclaimer"}>Your information is safe with us.</p>
-                    </div>
-                </div>
+                    needed
+                .</p>
+                <CTA/>
             </div>
             <div id={"hero-image"} className={"py-20"}>
                 <Image
