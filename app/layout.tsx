@@ -15,14 +15,14 @@ export const metadata: Metadata = {
 };
 
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+    subsets: ['latin'],
+    variable: '--font-inter'
 });
 
 const roboto = Roboto({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-roboto",
+    weight: '400',
+    subsets: ['latin'],
+    variable: '--font-roboto'
 });
 
 export default function RootLayout({
