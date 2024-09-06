@@ -1,12 +1,21 @@
 import { initializeApp } from "firebase/app";
+import 'dotenv/config';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyC7Bn81gctbcH0-hOiOVPHOndd5XdV-1EM",
-    authDomain: "chronocademy.firebaseapp.com",
-    projectId: "chronocademy",
-    storageBucket: "chronocademy.appspot.com",
-    messagingSenderId: "217852649682",
-    appId: "1:217852649682:web:5cc7de0dc330861dd24d0b"
-};
+let app = null;
+try {
+    const firebaseConfig = {
+        apiKey: process.env.API_KEY,
+        authDomain: process.env.AUTH_DOMAIN,
+        projectId: process.env.PROJECT_ID,
+        storageBucket: process.env.STORAGE_BUCKET,
+        messagingSenderId: process.env.MESSAGING_SENDER_ID,
+        appId: process.env.APP_ID
+    };
 
-export const app = initializeApp(firebaseConfig);
+    app = initializeApp(firebaseConfig);
+    console.log('Firebase initialized successfully');
+} catch (error) {
+    console.error('Error initializing Firebase:', error);
+}
+
+export { app };
