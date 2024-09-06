@@ -18,6 +18,8 @@ export default function CTA() {
             alert("An error occurred. Please try again.");
             console.error("Error adding document: ", error);
         }
+        setName("");
+        setEmail("");
     }
 
     return <div className={"space-y-2"}>
