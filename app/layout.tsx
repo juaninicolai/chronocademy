@@ -9,6 +9,7 @@ import { Inter, Roboto } from "next/font/google";
 import FAQs from "@/app/components/FAQs";
 import AboutUs from "@/app/components/AboutUs";
 import Footer from "@/app/components/Footer";
+import classnames from 'classnames'
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -34,7 +35,7 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} w-full`}>
+      <body className={classnames("w-full", inter.variable, roboto.variable)}>
         {children}
         <Navbar />
         <Hero />
