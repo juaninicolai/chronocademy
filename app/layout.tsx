@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/app/components/Navbar";
-import Hero from "@/app/components/Hero";
 import React, { ReactNode } from "react";
-import FeatureList from "@/app/components/FeatureList";
-import HowItWorks from "@/app/components/HowItWorks";
 import { Inter, Roboto } from "next/font/google";
-import FAQs from "@/app/components/FAQs";
-import AboutUs from "@/app/components/AboutUs";
 import Footer from "@/app/components/Footer";
-import classnames from 'classnames'
+import classnames from "classnames";
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -36,13 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={classnames("w-full", inter.variable, roboto.variable)}>
-        {children}
         <Navbar />
-        <Hero />
-        <FeatureList />
-        <HowItWorks />
-        <FAQs />
-        <AboutUs />
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

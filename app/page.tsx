@@ -1,3 +1,5 @@
-export default function Home() {
-  return <main></main>;
+import { LandingPage } from "./landing";
+
+export default function IndexPage() {
+  return <LandingPage />;
 }
