@@ -30,8 +30,10 @@ export default function Hero() {
         <Image
           src="/hero.svg"
           alt="chronocademy illustration for hero section"
+          className="h-[416px]"
           width={490}
           height={416}
+          priority
         />
       </div>
     </div>

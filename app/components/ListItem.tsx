@@ -10,7 +10,7 @@ const ListItem = ({
   text: string;
 }) => (
   <li className={"flex flex-col items-center"}>
-    <Image src={src} alt={alt} width={64} height={64} />
+    <Image src={src} alt={alt} className="h-[64px]" width={64} height={64} />
     {text}
   </li>
 );

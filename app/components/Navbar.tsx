@@ -10,6 +10,7 @@ export default function Navbar() {
             <Image
               src="/logo.svg"
               alt="chronocademy logo"
+              className="h-[76px]"
               width={140}
               height={76}
             />

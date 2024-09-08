@@ -14,7 +14,7 @@ const Box: React.FC<BoxProps> = ({ color, image, title, body }) => {
       className={`flex flex-col gap-3 p-12 px-11 flex-1 rounded-lg ${color} w-full max-w-sm`}
     >
       <div className={"flex items-center gap-3"}>
-        <Image src={image} alt={title} width={40} height={40} />
+        <Image src={image} alt={title} className="h-[40px]" width={40} height={40} />
         <p id={"box-title"} className={"text-xl font-bold"}>
           {title}
         </p>

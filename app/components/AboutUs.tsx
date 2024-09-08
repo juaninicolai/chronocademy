@@ -31,6 +31,7 @@ export default function AboutUs() {
             <Image
               src={"/earn_chrono.svg"}
               alt={"our mission icon"}
+              className="h-[40px]"
               width={40}
               height={40}
             />
@@ -41,6 +42,7 @@ export default function AboutUs() {
           <Image
             src={"/about_us.svg"}
             alt={"our mission image"}
+            className="h-[200px]"
             width={256}
             height={200}
           />
@@ -58,6 +60,7 @@ export default function AboutUs() {
             <Image
               src={"/devices.svg"}
               alt={"devices icon"}
+              className="h-[40px]"
               width={40}
               height={40}
             />
@@ -68,6 +71,7 @@ export default function AboutUs() {
           <Image
             src={"/our_vision.svg"}
             alt={"devices image"}
+            className="h-[200px]"
             width={256}
             height={200}
           />
@@ -85,6 +89,7 @@ export default function AboutUs() {
             <Image
               src={"/our_values.svg"}
               alt={"our values icon"}
+              className="h-[40px]"
               width={40}
               height={40}
             />
@@ -95,6 +100,7 @@ export default function AboutUs() {
           <Image
             src={"/our_values_image.svg"}
             alt={"our values image"}
+            className="h-[200px]"
             width={256}
             height={200}
           />

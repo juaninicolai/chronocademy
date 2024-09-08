@@ -30,12 +30,12 @@ export default function Footer() {
           >
             <Image
               src="/mail.svg"
-              className="pr-2"
+              className="h-[40px]"
               alt="Envelope"
               width={40}
               height={40}
             />
-            <p>info@chronocademy.com</p>
+            <p className="pl-2">info@chronocademy.com</p>
           </Link>
         </div>
         <div className={"flex flex-col flex-1 items-end"}>
@@ -43,6 +43,7 @@ export default function Footer() {
             <Image
               src="/logo.svg"
               alt="chronocademy logo"
+              className="h-[76px]"
               width={140}
               height={76}
             />
