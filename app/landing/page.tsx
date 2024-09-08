@@ -1,8 +1,8 @@
-import Hero from "@/app/components/Hero";
-import FeatureList from "@/app/components/FeatureList";
-import HowItWorks from "@/app/components/HowItWorks";
-import FAQs from "@/app/components/FAQs";
-import AboutUs from "@/app/components/AboutUs";
+import Hero from "./Hero";
+import FeatureList from "./FeatureList";
+import HowItWorks from "./HowItWorks";
+import FAQs from "./FAQs";
+import AboutUs from "./AboutUs";
 
 export default function LandingPage() {
   return (
