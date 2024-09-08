@@ -1,8 +1,8 @@
 "use client";
 
-import ListItem from "@/app/components/ListItem";
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import ListItem from "@/app/landing/ListItem";
 
 const features = [
   {

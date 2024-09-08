@@ -1,5 +1,5 @@
 import React from "react";
-import Box from "@/app/components/Box";
+import Box from "@/app/landing/Box";
 
 export default function HowItWorks() {
   return (

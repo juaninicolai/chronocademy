@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CTA from "@/app/components/CTA";
+import CTA from "@/app/landing/CTA";
 
 export default function Hero() {
   return (

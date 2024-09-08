@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/app/components/Navbar";
 import React, { ReactNode } from "react";
 import { Inter, Roboto } from "next/font/google";
-import Footer from "@/app/components/Footer";
-import classNames from "classnames";
+import Navbar from "@/app/landing/Navbar";
+import Footer from "@/app/landing/Footer";
+import classNames from 'classnames';
 
 export const metadata: Metadata = {
   title: "Chronocademy",

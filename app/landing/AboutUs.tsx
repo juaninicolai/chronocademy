@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import CTA from "@/app/components/CTA";
 import classNames from "classnames";
+import CTA from "@/app/landing/CTA";
 
 export default function AboutUs() {
   return (
