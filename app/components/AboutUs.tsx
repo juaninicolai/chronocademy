@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import CTA from "@/app/components/CTA";
+import classNames from "classnames";
 
 export default function AboutUs() {
   return (
@@ -97,7 +98,7 @@ export default function AboutUs() {
             width={256}
             height={200}
           />
-          <p id={"box-body"} className={"text-lg"}>
+          <ul id={"box-body"} className={classNames("text-lg", "list-disc")}>
             <li>
               Accessibility: We aim to make learning and teaching available to
               everyone, regardless of financial status.
@@ -114,7 +115,7 @@ export default function AboutUs() {
               Quality: Ensuring that every learning experience is valuable and
               enriching.
             </li>
-          </p>
+          </ul>
         </div>
       </div>
       <div className={"flex justify-center"}>

@@ -4,7 +4,7 @@ import Navbar from "@/app/components/Navbar";
 import React, { ReactNode } from "react";
 import { Inter, Roboto } from "next/font/google";
 import Footer from "@/app/components/Footer";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -30,7 +30,7 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body className={classnames("w-full", inter.variable, roboto.variable)}>
+      <body className={classNames("w-full", inter.variable, roboto.variable)}>
         <Navbar />
         <main>{children}</main>
         <Footer />
