@@ -14,7 +14,7 @@ export default function HowItWorks() {
         Explore the various ways to use your Chrono credits and maximize your
         experience.
       </h2>
-      <div className="flex flex-wrap justify-center gap-10 pt-16">
+      <div className="flex flex-wrap justify-center gap-10 pt-8">
         <Box
           color="bg-gradient-to-r from-primary-blue-100 to-primary-blue-400"
           image="/earn_chrono.svg"

@@ -10,7 +10,9 @@ export default function LandingPage() {
       <Hero />
       <FeatureList />
       <HowItWorks />
+      <br /><br />
       <FAQs />
+      <br /><br />
       <AboutUs />
     </>
   );
