@@ -23,7 +23,7 @@ export default function CTA() {
     }
 
     return <div className={"space-y-2"}>
-        <h3>Join the waiting list to be an early adopter!</h3>
+        <h4>Join our waitlist for early access and updates on Chronocademy’s launch.</h4>
         <form className={"flex space-x-2"} onSubmit={handleSubmit}>
             <input className={"p-4 rounded-lg"}
                    type={"text"}
@@ -45,8 +45,10 @@ export default function CTA() {
                 Join the waiting list <FaArrowRight className={"ml-2"}/>
             </button>
         </form>
-        <div className={"flex"}>
+        <div className={"rounded-lg"}>
             <p id={"info-disclaimer"}>Your information is safe with us.</p>
         </div>
+
+
     </div>;
 }

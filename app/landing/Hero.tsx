@@ -22,7 +22,7 @@ export default function Hero() {
         </h1>
         <p className={"font-roboto text-2xl"}>
           Earn time credits by teaching, spend them to learn. <br />
-          No money needed .
+          No money needed.
         </p>
         <CTA />
       </div>

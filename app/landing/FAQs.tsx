@@ -167,20 +167,21 @@ export default function FAQs() {
           <h4 className={"pt-4 font-normal text-lg"}>
             Once the beta version is released, you can sign up on our website,
             create your profile, and list the skills you can teach, if any, and
-            your learning interests. You will receive two Chronos as a welcome
+            your learning interests. You will receive Chronos as a welcome
             bonus to get started right away. If you were referred by a friend,
             include the referral code in the sign-up process so your friend can
             get the reward.
             <br />
             <br />
-            Until then, you can write here your name and email, so we can keep
-            you informed about the development of the platform and get notified
-            when the beta version is released.
+            Until then, you can provide us with your name and email to join the 
+            the waiting list. Then, we can keep you informed about the development 
+            of the platform and get notified when the beta version is released.
             <br />
             <br />
           </h4>
         </details>
       </div>
+      <br /><br />
     </div>
   );
 }
