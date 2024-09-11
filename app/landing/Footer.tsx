@@ -25,7 +25,7 @@ export default function Footer() {
         <div className={"flex flex-col flex-1 items-center"}>
           <h3>Contact Information</h3>
           <Link
-            href="mailto:omi16.espi@gmail.com?subject=Contact us"
+            href="mailto:info@chronocademy.com?subject=Contact us"
             className="flex items-center"
           >
             <Image
