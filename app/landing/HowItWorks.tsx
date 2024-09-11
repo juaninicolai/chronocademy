@@ -56,5 +56,6 @@ export default function HowItWorks() {
         />
       </div>
     </div>
+    <br /><br />
   );
 }

@@ -182,5 +182,7 @@ export default function FAQs() {
         </details>
       </div>
     </div>
+    <br /><br />
+
   );
 }
