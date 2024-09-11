@@ -181,8 +181,7 @@ export default function FAQs() {
           </h4>
         </details>
       </div>
+      <br /><br />
     </div>
-    <br /><br />
-
   );
 }
