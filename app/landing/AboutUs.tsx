@@ -116,7 +116,7 @@ export default function AboutUs() {
                     </ul>
                 </div>
             </div>
-            <div className={"flex justify-center pt-20"}>
+            <div className={"flex justify-center p-6"}>
                 <CTA/>
             </div>
         </div>
