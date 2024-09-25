@@ -28,18 +28,18 @@ export default function CTA() {
                 Join our waitlist for early access and updates on Chronocademy’s launch.
             </h4>
             <form
-                className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2"
+                className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-2"
                 onSubmit={handleSubmit}
             >
                 <input
-                    className="p-4 w-full rounded-lg border border-gray-300"
+                    className="p-4 rounded-lg border border-gray-300"
                     type="text"
                     placeholder="Enter your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
                 <input
-                    className="p-4 w-full rounded-lg border border-gray-300"
+                    className="p-4 rounded-lg border border-gray-300"
                     type="email"
                     placeholder="Enter your email"
                     value={email}

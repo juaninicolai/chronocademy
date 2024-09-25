@@ -5,9 +5,9 @@ export default function HowItWorks() {
   return (
     <div
       id="how-it-works"
-      className="flex flex-col justify-center items-center py-16"
+      className="flex flex-col justify-center items-center sm:py-16"
     >
-      <h1 className="font-inter text-4xl text-secondary-black-500 font-extrabold">
+      <h1 className="font-inter sm:text-4xl text-secondary-black-500 font-extrabold">
         How It Works
       </h1>
       <h2 className="font-roboto text-h2 py-4 text-center">

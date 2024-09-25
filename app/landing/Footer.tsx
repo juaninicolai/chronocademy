@@ -3,9 +3,10 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className={"px-28 sm:px-6 py-4"}>
-            <div className={"flex flex-wrap justify-around py-4 space-y-6 sm:space-y-4 sm:flex-col"}>
-                <div className={"flex flex-col flex-1 items-start sm:items-center"}>
+        <footer className={"px-28 py-4 sm:px-6"}>
+            <div
+                className={"flex flex-wrap py-4 space-y-6 sm:flex-nowrap sm:justify-around sm:space-y-4"}>
+                <div className={"flex flex-col flex-1 items-center sm:items-start"}>
                     <h3 className="text-lg font-semibold">Quick Links</h3>
                     <ul className={"text-primary-blue-500 py-2 space-y-4 sm:space-y-2"}>
                         <li>
@@ -38,7 +39,7 @@ export default function Footer() {
                         <p className="pl-2">info@chronocademy.com</p>
                     </Link>
                 </div>
-                <div className={"flex flex-col flex-1 items-end sm:items-center"}>
+                <div className={"flex flex-col flex-1 items-center sm:items-end"}>
                     <Link href={"/"}>
                         <Image
                             src="/logo.svg"

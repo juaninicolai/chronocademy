@@ -11,7 +11,7 @@ export default function AboutUs() {
         >
             <div className={"text-center"}>
                 <h1
-                    className={"font-inter text-4xl text-secondary-black-500 text-center font-extrabold"}>
+                    className={"font-inter sm:text-4xl text-secondary-black-500 text-center font-extrabold"}>
                     About us
                 </h1>
                 <h2 className="font-roboto text-h2 py-4 text-center">
