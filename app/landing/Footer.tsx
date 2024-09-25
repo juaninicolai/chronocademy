@@ -24,7 +24,7 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className={"flex flex-col flex-1 items-center"}>
-                    <h3 className="text-lg font-semibold">Contact Information</h3>
+                    <h3 className="text-lg font-semibold text-center">Contact Information</h3>
                     <Link
                         href="mailto:info@chronocademy.com?subject=Contact us"
                         className="flex items-center mt-2"
