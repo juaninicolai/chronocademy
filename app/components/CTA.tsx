@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FaArrowRight } from "react-icons/fa";
 import React, { useState } from "react";
@@ -20,35 +20,43 @@ export default function CTA() {
         }
         setName("");
         setEmail("");
-    }
+    };
 
-    return <div className={"space-y-2"}>
-        <h4>Join our waitlist for early access and updates on Chronocademy’s launch.</h4>
-        <form className={"flex space-x-2"} onSubmit={handleSubmit}>
-            <input className={"p-4 rounded-lg"}
-                   type={"text"}
-                   placeholder={"Enter your name"}
-                   value={name}
-                   onChange={(e) => setName(e.target.value)}
-            />
-            <input
-                className={"p-4 rounded-lg"}
-                type={"email"}
-                placeholder={"Enter your email"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <button
-                className={"bg-primary-blue-500 text-secondary-white-500 font-roboto text-xl p-4 rounded-lg flex items-center space-x-2"}
-                type={"submit"}
+    return (
+        <div className="space-y-4">
+            <h4 className="text-lg sm:text-xl">
+                Join our waitlist for early access and updates on Chronocademy’s launch.
+            </h4>
+            <form
+                className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-2"
+                onSubmit={handleSubmit}
             >
-                Join the waiting list <FaArrowRight className={"ml-2"}/>
-            </button>
-        </form>
-        <div className={"rounded-lg"}>
-            <p id={"info-disclaimer"}>Your information is safe with us.</p>
+                <input
+                    className="p-4 rounded-lg border border-gray-300"
+                    type="text"
+                    placeholder="Enter your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                    className="p-4 rounded-lg border border-gray-300"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <button
+                    className="bg-primary-blue-500 text-secondary-white-500 font-roboto text-xl p-4 rounded-lg flex items-center justify-center sm:justify-start space-x-2 w-full sm:w-auto"
+                    type="submit"
+                >
+                    Join the waiting list <FaArrowRight className="ml-2" />
+                </button>
+            </form>
+            <div className="rounded-lg">
+                <p id="info-disclaimer" className="text-gray-500 text-sm">
+                    Your information is safe with us.
+                </p>
+            </div>
         </div>
-
-
-    </div>;
+    );
 }

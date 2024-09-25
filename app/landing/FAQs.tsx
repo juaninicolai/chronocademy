@@ -1,9 +1,9 @@
 export default function FAQs() {
   return (
-    <div id={"faqs"} className={"px-28"}>
+    <div id={"faqs"} className={"px-6 sm:px-28"}>
       <h1
         className={
-          "font-inter text-4xl text-secondary-black-500 py-4 text-center font-extrabold"
+          "font-inter sm:text-4xl text-secondary-black-500 py-4 text-center font-extrabold"
         }
       >
         Frequently Asked Questions
@@ -176,12 +176,9 @@ export default function FAQs() {
             Until then, you can provide us with your name and email to join the 
             the waiting list. Then, we can keep you informed about the development 
             of the platform and get notified when the beta version is released.
-            <br />
-            <br />
           </h4>
         </details>
       </div>
-      <br /><br />
     </div>
   );
 }

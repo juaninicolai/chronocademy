@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import ListItem from "@/app/landing/ListItem";
+import { useMediaQuery } from "react-responsive";
 
 const features = [
   {
@@ -15,7 +16,7 @@ const features = [
   {
     src: "/google_meet.svg",
     alt: "google meet icon",
-    text: "Calendar and video Integration",
+    text: "Calendar & video integration",
     dialogText:
       "Schedule and conduct lessons with integrated Calendar and Video platform, making it easy for users to connect, schedule, and learn.",
   },
@@ -37,11 +38,14 @@ const features = [
 
 export default function FeatureList() {
   const [openDialogs, setOpenDialogs] = useState(features.map(() => false));
+  const isDesktopOrLaptop = useMediaQuery({ minWidth: 768 });
 
   const toggleDialog = (index: number) => {
-    setOpenDialogs(
-      openDialogs.map((isOpen, i) => (i === index ? !isOpen : isOpen)),
-    );
+    if (isDesktopOrLaptop) {
+      setOpenDialogs(
+          openDialogs.map((isOpen, i) => (i === index ? !isOpen : isOpen)),
+      );
+    }
   };
 
   return (
@@ -50,23 +54,25 @@ export default function FeatureList() {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex flex-col cursor-pointer font-bold items-center space-y-4 relative w-1/6 pb-8"
+            className="flex flex-col sm:cursor-pointer font-bold items-center space-y-4 relative w-1/6 pb-8"
             onClick={() => toggleDialog(index)}
           >
             <ListItem src={feature.src} alt={feature.alt} text={feature.text} />
-            <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
-              <div
-                className={
-                  "flex flex-col cursor-pointer items-center justify-center space-y-2"
-                }
-              >
-                <p className={"text-center font-normal text-sm line-clamp-4"}>
-                  {feature.dialogText}
-                </p>
-                <IoIosArrowUp onClick={() => toggleDialog(index)} />
-              </div>
-            </dialog>
-            <IoIosArrowDown />
+                <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
+                  <div
+                    className={
+                      "flex flex-col cursor-pointer items-center justify-center space-y-2"
+                    }
+                  >
+                    <p className={"text-center font-normal text-sm line-clamp-4"}>
+                      {feature.dialogText}
+                    </p>
+                    <IoIosArrowUp onClick={() => toggleDialog(index)} />
+                  </div>
+                </dialog>
+            <div className={"hidden sm:block"}>
+              <IoIosArrowDown />
+            </div>
           </div>
         ))}
       </ul>
