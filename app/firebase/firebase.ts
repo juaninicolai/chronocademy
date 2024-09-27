@@ -10,7 +10,4 @@ const firebaseConfig = {
 };
 
 const app : FirebaseApp = initializeApp(firebaseConfig);
-
-console.log('Firebase initialized successfully');
-
 export { app };
