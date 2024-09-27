@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,7 +42,8 @@ jobs:
       - name: Create env variables
         run: |
           touch .env
-          echo NEXT_PUBLIC_API_KEY=jacopo >> .env
+          echo NEXT_PUBLIC_API_KEY=${{ secrets.NEXT_PUBLIC_API_KEY }} >> .env
+          cat .env
       - name: Build with Next.js
         run: npm run build
       - name: Upload artifact
