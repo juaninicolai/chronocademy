@@ -3,7 +3,7 @@
 const nextConfig= {
     output: 'export',
     env: {
-        API_KEY: process.env.NEXT_PUBLIC_API_KEY,
+        NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY,
         AUTH_DOMAIN: process.env.AUTH_DOMAIN,
         PROJECT_ID: process.env.PROJECT_ID,
         STORAGE_BUCKET: process.env.STORAGE_BUCKET,
