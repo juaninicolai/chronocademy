@@ -43,7 +43,7 @@ jobs:
 #          NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
         run: |
           touch .env
-          echo "export NEXT_PUBLIC_API_KEY=${{ secrets.NEXT_PUBLIC_API_KEY }}" >> .env
+          echo export NEXT_PUBLIC_API_KEY=${{ secrets.NEXT_PUBLIC_API_KEY }} >> .env
           npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
