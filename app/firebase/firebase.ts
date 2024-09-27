@@ -12,5 +12,6 @@ const firebaseConfig = {
 const app : FirebaseApp = initializeApp(firebaseConfig);
 
 console.log('Firebase initialized successfully');
+console.log("env variables: ", process.env.NEXT_PUBLIC_API_KEY);
 
 export { app };
