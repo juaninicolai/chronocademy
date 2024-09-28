@@ -16,7 +16,7 @@ export default function HowItWorks() {
       body: (
         <>
           Use some of your time to <span className="font-bold">teach</span> any of your skills to someone else or{" "}
-          <span className="font-bold">refer</span> us to a friend and earn Chrono credits for it.
+          <span className="font-bold">refer</span> us to a friend and earn Chronos for it.
         </>
       ),
     },
@@ -26,7 +26,7 @@ export default function HowItWorks() {
       title: "Spend Chronos",
       body: (
         <>
-          Use your Chrono credits to <span className="font-bold">learn</span> a skill from someone else or to{" "}
+          Use your Chronos to <span className="font-bold">learn</span> a skill from someone else or to{" "}
           <span className="font-bold">unlock rewards or services</span> offered by Chronocademy.
         </>
       ),
@@ -38,7 +38,7 @@ export default function HowItWorks() {
       body: (
         <>
           If you do not want or do not have time to teach or learn a skill, you can{" "}
-          <span className="font-bold">buy or sell</span> Chrono credits on the platform.
+          <span className="font-bold">buy or sell</span> Chronos on the platform.
         </>
       ),
     },
@@ -72,12 +72,12 @@ export default function HowItWorks() {
         How It Works
       </h1>
       <h2 className="font-roboto text-h2 py-4 text-center">
-        Explore the various ways to use your Chrono credits and maximize your experience.
+        Explore the various ways to use your Chronos and maximize your experience.
       </h2>
 
       {/* Mobile Carousel */}
       {isMobile ? (
-        <div className="relative flex items-center justify-center w-full max-w-3xl h-[350px] mb-8 sm:mb-4">
+        <div className="relative flex items-center justify-center w-full max-w-3xl mb-8 sm:mb-4">
           {/* Left Arrow */}
           {currentIndex > 0 && (
             <button

@@ -23,7 +23,7 @@ export default function FAQs() {
           <h4 className={"pt-4 font-normal text-lg"}>
             Chronocademy is an online platform that allows users to exchange
             skills using a time-based currency called Chrono. Users can earn
-            Chrono by teaching skills they are proficient in and spend Chrono to
+            Chronos by teaching skills they are proficient in and spend Chronos to
             learn new skills from others.
             <br />
             <br />
@@ -48,9 +48,9 @@ export default function FAQs() {
             />
           </summary>
           <h4 className={"pt-4 font-normal text-lg"}>
-            Users earn Chrono by teaching classes or offering their skills. They
-            can then spend these earned Chrono to book classes and learn from
-            other users. Chrono can also be purchased with money or converted to
+            Users earn Chronos by teaching classes or offering their skills. They
+            can then spend these earned Chronos to book classes and learn from
+            other users. Chronos can also be purchased with money or converted to
             cash if desired.
             <br />
             <br />
@@ -79,7 +79,7 @@ export default function FAQs() {
         </details>
         <details className="py-4 cursor-pointer font-medium">
           <summary>
-            Can I buy Chrono?
+            Can I buy Chronos?
             <div
               className="mt-2 border-t shadow-sm"
               style={{
@@ -96,7 +96,7 @@ export default function FAQs() {
         </details>
         <details className="py-4 cursor-pointer font-medium">
           <summary>
-            Can I cash out my Chrono?
+            Can I cash out my Chronos?
             <div
               className="mt-2 border-t shadow-sm"
               style={{
@@ -107,7 +107,7 @@ export default function FAQs() {
           </summary>
           <h4 className={"pt-4 font-normal text-lg"}>
             Yes, users have the option to convert their earned Chronos to cash.
-            However, the free Chrono tokens given to new users and from the
+            However, the free Chronos given to new users and from the
             referral program cannot be cashed out to ensure the platform’s
             financial sustainability.
             <br />
