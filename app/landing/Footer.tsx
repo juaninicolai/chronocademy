@@ -49,7 +49,7 @@ export default function Footer() {
                             height={76}
                         />
                     </Link>
-                    <h4 className="pt-2 text-sm text-center">This website does not use cookies.</h4>
+                    <h4 className="pt-2 text-center">This website does not use cookies.</h4>
                 </div>
             </div>
         </footer>
