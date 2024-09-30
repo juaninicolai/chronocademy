@@ -120,7 +120,6 @@ export default function HowItWorks() {
                 image={box.image}
                 title={box.title}
                 body={box.body}
-                className="w-full" // Full width for desktop view
               />
             </div>
           ))}
