@@ -24,7 +24,7 @@ export default function CTA() {
 
     return (
         <div className="space-y-4">
-            <h4 className="text-lg sm:text-xl">
+            <h4 className="text-sm sm:text-xl">
                 Join our waitlist for early access and updates on Chronocademy’s launch.
             </h4>
             <form
