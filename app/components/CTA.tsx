@@ -11,12 +11,16 @@ export default function CTA() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!email.includes(".")) {
+            alert ("Please enter a valid email address.");
+            return new Error("Invalid email address.");
+        }
         try {
             await addDoc(collection(db, "potential_users"), { name, email });
             alert("You have been added to the waiting list!");
         } catch (error) {
-            alert("An error occurred. Please try again.");
             console.error("Error adding document: ", error);
+            alert("An error occurred. Please try again.");
         }
         setName("");
         setEmail("");
