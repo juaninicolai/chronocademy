@@ -1,6 +1,6 @@
-import { FirebaseApp, initializeApp } from "firebase/app";
+import { FirebaseApp, FirebaseOptions, initializeApp } from "firebase/app";
 
-const firebaseConfig = {
+const firebaseConfig : FirebaseOptions = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
     projectId: process.env.PROJECT_ID,
