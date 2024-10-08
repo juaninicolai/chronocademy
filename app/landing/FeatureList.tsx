@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import ListItem from "@/app/landing/ListItem";
 import { useMediaQuery } from "react-responsive";
 
 const features = [
@@ -44,7 +44,7 @@ export default function FeatureList() {
   const toggleDialog = (index: number) => {
     if (isDesktopOrLaptop) {
       setOpenDialogs(
-          openDialogs.map((isOpen, i) => (i === index ? !isOpen : isOpen))
+        openDialogs.map((isOpen, i) => (i === index ? !isOpen : isOpen)),
       );
     }
   };
@@ -58,10 +58,14 @@ export default function FeatureList() {
             className="flex flex-col sm:cursor-pointer font-bold items-center space-y-4 relative w-1/6 pb-8"
             onClick={() => toggleDialog(index)}
           >
-            <img src={feature.src} alt={feature.alt} className="h-[40px] w-auto" />
+            <Image
+              src={feature.src}
+              alt={feature.alt}
+              className="h-[40px] w-auto"
+            />
             <span>{feature.text}</span>
             {feature.extraIcon && (
-              <img
+              <Image
                 src={feature.extraIcon}
                 alt="Not in Beta"
                 className="absolute top-[-10px] right-[-10px] h-[25px] w-auto"
@@ -70,9 +74,7 @@ export default function FeatureList() {
             )}
 
             <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
-              <div
-                className="flex flex-col cursor-pointer items-center justify-center space-y-2"
-              >
+              <div className="flex flex-col cursor-pointer items-center justify-center space-y-2">
                 <p className="text-center font-normal text-sm line-clamp-4">
                   {feature.dialogText}
                 </p>

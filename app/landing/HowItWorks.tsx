@@ -50,7 +50,7 @@ export default function HowItWorks() {
       ),
       extraIcon: "/NotInBeta.png", // Specify the path to the 'Not in Beta' image only for this box
     },
-  ];
+  ] as const;
 
   useEffect(() => {
     const handleResize = () => {

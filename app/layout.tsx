@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { Inter, Roboto } from "next/font/google";
 import Navbar from "@/app/landing/Navbar";
 import Footer from "@/app/landing/Footer";
-import classNames from 'classnames';
+import classNames from "classnames";
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -15,29 +15,29 @@ export const metadata: Metadata = {
 };
 
 const inter = Inter({
-    subsets: ['latin'],
-    variable: '--font-inter'
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 const roboto = Roboto({
-    weight: '400',
-    subsets: ['latin'],
-    variable: '--font-roboto'
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-roboto",
 });
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-      <html lang="en">
+    <html lang="en">
       <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className={classNames("w-full", inter.variable, roboto.variable)}>
-      <Navbar/>
-      <main>{children}</main>
-      <Footer/>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
-      </html>
+    </html>
   );
 }

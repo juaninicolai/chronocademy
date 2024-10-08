@@ -11,7 +11,8 @@ export default function LandingPage() {
       <FeatureList />
       <HowItWorks />
       <FAQs />
-      <br /><br />
+      <br />
+      <br />
       <AboutUs />
     </>
   );
