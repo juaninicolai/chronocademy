@@ -23,8 +23,8 @@ export default function FAQs() {
           <h4 className={"pt-4 font-normal text-lg"}>
             Chronocademy is an online platform that allows users to exchange
             skills using a time-based currency called Chrono. Users can earn
-            Chronos by teaching skills they are proficient in and spend Chronos to
-            learn new skills from others.
+            Chronos by teaching skills they are proficient in and spend Chronos
+            to learn new skills from others.
             <br />
             <br />
             Chronocademy addresses a critical gap in the education market by
@@ -48,10 +48,10 @@ export default function FAQs() {
             />
           </summary>
           <h4 className={"pt-4 font-normal text-lg"}>
-            Users earn Chronos by teaching classes or offering their skills. They
-            can then spend these earned Chronos to book classes and learn from
-            other users. Chronos can also be purchased with money or converted to
-            cash if desired.
+            Users earn Chronos by teaching classes or offering their skills.
+            They can then spend these earned Chronos to book classes and learn
+            from other users. Chronos can also be purchased with money or
+            converted to cash if desired.
             <br />
             <br />
           </h4>
@@ -107,9 +107,9 @@ export default function FAQs() {
           </summary>
           <h4 className={"pt-4 font-normal text-lg"}>
             Yes, users have the option to convert their earned Chronos to cash.
-            However, the free Chronos given to new users and from the
-            referral program cannot be cashed out to ensure the platform’s
-            financial sustainability.
+            However, the free Chronos given to new users and from the referral
+            program cannot be cashed out to ensure the platform’s financial
+            sustainability.
             <br />
             <br />
           </h4>
@@ -167,15 +167,16 @@ export default function FAQs() {
           <h4 className={"pt-4 font-normal text-lg"}>
             Once the beta version is released, you can sign up on our website,
             create your profile, and list the skills you can teach, if any, and
-            your learning interests. You will receive Chronos as a welcome
-            bonus to get started right away. If you were referred by a friend,
-            include the referral code in the sign-up process so your friend can
-            get the reward.
+            your learning interests. You will receive Chronos as a welcome bonus
+            to get started right away. If you were referred by a friend, include
+            the referral code in the sign-up process so your friend can get the
+            reward.
             <br />
             <br />
-            Until then, you can provide us with your name and email to join the 
-            the waiting list. Then, we can keep you informed about the development 
-            of the platform and get notified when the beta version is released.
+            Until then, you can provide us with your name and email to join the
+            the waiting list. Then, we can keep you informed about the
+            development of the platform and get notified when the beta version
+            is released.
           </h4>
         </details>
       </div>

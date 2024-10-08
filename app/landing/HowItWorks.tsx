@@ -15,8 +15,10 @@ export default function HowItWorks() {
       title: "Earn Chronos",
       body: (
         <>
-          Use some of your time to <span className="font-bold">teach</span> any of your skills to someone else or{" "}
-          <span className="font-bold">refer</span> us to a friend and earn Chronos for it.
+          Use some of your time to <span className="font-bold">teach</span> any
+          of your skills to someone else or{" "}
+          <span className="font-bold">refer</span> us to a friend and earn
+          Chronos for it.
         </>
       ),
     },
@@ -26,19 +28,23 @@ export default function HowItWorks() {
       title: "Spend Chronos",
       body: (
         <>
-          Use your Chronos to <span className="font-bold">learn</span> a skill from someone else or to{" "}
-          <span className="font-bold">unlock rewards or services</span> offered by Chronocademy.
+          Use your Chronos to <span className="font-bold">learn</span> a skill
+          from someone else or to{" "}
+          <span className="font-bold">unlock rewards or services</span> offered
+          by Chronocademy.
         </>
       ),
     },
     {
-      color: "bg-gradient-to-r from-secondary-yellow-100 to-secondary-yellow-400",
+      color:
+        "bg-gradient-to-r from-secondary-yellow-100 to-secondary-yellow-400",
       image: "/buy_chronos.svg",
       title: "Trade Chronos",
       body: (
         <>
-          If you do not want or do not have time to teach or learn a skill, you can{" "}
-          <span className="font-bold">buy or sell</span> Chronos on the platform.
+          If you do not want or do not have time to teach or learn a skill, you
+          can <span className="font-bold">buy or sell</span> Chronos on the
+          platform.
         </>
       ),
     },
@@ -67,12 +73,16 @@ export default function HowItWorks() {
   };
 
   return (
-    <div id="how-it-works" className="flex flex-col justify-center items-center sm:py-16">
+    <div
+      id="how-it-works"
+      className="flex flex-col justify-center items-center sm:py-16"
+    >
       <h1 className="font-inter sm:text-4xl text-secondary-black-500 font-extrabold">
         How It Works
       </h1>
       <h2 className="font-roboto text-h2 py-4 text-center">
-        Explore the various ways to use your Chronos and maximize your experience.
+        Explore the various ways to use your Chronos and maximize your
+        experience.
       </h2>
 
       {/* Mobile Carousel */}
@@ -90,7 +100,9 @@ export default function HowItWorks() {
           )}
 
           {/* Box */}
-          <div className="w-[85%] flex justify-center mx-auto"> {/* Setting width to 93% for mobile */}
+          <div className="w-[85%] flex justify-center mx-auto">
+            {" "}
+            {/* Setting width to 93% for mobile */}
             <Box
               color={boxes[currentIndex].color}
               image={boxes[currentIndex].image}
@@ -114,7 +126,9 @@ export default function HowItWorks() {
         /* Desktop View */
         <div className="flex flex-wrap justify-center gap-10 pt-8">
           {boxes.map((box, index) => (
-            <div key={index} className="w-full sm:w-[30%]"> {/* Full width for mobile, smaller for desktop */}
+            <div key={index} className="w-full sm:w-[30%]">
+              {" "}
+              {/* Full width for mobile, smaller for desktop */}
               <Box
                 color={box.color}
                 image={box.image}

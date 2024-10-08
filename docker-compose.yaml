@@ -23,12 +23,12 @@ services:
   app:
     depends_on:
       postgres:
-          condition: service_healthy
+        condition: service_healthy
     build:
       context: .
       target: dev
     expose:
-        - 3000
+      - 3000
     volumes:
       - .:/app
     ports:

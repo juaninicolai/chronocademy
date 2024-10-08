@@ -43,7 +43,7 @@ export default function FeatureList() {
   const toggleDialog = (index: number) => {
     if (isDesktopOrLaptop) {
       setOpenDialogs(
-          openDialogs.map((isOpen, i) => (i === index ? !isOpen : isOpen)),
+        openDialogs.map((isOpen, i) => (i === index ? !isOpen : isOpen)),
       );
     }
   };
@@ -58,18 +58,18 @@ export default function FeatureList() {
             onClick={() => toggleDialog(index)}
           >
             <ListItem src={feature.src} alt={feature.alt} text={feature.text} />
-                <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
-                  <div
-                    className={
-                      "flex flex-col cursor-pointer items-center justify-center space-y-2"
-                    }
-                  >
-                    <p className={"text-center font-normal text-sm line-clamp-4"}>
-                      {feature.dialogText}
-                    </p>
-                    <IoIosArrowUp onClick={() => toggleDialog(index)} />
-                  </div>
-                </dialog>
+            <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
+              <div
+                className={
+                  "flex flex-col cursor-pointer items-center justify-center space-y-2"
+                }
+              >
+                <p className={"text-center font-normal text-sm line-clamp-4"}>
+                  {feature.dialogText}
+                </p>
+                <IoIosArrowUp onClick={() => toggleDialog(index)} />
+              </div>
+            </dialog>
             <div className={"hidden sm:block"}>
               <IoIosArrowDown />
             </div>
