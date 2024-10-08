@@ -29,5 +29,7 @@ services:
       target: dev
     expose:
         - 3000
+    volumes:
+      - .:/app
     ports:
       - 3000:3000
