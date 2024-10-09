@@ -19,18 +19,3 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-  app:
-    depends_on:
-      postgres:
-        condition: service_healthy
-    build:
-      context: .
-      target: dev
-    expose:
-      - 3000
-    volumes:
-      - .:/app
-      - /app/node_modules
-    ports:
-      - "127.0.0.1:3000:3000"
