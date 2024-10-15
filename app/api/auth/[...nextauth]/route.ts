@@ -1,4 +1,4 @@
-import NextAuth, { User } from "next-auth";
+import NextAuth, { User as NextUser } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { db } from "@/app/database";
 import { compare } from "bcrypt";
@@ -6,7 +6,7 @@ import { compare } from "bcrypt";
 const handler = NextAuth({
   theme: {
     colorScheme: "light",
-    logo: "/logo_dark_mode.svg",
+    logo: "/logo.svg",
   },
   providers: [
     CredentialsProvider({
@@ -21,38 +21,36 @@ const handler = NextAuth({
       },
 
       async authorize(credentials) {
-        if (!credentials) {
-          //return error
+        if (credentials === undefined) {
           return null;
         }
 
-        const users = await db
+        const user = await db
           .selectFrom("users")
-          .select(["id", "email", "password"])
+          .select(["id", "first_name", "last_name", "email", "password"])
           .where("email", "=", credentials.email)
-          .execute();
+          .executeTakeFirst();
 
-        if (users.length === 0) {
-          //return an error
+        if (user === undefined) {
           return null;
         }
 
         const isPasswordMatch = await compare(
           credentials.password,
-          users[0].password,
+          user.password,
         );
 
         if (!isPasswordMatch) {
-          //return error
           return null;
         }
 
-        const user: User = {
-          id: String(users[0].id),
-          email: users[0].email,
+        const nextUser: NextUser = {
+          id: String(user.id),
+          email: user.email,
+          name: `${user.first_name} ${user.last_name}`,
         };
 
-        return user;
+        return nextUser;
       },
     }),
   ],
