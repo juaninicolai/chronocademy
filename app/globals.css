@@ -17,3 +17,9 @@ h3 {
 p {
   @apply text-paragraph font-roboto;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

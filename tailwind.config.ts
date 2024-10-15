@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -39,7 +40,6 @@ const config: Config = {
         "white-500": "#FFFFFF",
       },
     },
-    //TODO responsive design
     fontFamily: {
       inter: ["var(--font-inter)", "sans-serif"],
       roboto: ["var(--font-roboto)", "sans-serif"],
@@ -51,8 +51,14 @@ const config: Config = {
         h3: ["20px", { lineHeight: "1.5" }],
         paragraph: ["12px", { lineHeight: "1.5" }],
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      colors: {},
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;
