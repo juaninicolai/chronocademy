@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultColors from "tailwindcss/colors";
 
 const config: Config = {
   darkMode: ["class"],
@@ -9,6 +10,7 @@ const config: Config = {
   ],
   theme: {
     colors: {
+      ...defaultColors,
       primary: {
         "blue-500": "#0033CC",
         "blue-400": "#335CD6",
