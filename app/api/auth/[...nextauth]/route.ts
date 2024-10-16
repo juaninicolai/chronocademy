@@ -1,5 +1,6 @@
 import NextAuth, { User as NextUser } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/app/database";
 import { compare } from "bcrypt";
 
@@ -51,6 +52,18 @@ const handler = NextAuth({
         };
 
         return nextUser;
+      },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      profile(profile) {
+        return {
+          id: profile.sub,
+          email: profile.email,
+          firstName: profile.given_name,
+          lastName: profile.family_name,
+        };
       },
     }),
   ],
