@@ -2,7 +2,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; // Using react-icons for burger menu
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { Button } from "@/components/ui/button"; // Using react-icons for burger menu
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,9 +33,12 @@ export default function Navbar() {
           id="nav-links"
           className="hidden sm:flex space-x-6 items-center text-primary-blue-500"
         >
-          <Link href={"#how-it-works"}>How it works</Link>
-          <Link href={"#faqs"}>FAQ</Link>
-          <Link href={"#about-us"}>About us</Link>
+          <Link href={"/#how-it-works"}>How it works</Link>
+          <Link href={"/#faqs"}>FAQ</Link>
+          <Link href={"/#about-us"}>About us</Link>
+          <Link id={"signup"} href={"/signup"} className="btn-primary">
+            <Button>Sign up</Button>
+          </Link>
         </div>
 
         {/* Hamburger Menu Icon */}
