@@ -1,11 +1,5 @@
-import { LandingPage } from "./landing";
-import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function IndexPage() {
-  return (
-    <>
-      <LandingPage />
-      <Link href="/signup">Go to Signup</Link>
-    </>
-  );
+  redirect("/landing");
 }
