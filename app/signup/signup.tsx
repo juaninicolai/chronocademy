@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,6 +13,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Image from "next/image";
 
 const formSchema = z
   .object({
@@ -64,18 +65,29 @@ export default function SignupPage() {
   };
 
   return (
-    <Form {...form}>
-      <div className="flex justify-center bg-[#ECECEC]">
+    <div
+      className={
+        "flex flex-col justify-center items-center h-screen bg-[#ECECEC] space-y-4"
+      }
+    >
+      <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-1 w-[368px] bg-white rounded-[2rem] px-8 py-5"
         >
+          <Image
+            src={"/logo.svg"}
+            alt={"chronocademy logo"}
+            width={140}
+            height={76}
+            className={"mx-auto my-5"}
+          />
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem className="space-y-0">
-                <FormLabel>Email</FormLabel>
+                <FormLabel className={"text-base"}>Email</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="Your email" {...field} />
                 </FormControl>
@@ -89,7 +101,7 @@ export default function SignupPage() {
             name="password"
             render={({ field }) => (
               <FormItem className="space-y-0">
-                <FormLabel>Password</FormLabel>
+                <FormLabel className={"text-base"}>Password</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -107,7 +119,7 @@ export default function SignupPage() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem className="space-y-0">
-                <FormLabel>Confirm password</FormLabel>
+                <FormLabel className={"text-base"}>Confirm password</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -125,7 +137,7 @@ export default function SignupPage() {
             name="firstName"
             render={({ field }) => (
               <FormItem className="space-y-0">
-                <FormLabel>First name</FormLabel>
+                <FormLabel className={"text-base"}>First name</FormLabel>
                 <FormControl>
                   <Input type="text" placeholder="Your first name" {...field} />
                 </FormControl>
@@ -139,7 +151,7 @@ export default function SignupPage() {
             name="lastName"
             render={({ field }) => (
               <FormItem className="space-y-0">
-                <FormLabel>Last name</FormLabel>
+                <FormLabel className={"text-base"}>Last name</FormLabel>
                 <FormControl>
                   <Input type="text" placeholder="Your last name" {...field} />
                 </FormControl>
@@ -156,7 +168,15 @@ export default function SignupPage() {
             Sign up
           </Button>
         </form>
+      </Form>
+      <div>
+        <h4>
+          Already have an account?{" "}
+          <Link href={"/api/auth/signin"} className={"underline"}>
+            Sign in
+          </Link>
+        </h4>
       </div>
-    </Form>
+    </div>
   );
 }
