@@ -1,3 +1,5 @@
-- Implement tRPC
+- Fix TODO comments
+- Handle log in / log out
 - Google Provider
 - https://cloud.google.com/identity-platform/docs/web/google
+- Implement tRPC
