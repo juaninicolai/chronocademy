@@ -1,6 +1,3 @@
-- Sign up UI
-- Replace Yup with Zod
-  - Align password checks with UI
 - Implement tRPC
 - Google Provider
 - https://cloud.google.com/identity-platform/docs/web/google
