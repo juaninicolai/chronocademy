@@ -37,7 +37,13 @@ const formSchema = z
 export default function SignupPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+      firstName: "",
+      lastName: "",
+    },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -177,6 +183,10 @@ export default function SignupPage() {
           </Link>
         </h4>
       </div>
+      <p>
+        By signing up, you agree to the Terms of Service and Privacy Policy,
+        including Cookie Use.
+      </p>
     </div>
   );
 }
