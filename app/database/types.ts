@@ -12,7 +12,6 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
 export type Timestamp = ColumnType<Date, Date | string>;
 
 export interface Users {
-  birthdate: Timestamp;
   created_at: Timestamp;
   email: string;
   first_name: string;
