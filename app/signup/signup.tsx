@@ -22,7 +22,6 @@ const formSchema = z
     confirmPassword: z.custom(),
     firstName: z.string(),
     lastName: z.string(),
-    birthdate: z.string(),
   })
   .refine(
     (values) => {
@@ -51,7 +50,6 @@ export default function SignupPage() {
         password: values.password,
         firstName: values.firstName,
         lastName: values.lastName,
-        birthdate: values.birthdate,
       }),
     });
 
@@ -144,20 +142,6 @@ export default function SignupPage() {
                 <FormLabel>Last name</FormLabel>
                 <FormControl>
                   <Input type="text" placeholder="Your last name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="birthdate"
-            render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel>Birthdate</FormLabel>
-                <FormControl>
-                  <Input type="date" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

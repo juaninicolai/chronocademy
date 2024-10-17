@@ -14,14 +14,12 @@ const RequestBodySchema = Yup.object({
   password: Yup.string().password().required(),
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),
-  birthdate: Yup.string().required(),
 });
 
 type User = {
   email: string;
   firstName: string;
   lastName: string;
-  birthdate: Date;
 };
 
 export async function POST(req: NextRequest) {
@@ -56,7 +54,6 @@ export async function POST(req: NextRequest) {
         password: hashedPassword,
         first_name: signUpDto.firstName,
         last_name: signUpDto.lastName,
-        birthdate: signUpDto.birthdate,
         created_at: new Date(),
         updated_at: new Date(),
       })
@@ -80,7 +77,6 @@ export async function POST(req: NextRequest) {
     email: dbUser.email,
     firstName: dbUser.first_name,
     lastName: dbUser.last_name,
-    birthdate: dbUser.birthdate,
   };
 
   return NextResponse.json(user, { status: 201 });
