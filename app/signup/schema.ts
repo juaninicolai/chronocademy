@@ -10,3 +10,8 @@ export const SignUpActionSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
 });
+
+export type SignUpFormState = {
+  message: string;
+  errors?: string[];
+};

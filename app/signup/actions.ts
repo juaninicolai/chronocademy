@@ -4,18 +4,26 @@ import { db } from "@/app/database";
 import { hash } from "bcrypt";
 import { DatabaseError } from "pg";
 import { redirect } from "next/navigation";
-import { SignUpActionSchema } from "@/app/signup/schema";
+import { SignUpActionSchema, SignUpFormState } from "@/app/signup/schema";
+import { z } from "zod";
 
 const SALT_ROUNDS = 8;
 
-export async function signUp(formData: FormData) {
+export async function signUp(
+  prevState: SignUpFormState,
+  formData: FormData,
+): Promise<SignUpFormState> {
   const validatedFormDataResult = await SignUpActionSchema.safeParseAsync(
     Object.fromEntries(formData),
   );
   if (!validatedFormDataResult.success) {
     console.log(validatedFormDataResult.error);
-    return undefined;
-    //TODO handle error
+    return {
+      message: "Invalid form data",
+      errors: validatedFormDataResult.error.issues.map(
+        (issue) => issue.message,
+      ),
+    };
   }
 
   const parsedFormData = validatedFormDataResult.data;
@@ -39,7 +47,9 @@ export async function signUp(formData: FormData) {
       error.code === "23505" &&
       error.constraint === "users_email_key"
     ) {
-      throw new Error("User already exists");
+      return {
+        message: "User already exists",
+      };
     }
     throw error;
   }
