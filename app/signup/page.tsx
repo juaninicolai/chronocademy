@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useFormState } from "react-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -16,7 +17,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { signUp } from "@/app/signup/actions";
-import { SignUpActionSchema } from "@/app/signup/schema";
+import { SignUpActionSchema, SignUpFormState } from "@/app/signup/schema";
+import { useRef } from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const SignUpFormSchema = SignUpActionSchema.extend({
   confirmPassword: z.custom(),
@@ -31,6 +34,14 @@ const SignUpFormSchema = SignUpActionSchema.extend({
 );
 
 export default function SignupPage() {
+  const ref = useRef<HTMLFormElement>(null);
+
+  const initialState: SignUpFormState = {
+    message: "",
+  };
+
+  const [state, formAction] = useFormState(signUp, initialState);
+
   const form = useForm<z.infer<typeof SignUpFormSchema>>({
     resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
@@ -50,7 +61,11 @@ export default function SignupPage() {
     >
       <Form {...form}>
         <form
-          action={signUp}
+          ref={ref}
+          onSubmit={form.handleSubmit(() =>
+            formAction(new FormData(ref.current!)),
+          )}
+          action={formAction}
           className="space-y-1 w-[368px] bg-white rounded-[2rem] px-8 py-5"
         >
           <Image
@@ -60,6 +75,17 @@ export default function SignupPage() {
             height={76}
             className={"mx-auto my-5"}
           />
+          {state.message !== "" && (
+            <Alert
+              variant={"destructive"}
+              className={"bg-[#c94b4b] text-white"}
+            >
+              <AlertDescription className={"font-medium"}>
+                {state.message}
+              </AlertDescription>
+            </Alert>
+          )}
+
           <FormField
             control={form.control}
             name="email"
