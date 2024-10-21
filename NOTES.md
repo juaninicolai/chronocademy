@@ -2,5 +2,4 @@
 - Set up type of user page
 - Google Provider
 - https://cloud.google.com/identity-platform/docs/web/google
-- Accounts page / profile page
 - Implement tRPC
