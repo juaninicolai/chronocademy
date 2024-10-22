@@ -8,7 +8,7 @@ export default function LandingLayout({
   return (
     <>
       <Navbar />
-      <section>{children}</section>
+      <main>{children}</main>
       <Footer />
     </>
   );
