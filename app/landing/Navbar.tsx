@@ -37,7 +37,9 @@ export default function Navbar() {
           <Link href={"/#faqs"}>FAQ</Link>
           <Link href={"/#about-us"}>About us</Link>
           <Link id={"signup"} href={"/signup"} className="btn-primary">
-            <Button>Sign up</Button>
+            <Button className="bg-primary-blue-100 text-primary-blue-500 border-2 border-primary-blue-500 hover:bg-primary-blue-500 hover:text-white">
+              Sign up
+            </Button>
           </Link>
         </div>
 
