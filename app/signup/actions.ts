@@ -5,7 +5,6 @@ import { hash } from "bcrypt";
 import { DatabaseError } from "pg";
 import { redirect } from "next/navigation";
 import { SignUpActionSchema, SignUpFormState } from "@/app/signup/schema";
-import { z } from "zod";
 
 const SALT_ROUNDS = 8;
 
