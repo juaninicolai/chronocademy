@@ -8,7 +8,7 @@ export default async function AppLayout({ children }: React.PropsWithChildren) {
   const session = await getServerSession();
 
   if (session === null) {
-    redirect("/");
+    redirect("/api/auth/signin");
   }
 
   return (
