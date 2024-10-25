@@ -36,6 +36,10 @@ const handler = NextAuth({
           return null;
         }
 
+        if (user.password === null) {
+          return null;
+        }
+
         const isPasswordMatch = await compare(
           credentials.password,
           user.password,
@@ -60,6 +64,7 @@ const handler = NextAuth({
       profile(profile) {
         return {
           id: profile.sub,
+          name: profile.name,
           email: profile.email,
           firstName: profile.given_name,
           lastName: profile.family_name,
@@ -67,6 +72,39 @@ const handler = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === "google" && user.email != undefined) {
+        try {
+          const dbUser = await db
+            .selectFrom("users")
+            .select("email")
+            .where("email", "=", user.email)
+            .executeTakeFirst();
+
+          if (dbUser) {
+            return true;
+          } else {
+            await db
+              .insertInto("users")
+              .values({
+                email: user.email,
+                password: "googlePassword",
+                first_name: user.firstName,
+                last_name: user.lastName,
+                created_at: new Date(),
+                updated_at: new Date(),
+              })
+              .execute();
+          }
+        } catch (e) {
+          console.log("An error occurred with google SSO:", e);
+          return false;
+        }
+      }
+      return true;
+    },
+  },
 });
 
 export { handler as GET, handler as POST };
