@@ -2,4 +2,6 @@
   - frontend first (simple ui)
   - backend
   - make UI pretty
+- After sign-out redirect to landing
+- After sign-in redirect to /app
 - Implement tRPC
