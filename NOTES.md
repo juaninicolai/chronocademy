@@ -1,3 +1,2 @@
-- Configure navbar for signed in users (like google console)
 - Set up type of user page
 - Implement tRPC

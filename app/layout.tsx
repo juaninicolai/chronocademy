@@ -4,6 +4,8 @@ import React, { ReactNode } from "react";
 import { Inter, Roboto } from "next/font/google";
 import classNames from "classnames";
 import { MaybeLandingLayout } from "@/app/landing/landing";
+import { getServerSession } from "next-auth";
+import { SessionProvider } from "@/app/app/session";
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -24,21 +26,22 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
-  // Do some shit here to figure otu if we should
-  // include the navbar and footer
-  // if url /app don't show
+  const session = await getServerSession();
+
   return (
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className={classNames("w-full", inter.variable, roboto.variable)}>
-        <MaybeLandingLayout>
-          <main>{children}</main>
-        </MaybeLandingLayout>
+        <SessionProvider session={session}>
+          <MaybeLandingLayout>
+            <main>{children}</main>
+          </MaybeLandingLayout>
+        </SessionProvider>
       </body>
     </html>
   );
