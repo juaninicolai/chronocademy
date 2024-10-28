@@ -1,2 +1,5 @@
 - Set up type of user page
+  - frontend first (simple ui)
+  - backend
+  - make UI pretty
 - Implement tRPC
