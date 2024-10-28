@@ -1,6 +1,4 @@
 - Move /landing to /
 - Configure navbar for signed in users (like google console)
 - Set up type of user page
-- Google Provider
-- https://cloud.google.com/identity-platform/docs/web/google
 - Implement tRPC

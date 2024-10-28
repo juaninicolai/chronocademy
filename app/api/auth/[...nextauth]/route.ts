@@ -74,6 +74,10 @@ const handler = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account }) {
+      if ("emailVerified" in user) {
+        throw new Error("we are not using a next-auth adapter");
+      }
+
       if (account?.provider === "google" && user.email != undefined) {
         try {
           const dbUser = await db
@@ -90,7 +94,9 @@ const handler = NextAuth({
               .values({
                 email: user.email,
                 password: "googlePassword",
+                // @ts-expect-error TODO: Consider redoing authentication with Adapters or use a custom User type.
                 first_name: user.firstName,
+                // @ts-expect-error TODO: Consider redoing authentication with Adapters or use a custom User type.
                 last_name: user.lastName,
                 created_at: new Date(),
                 updated_at: new Date(),
