@@ -3,6 +3,7 @@ import "./globals.css";
 import React, { ReactNode } from "react";
 import { Inter, Roboto } from "next/font/google";
 import classNames from "classnames";
+import { MaybeLandingLayout } from "@/app/landing/landing";
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -26,13 +27,18 @@ const roboto = Roboto({
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
+  // Do some shit here to figure otu if we should
+  // include the navbar and footer
+  // if url /app don't show
   return (
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className={classNames("w-full", inter.variable, roboto.variable)}>
-        {children}
+        <MaybeLandingLayout>
+          <main>{children}</main>
+        </MaybeLandingLayout>
       </body>
     </html>
   );
