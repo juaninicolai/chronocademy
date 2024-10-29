@@ -1,4 +1,5 @@
 "use client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,11 +18,11 @@ import {
 } from "@/components/ui/sidebar";
 import { ChevronUp, User2 } from "lucide-react";
 import React from "react";
-import { useAuthenticatedSession } from "./session";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function AppSidebar() {
-  const session = useAuthenticatedSession();
+  const session = useSession({ required: true });
 
   return (
     <Sidebar>
@@ -36,7 +37,12 @@ export function AppSidebar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> {session.user?.name}
+                  <User2 />
+                  {session.status === "loading" ? (
+                    <Skeleton className="w-full h-full" />
+                  ) : (
+                    session.data.user?.name
+                  )}
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
@@ -44,7 +50,14 @@ export function AppSidebar() {
                 side="top"
                 className="w-[--radix-popper-anchor-width]"
               >
-                <DropdownMenuItem onSelect={() => signOut()}>
+                <DropdownMenuItem
+                  onSelect={() =>
+                    signOut({
+                      redirect: true,
+                      callbackUrl: "/",
+                    })
+                  }
+                >
                   <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
