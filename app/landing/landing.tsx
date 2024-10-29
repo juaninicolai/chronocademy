@@ -8,7 +8,7 @@ import { PropsWithChildren } from "react";
 export function MaybeLandingLayout({ children }: PropsWithChildren) {
   const pathname = usePathname();
 
-  if (!pathname.startsWith("/app")) {
+  if (!pathname.startsWith("/app") && !pathname.startsWith("/signup")) {
     return (
       <>
         <Navbar />

@@ -1,6 +1,7 @@
 - Set up type of user page
   - frontend first (simple ui)
+    - Juani complete copy
+    - Both finish behavior
   - backend
   - make UI pretty
 - Display /api/auth/signin on /signin
-- Implement tRPC
