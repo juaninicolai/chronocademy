@@ -33,7 +33,7 @@ const SignUpFormSchema = SignUpActionSchema.extend({
   },
 );
 
-export default function SignupPage() {
+export default function SignUpPage() {
   const ref = useRef<HTMLFormElement>(null);
 
   const initialState: SignUpFormState = {
@@ -176,7 +176,10 @@ export default function SignupPage() {
       <div>
         <h4>
           Already have an account?{" "}
-          <Link href={"/api/auth/signin"} className={"underline"}>
+          <Link
+            href={"/api/auth/signin?callbackUrl=/app"}
+            className={"underline"}
+          >
             Sign in
           </Link>
         </h4>
