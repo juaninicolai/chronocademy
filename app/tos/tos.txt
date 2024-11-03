@@ -1,0 +1,184 @@
+﻿Terms & Conditions
+
+
+1. Your Acceptance of this Agreement
+These terms of service are entered into by and between You and Chronocademy, d/b/a Chronocademy ("Company," "we," "our," or "us"). The following terms and conditions, together with any documents they expressly incorporate by reference (collectively "Terms of Service"), govern your access to and use of https://www.chronocademy.com, including any content, functionality, and services offered on or through https://www.chronocademy.com (the "Website").
+I. Acceptance of Terms
+Please read the Terms of Service carefully before using the Website. By using the Website (or by clicking to accept or agree to the Terms of Service when this option is made available to you), you accept and agree to be bound and abide by these Terms of Service and our Privacy Policy, incorporated herein by reference. You must not access or use the Website if you do not agree to these Terms of Service.
+II. Your Representations
+By accessing and using this Website, you:
+1. Accept and agree to be bound and comply with these Terms of Service.
+2. Represent and warrant that you are of legal age to form a binding contract.
+3. Agree that if you access the Website from a jurisdiction where it is not permitted, you do so at your own risk.
+If you are under the age of 18, you may only use the platform with the consent of a parent or legal guardian. Chronocademy reserves the right to request proof of parental consent for users under 18.
+
+
+2. Description
+
+
+Chronocademy is a modern platform designed to connect learners with expert tutors and mentors through personalised, on-demand online sessions. The platform focuses on fostering skill development across various fields, ensuring users can access high-quality, verified tutors. Learners can schedule sessions according to their specific needs, while professionals share their expertise in a structured, flexible environment.
+
+
+Chronocademy emphasises the accuracy of tutor profiles, including qualifications, availability, and experience, but users are encouraged to verify details as part of the process. All users must create a profile, which they can manage through their personal dashboard to schedule, modify, or cancel their sessions.
+
+
+The platform is open to users over 16, and it is intended for personal educational purposes. Businesses or organisations seeking professional use of tutors are not permitted to use Chronocademy for commercial gain. Users are also reminded to comply with relevant national laws regarding taxation and labour practices.
+
+
+I. Definitions
+
+
+* Platform: The website and services offered by Chronocademy, are accessible at www.chronocademy.com.
+* User: Any person or entity that creates an account on Chronocademy, including Teachers and Students.
+* Teacher: A user registered to provide lessons or services on the platform.
+* Student: A user seeking lessons or services.
+* Chrono: The time-based currency used for skill exchange on the platform.
+* Task Marketplace: A feature that allows users to post tasks requiring specific skills.
+* Content: All information, text, images, or other data uploaded or shared by users on the platform.
+* Services: All features offered by Chronocademy, including skill exchange, task marketplace, and Chrono wallet.
+
+
+II. Description of Services
+
+
+Chronocademy is a skill exchange platform where users can:
+
+
+* Teach others and earn Chronos.
+* Learn from others using Chronos or money, if agreed upon.
+* Participate in the Task Marketplace, where users can request or offer services and skills.
+* Engage with teachers and students through a calendar and video integration system to schedule and attend lessons.
+
+
+III. Chrono: The Time-Based Currency
+
+
+Chronocademy operates on a unique currency called Chrono, which allows users to exchange skills without the need for money:
+
+
+* Teachers earn Chrono by teaching or completing tasks.
+* Students can spend Chrono to access lessons or skills.
+* Chronos can also be exchanged for cash at specific rates determined by the platform.
+
+
+Chrono is not a cryptocurrency but a virtual time-based unit with its own exchange rules and value. Users are responsible for managing their earned Chronos through the platform’s Chrono Wallet.
+
+
+Chrono has no real-world monetary value outside of the platform. Chronos may only be used within the Chronocademy platform to exchange skills or services. While users may exchange Chronos for money at rates set by the platform, this exchange is subject to platform policies and restrictions, and Chronos may not be transferred or traded outside of the platform.
+
+
+IV. Payment Terms
+
+
+Chronocademy allows users to:
+
+
+* Pay for classes with Chrono or money.
+* Set individual prices for classes or tasks in Chrono.
+* Payments must be processed through the platform, ensuring transparency and security.
+* Fees for premium features or special services may apply, which will be clearly stated on the platform.
+
+
+Payments on Chronocademy are processed through third-party payment providers such as PayPal and Stripe. By making a payment, you agree to the terms and conditions of these payment providers. Chronocademy is not responsible for any errors, delays, or disputes related to third-party payment services. It is the user’s responsibility to ensure their payment information is up-to-date and accurate.
+3. Updates to Terms of Service
+We may revise and update these Terms of Service from time to time at our sole discretion. All changes are effective immediately when posted and apply to all access and use of the Website thereafter. By continuing to use the Website after the posting of the revised Terms of Service, you accept and agree to the changes. It is your responsibility to check this page for updates, as they are binding on you.
+Chronocademy reserves the right to modify, discontinue, or alter any features or services offered through the platform at any time, with or without notice. Such modifications may affect current or future use of the platform, and it is the user's responsibility to review any changes.
+
+
+4. Your Responsibilities
+You are responsible for ensuring that all persons accessing the Website are aware of and comply with these Terms of Service. You must ensure that all the information you provide on the Website is correct, current, and complete.
+Security:
+You are solely responsible for your use of the Website, as well as your computer, internet, and data security
+I. Refund Policy
+Refunds for lesson cancellations or disputes must be submitted within 30 days of the scheduled session. If a tutor cancels a lesson, the student's payment (in Chrono or money) will be refunded. If a student cancels within 24 hours of a scheduled session, they may forfeit their payment unless agreed upon with the tutor. Chronocademy reserves the right to deny refunds under specific circumstances, including academic dishonesty or misuse of the platform.
+
+
+5. Prohibited Activities
+You may only use the Website for lawful purposes and in accordance with these Terms of Service. You agree not to use the Website in the following ways:
+* In violation of any applicable law or regulation.
+* For exploiting, harming, or attempting to exploit or harm minors.
+* To send or receive inappropriate content that does not comply with our Submission Standards.
+* For transmitting unauthorised promotional material like spam or chain letters.
+* Impersonating the Company or any individual.
+* Engaging in conduct that could harm or inhibit anyone's use of the Website.
+Additionally, you agree not to:
+* Overload or impair the Website’s functionality.
+* Use automated tools like robots or spiders to monitor or copy material from the Website without permission.
+* Introduce harmful viruses or engage in any conduct that damages the Website.
+* Use more than one profile to transfer Chronos between them by arranging fake classes or in any other way.
+I. User-Generated Content
+Users are solely responsible for the content they upload, share, or otherwise make available through the platform. By submitting content, users warrant that they have the right to share such content and that it does not infringe on the rights of any third parties. Chronocademy reserves the right to review, remove, or modify any content that violates these terms or is deemed inappropriate.
+
+
+6. Intellectual Property Rights
+The Website and its contents (e.g., information, text, images, and designs) are the property of the Company or its licensors and are protected by intellectual property laws.
+I. Usage Permissions
+You are allowed to:
+* Temporarily store material on your computer incidental to viewing the Website.
+* Print or download a reasonable number of pages for personal use.
+However, you may not:
+* Reproduce, distribute, modify, or create derivative works of the content for commercial purposes.
+* Delete or alter copyright or trademark notices on materials.
+If you violate these terms, your right to use the Website will cease immediately, and you must return or destroy any copies of the materials.
+II. Licence to Use User Content
+By submitting content to Chronocademy, users grant the platform a non-exclusive, worldwide, royalty-free licence to use, display, and distribute the content for the purposes of operating the platform. This licence does not give Chronocademy ownership of the content, and users retain all intellectual property rights to their submissions.
+
+
+7. Our Rights
+We reserve the right to:
+* Take legal action against unauthorised or illegal use of the Website.
+* Terminate or suspend access to the Website without notice if the Terms of Service are violated.
+I. Termination and Suspension
+
+
+Chronocademy reserves the right to terminate or suspend any account that violates these Terms of Service, engages in unethical behaviour, or abuses platform features. Users may be notified via email before their account is suspended or terminated, though this is not required. Chronocademy may also take immediate action in cases of fraud, illegal activity, or threats to platform security.
+8. Third-Party Links and Content
+The Website may contain links to third-party websites for convenience. We make no representations about such sites or their content and accept no responsibility for any loss or damage arising from your use of them. Accessing third-party sites is done at your own risk.
+
+
+9. Disclaimers, Liability, Indemnification and Disputes
+I. Disclaimer of Warranties
+The Website and its content are provided "as is" and "as available," without any warranties, either express or implied. This includes but is not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement.
+II. Limitation of Liability
+The Company and its affiliates are not liable for consequential, indirect, incidental, or punitive damages arising from your use of the Website, regardless of whether the Company has been advised of the possibility of such damages.
+III. Indemnification
+You agree to indemnify and hold harmless the Company and its affiliates from any claims, liabilities, damages, or expenses arising from your breach of these Terms of Service or your use of the Website.
+IV. Dispute Resolution
+Any disputes arising out of or in connection with these Terms of Service or the use of the Chronocademy platform will be governed by the laws of Denmark. If informal communication fails to resolve the dispute, the parties agree to submit the matter to binding arbitration, conducted in accordance with Danish arbitration rules. The arbitration will take place in Copenhagen, Denmark, and the language of arbitration will be English, unless both parties agree otherwise.
+Any legal claims not subject to arbitration will be resolved in the courts of Denmark, specifically in the district courts of Copenhagen. By using the platform, you agree to the jurisdiction of these courts.
+
+
+10. Privacy Policy
+The handling of personal information provided through the Website is governed by our Privacy Policy, located at chronocademy.com/privacy-policy.
+The contact details of the teachers are never sent to the students except in the case where the teacher accepts the lesson requests and indicates that they want to send their contact details to the student to organise the first lesson.
+All the pages of the site are secured by the HTTPS protocol and the navigation between the pages is encrypted.
+No bank card data is ever kept by Chronocademy, apart from the last 4 digits.
+Chronocademy does not sell or rent any information or data about its members.
+After consulting the tutoring adverts, students can get in touch with the teachers they have selected.
+They then send a lesson request containing a message to all teachers who seem to match their request. These messages must not contain any means of contacting the student other than through the Chronocademy site, i.e. neither a telephone number, nor a URL, nor an email or postal address.
+If the lesson request is initially accepted and then declined for ethical and legally sanctioned reasons (such as the explicit request to substitute the student during an exam or complete writing of assignments), Chronocademy will not respond favourably upon request for reimbursement.
+As a Tutor on Chronocademy :
+You acknowledge that it is not authorised to engage in any activity that constitutes or facilitates cheating or plagiarism by a student.
+As a student on Chronocademy :
+You acknowledge that it is not authorised to enquire about the engagement of or to engage tutors to complete assignments, write papers, take quizzes, or otherwise do work on your behalf. In addition, you agree not to use Chronocademy for any reason that violates the academic honesty policy or other conduct policies of your school, university, academic institution, or workplace.
+Chronocademy complies with applicable data protection laws, including the GDPR and CCPA. Users have the right to access, correct, and request the deletion of their personal data. For more information on how your data is processed and stored, please review our Privacy Policy. If you wish to exercise your data rights, contact us at info@chronocademy.com.
+
+
+11. Governing Law
+These Terms of Service and the use of the Website are governed by the laws of Denmark, with disputes being subject to the jurisdiction of Danish courts. If you are a resident of the European Union, Switzerland, Norway, or Iceland, the laws of your usual residence will apply.
+
+
+12. Severability
+If any provision of these Terms of Service is deemed unenforceable, the remaining provisions will continue to remain in effect.
+
+
+13. Entire Agreement
+These Terms of Service constitute the entire agreement between you and the Company regarding the use of the Website, replacing any prior agreements.
+
+
+14. Waiver
+No failure or delay by either party in exercising any rights under these Terms of Service will be considered a waiver of such rights.
+
+
+15. Notice
+Notices to you will be provided either via email or posted on the Website. You are responsible for keeping your email address up to date.
