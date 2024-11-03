@@ -261,7 +261,7 @@ export default function SignUpPage() {
           />
 
           <Button
-            className="w-full min-h-[62px] border-2 border-primary-blue-500 bg-primary-blue-500 text-secondary-white-500 font-roboto text-xl p-4 rounded-lg hover:bg-primary-blue-100 hover:text-primary-blue-500"
+            className="w-full min-h-[62px] border-2 border-primary-blue-500 bg-primary-blue-500 text-secondary-white-500 font-roboto text-xl p-4 rounded-lg hover:bg-primary-blue-500 hover:text-secondary-white-500"
             variant="outline"
             onClick={() => setIsSettingUpUser(true)}
             type="button"
