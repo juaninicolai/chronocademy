@@ -282,8 +282,15 @@ export default function SignUpPage() {
         </h4>
       </div>
       <p>
-        By signing up, you agree to the Terms of Service and Privacy Policy,
-        including Cookie Use.
+        By signing up, you agree to the{" "}
+        <Link href={"/tos"} className={"underline"}>
+          Terms of Service
+        </Link>{" "}
+        and{" "}
+        <Link href={"/privacy"} className={"underline"}>
+          Privacy Policy
+        </Link>
+        , including Cookie Use.
       </p>
     </div>
   );

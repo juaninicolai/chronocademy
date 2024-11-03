@@ -1,0 +1,128 @@
+﻿Chronocademy Privacy Policy
+
+
+1. Introduction
+At Chronocademy ("us", "we", "our", or the "Company"), we value your privacy and the importance of safeguarding your data. This Privacy Policy (the "Policy") describes our privacy practices for the activities set out below. As per your rights, we inform you how we collect, store, access, and otherwise process information relating to individuals. In this Policy, personal data ("Personal Data") refers to any information that on its own, or in combination with other available information, can identify an individual.
+We are committed to protecting your privacy in accordance with the highest level of privacy regulation. As such, we follow the obligations under the regulations listed below:
+* Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA) and the applicable provincial legislations
+* Quebec Law 25
+* the EU’s General Data Protection Regulation (GDPR)
+* Brazil’s Data Protection Legislation (LGPD)
+* California’s Consumer Privacy Act (CCPA), California Privacy Rights Act (CPRA), and California Online Privacy Protection Act (CalOPPA)
+* Colorado Privacy Act (CPA)
+* Utah Consumer Privacy Act (UCPA)
+* Connecticut Data Privacy Act (CTDPA)
+* Virginia Consumer Data Protection Act (VCDPA)
+* South Africa’s Protection of Personal Information Act (POPIA)
+* Denmark’s Data Protection Act (Databeskyttelsesloven)
+I. Scope
+This Policy applies to the Chronocademy websites, domains, applications, services, and products.
+This Policy does not apply to third-party applications, websites, products, services, or platforms that may be accessed through (non-Chronocademy) links that we may provide to you. These sites are owned and operated independently from us, and they have their own separate privacy and data collection practices. Any Personal Data that you provide to these websites will be governed by the third party’s own privacy policy. We cannot accept liability for the actions or policies of these independent sites, and we are not responsible for the content or privacy practices of such sites.
+II. Processing Activities
+This Policy applies when you interact with us by doing any of the following:
+* Make use of our application and services as an authorized user
+* Visit any of our websites that link to this Privacy Statement
+
+
+2. Personal Data We Collect
+We may collect and process the following data about you when you use Chronocademy’s platforms:
+I. . Information you provide to us
+You may share certain information with us, including data that identifies you (“Personal Data”), when you use our platform by filling out forms, registering for an account, entering promotions, or communicating with us. This data may include:
+* Mandatory information required to create a Chronocademy account, such as your name, email address, date of birth, gender, phone number, IP address, and password. These fields are mandatory, and without this information, you will be unable to access our services.
+* Profile picture for your account;
+* Postal address, if required for specific transactions;
+* Details of your professional qualifications (e.g., certificates or degrees);
+* A mini-portfolio showcasing your experience;
+* Records of communication between you and Chronocademy, including support inquiries;
+* A record of any requests or advertisements made through Chronocademy;
+* Financial transaction details including payment methods (e.g., bank or card information) for services used or offered through the platform;
+* Details of your activity on Chronocademy, including resources you access and services you view;
+* Your responses to surveys or reviews left regarding services you’ve used;
+* Information for customer support when reporting issues with the platform;
+* Location data, if you’ve agreed to share this information;
+* Certificates or additional documents you have chosen to provide.
+
+
+II. Information we collect automatically
+* Social media sign-in: If you log in through social media (e.g., Facebook), we may access certain Personal Data from your account, such as your name, email, profile picture, etc., as per the social media platform's terms.
+* Device and usage data: During your visits to Chronocademy, we collect information about your devices and how you interact with our services, including IP address, login details, browser information, operating system, platform, visit duration, pages viewed, and errors encountered. We use cookies and similar technologies to gather this information.
+* Aggregated data about your activity on Chronocademy (e.g., lesson response rates, feedback from students) that may be displayed on your public profile.
+
+
+III. Data retention
+Personal data will be retained for as long as necessary to fulfil the purposes for which it was collected, or as required by applicable laws and regulations. Chronocademy will periodically review and securely delete or anonymize data that is no longer needed in compliance with the GDPR and Danish data protection laws.
+You can request complete deletion of your data by contacting us at [info@chronocademy.com] with the subject “Data Deletion.”
+IV. Children’s Privacy
+Chronocademy does not knowingly collect Personal Data from individuals under the age of 16 without parental consent. If we discover that we have inadvertently collected data from a child under 16, we will delete such data immediately. If you are a parent or guardian and believe that your child has provided us with Personal Data, please contact us at [info@chronocademy.com].
+
+
+3. Device and Usage Data
+When you visit a Chronocademy website, we automatically collect and store information about your visit using browser cookies (files sent by us to your computer) or similar technology. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. The Help feature on most browsers will provide information on how to accept cookies, disable cookies, or notify you when receiving a new cookie. If you do not accept cookies, you may not be able to use some features of our Service, and we recommend that you leave them turned on.
+4. Data we collect from third parties
+We may receive your Personal Data from third parties such as companies subscribing to Chronocademy services, partners, and other sources. This Personal Data is not collected by us but by a third party and is subject to the relevant third party’s own privacy and data collection policies. We do not have any control or input on how your Personal Data is handled by third parties. As always, you have the right to review and rectify this information. If you have any questions, you should first contact the relevant third party for further information about your Personal Data. Where that third party is unresponsive to your rights, you may contact the Data Protection Officer at Chronocademy (contact details below).
+
+
+5. Purpose and Legal Basis for the Processing of Personal Data
+We collect and use your Personal Data for the following purposes:
+* To provide, maintain, and improve our products and services, and understand how to enhance them.
+* To administer your account, including responding to your requests, processing transactions, and providing customer support.
+* To send marketing communications where you have opted in to receive them.
+* To ensure the security of our services, prevent fraud, and safeguard your Personal Data.
+* To comply with legal obligations, such as record-keeping and ensuring compliance with laws.
+The legal basis for processing your Personal Data is based on one or more of the following:
+* Your consent, where we explicitly request it (e.g., for marketing communications).
+* Contractual necessity, such as to fulfil the services you've requested.
+* Our legitimate interests, for example, to protect against fraud or improve our offerings.
+* Legal obligations, such as compliance with regulatory requirements.
+International Data Transfer and Storage
+Chronocademy operates globally, which means your Personal Data may be transferred to and stored in countries outside your own. This includes countries where data protection laws may differ from those in your jurisdiction.
+We implement appropriate safeguards to ensure your Personal Data is adequately protected regardless of where it is processed. These safeguards may include:
+* Standard Contractual Clauses (SCCs) approved by the European Commission.
+* Binding Corporate Rules (BCRs) for intra-group transfers.
+For more information about these clauses, visit https://eur-lex.europa.eu/
+6. Sharing and Disclosure
+We share your Personal Data with third parties only in specific circumstances, such as:
+* Service Providers: We engage third-party companies to provide services on our behalf (e.g., payment processors, hosting services, and marketing platforms). These providers are contractually obligated to handle your Personal Data securely and comply with data protection laws.
+* Legal Requirements: We may disclose your Personal Data in response to lawful requests by public authorities or in compliance with legal obligations.
+* Business Transfers: If Chronocademy is involved in a merger, acquisition, or asset sale, your Personal Data may be transferred to the acquiring company.
+
+
+7. Cookies
+Cookies are small data files placed on your device to collect information about your browsing activity. We use cookies for various purposes, such as:
+* Session Management: To remember your login details and preferences.
+* Analytics: To analyse website traffic and usage patterns.
+* Advertising: To serve you personalised advertisements.
+Before using cookies, we seek your affirmative consent in accordance with the EU’s ePrivacy Directive and Denmark’s Cookie Law. You can manage your cookie preferences at any time through your browser settings. However, disabling cookies may limit the functionality of some features on our website.
+8. Retention and Deletion
+We retain your Personal Data for as long as necessary to fulfil the purposes for which it was collected, and as required by law. When we no longer need your Personal Data, we will delete or anonymize it. In some cases, we may retain your data longer to comply with legal obligations or defend against legal claims.
+9. How We Keep Your Data Safe
+We are committed to protecting your Personal Data with appropriate technical and organisational measures. These include:
+* Encryption: Secure encrypted communication between your browser and our website.
+* Access Controls: Limiting access to your Personal Data to authorized personnel only.
+* Third-party security measures: Ensuring that our service providers maintain equivalent levels of security when processing your data.’
+
+
+10. Data Breach Notification
+In the event of a data breach that affects your Personal Data, Chronocademy will notify the Danish Data Protection Agency within 72 hours of becoming aware of the breach. If the breach poses a high risk to your rights and freedoms, we will also notify you directly using your registered contact information.
+
+
+11. Your Rights
+Depending on your location and applicable data protection laws, you may have the following rights concerning your Personal Data:
+* Right to Access: Request a copy of the Personal Data we process about you.
+* Right to Rectification: Correct any inaccurate or incomplete Personal Data.
+* Right to Erasure ("Right to be Forgotten"): Request the deletion of your Personal Data under certain circumstances.
+* Right to Restrict Processing: Limit how we process your Personal Data in specific situations.
+* Right to Data Portability: Receive your Personal Data in a structured format and transmit it to another data controller.
+* Right to Object: Object to the processing of your Personal Data where we rely on legitimate interests as the legal basis.
+* Right to Withdraw Consent: Where we process your Personal Data based on consent, you can withdraw your consent at any time.
+* Right to File a Complaint: Lodge a complaint with your local data protection authority if you believe your rights have been violated.
+Individuals in Denmark may exercise their rights under GDPR by contacting the Danish Data Protection Agency (Datatilsynet) for concerns or complaints
+To exercise any of these rights, please contact us using the details in the "Contact Us" section below.
+12. Withdrawing Consent
+If you have provided consent for us to process your Personal Data, you can withdraw it at any time. For example, you can opt out of marketing communications by following the instructions in the emails you receive or by contacting us directly.
+13. Changes to this Policy
+We may update this Privacy Policy from time to time. When we do, we will post the revised policy on this page and update the "Last Updated" date. If the changes are significant, we will notify you through the contact information you provided or by displaying a prominent notice on our website.
+14. Contact Us
+For any questions or concerns regarding this Privacy Policy or to exercise your data rights, please contact us at: info@chronocademy.com with the subject “Data Privacy”.
+Since Chronocademy is currently in its early development stage, we do not have a formal office address yet, but you can reach us via the email provided for privacy-related concerns.
+Also, upon official company formation, we will appoint a dedicated Data Protection Officer (DPO). In the meantime, our team will handle privacy-related matters. Please reach out to us at info@chronocademy.com for any concerns.
