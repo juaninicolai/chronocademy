@@ -113,6 +113,8 @@ export default function HowItWorks() {
             {boxes[currentIndex].title === "Trade Chronos" && (
               <Image
                 src={boxes[currentIndex].extraIcon}
+                width={190}
+                height={56}
                 alt="Not in Beta"
                 className="absolute top-[+20px] right-[+10px] h-[25px] w-auto"
                 style={{ transform: "rotate(30deg)" }} // Rotate the badge by 20 degrees
@@ -147,6 +149,8 @@ export default function HowItWorks() {
                 <Image
                   src={box.extraIcon}
                   alt="Not in Beta"
+                  width={190}
+                  height={56}
                   className="absolute top-[+20px] right-[+20px] h-[25px] w-auto"
                   style={{ transform: "rotate(30deg)" }}
                 />

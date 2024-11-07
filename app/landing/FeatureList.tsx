@@ -61,6 +61,8 @@ export default function FeatureList() {
             <Image
               src={feature.src}
               alt={feature.alt}
+              width={40}
+              height={40}
               className="h-[40px] w-auto"
             />
             <span>{feature.text}</span>
@@ -68,6 +70,8 @@ export default function FeatureList() {
               <Image
                 src={feature.extraIcon}
                 alt="Not in Beta"
+                width={50}
+                height={25}
                 className="absolute top-[-10px] right-[-10px] h-[25px] w-auto"
                 style={{ transform: "rotate(30deg)" }}
               />
