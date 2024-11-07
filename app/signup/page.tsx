@@ -283,11 +283,11 @@ export default function SignUpPage() {
       </div>
       <p>
         By signing up, you agree to the{" "}
-        <Link href={"/tos"} className={"underline"}>
+        <Link target="_blank" href={"/tos"} className={"underline"}>
           Terms of Service
         </Link>{" "}
         and{" "}
-        <Link href={"/privacy"} className={"underline"}>
+        <Link target="_blank" href={"/privacy"} className={"underline"}>
           Privacy Policy
         </Link>
         , including Cookie Use.
