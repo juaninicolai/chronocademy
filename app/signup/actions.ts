@@ -8,6 +8,11 @@ import { SignUpActionSchema, SignUpFormState } from "@/app/signup/schema";
 
 const SALT_ROUNDS = 8;
 
+export async functionNagivateTouserdetaiks() {
+  // HANDLE SESSION
+  redirect("/signup/user-details");
+}
+
 export async function signUp(
   prevState: SignUpFormState,
   formData: FormData,
@@ -53,5 +58,5 @@ export async function signUp(
     throw error;
   }
 
-  redirect("/");
+  redirect("/signup/user-details");
 }

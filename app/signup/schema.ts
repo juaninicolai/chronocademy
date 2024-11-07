@@ -5,10 +5,10 @@ export const SignUpActionSchema = z.object({
   password: z
     .string()
     .min(8)
-    .regex(/[A-Z]/, "password should include an uppercase letter")
-    .regex(/[0-9]/, "password should include a number"),
-  firstName: z.string(),
-  lastName: z.string(),
+    .regex(/[A-Z]/, "Password should include an uppercase letter")
+    .regex(/[0-9]/, "Password should include a number"),
+  firstName: z.string().trim().min(1),
+  lastName: z.string().trim().min(1),
 });
 
 export type SignUpFormState = {
