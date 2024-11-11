@@ -1,5 +1,6 @@
 - Implement User Details page
 - Consider marking journey as not complete vs. storing state in session
+  - Vesie has an idea for session context (need to try)
 
 Nice to Have:
 
