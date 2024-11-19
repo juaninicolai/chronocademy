@@ -4,6 +4,6 @@
 
 Nice to Have:
 
-- Disable "Next" button on sign up page
+- Validate sign up form on change less often (Check debounce)
 - Handle unexpected signup action error
 - Display /api/auth/signin on /signin
