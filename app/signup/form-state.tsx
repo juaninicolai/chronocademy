@@ -15,6 +15,13 @@ const initialState = {
     firstName: "",
     lastName: "",
   },
+  userDetails: {
+    countryOfBirth: "",
+    birthdate: new Date(),
+    timezone: "",
+    language: "",
+    languageLevel: "",
+  },
 };
 
 const SignUpFormStateContext = createContext<
