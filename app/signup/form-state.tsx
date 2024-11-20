@@ -22,6 +22,11 @@ const initialState = {
     language: "",
     languageLevel: "",
   },
+  skills: {
+    category: "",
+    skill: "",
+    profileDescription: "",
+  },
 };
 
 const SignUpFormStateContext = createContext<
