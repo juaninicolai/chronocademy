@@ -1,9 +1,5 @@
 "use client";
 
-// Form
-// Selector wtih skills from database
-// Textarea profile description
-
 import {
   Form,
   FormControl,
