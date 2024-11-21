@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SubmitHandler, useForm, useWatch } from "react-hook-form";
+import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useSignUpFormState } from "../form-state";
 import {
   Popover,
@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, CircleMinus, CirclePlus } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -43,8 +43,14 @@ const UserDetailsFormSchema = z.object({
   countryOfBirth: z.string().min(1),
   birthdate: z.date().min(timeBefore100Years).max(timeBefore18Years),
   timezone: z.string().min(1),
-  language: z.string().min(1),
-  languageLevel: z.string().min(1),
+  languages: z
+    .array(
+      z.object({
+        language: z.string().min(1),
+        languageLevel: z.string().min(1),
+      }),
+    )
+    .min(1),
 });
 
 export default function UserDetailsPage() {
@@ -57,9 +63,18 @@ export default function UserDetailsPage() {
       countryOfBirth: "",
       birthdate: undefined as unknown as Date,
       timezone: "",
-      language: "",
-      languageLevel: "",
+      languages: [
+        {
+          language: "",
+          languageLevel: "",
+        },
+      ],
     },
+  });
+
+  const languagesFieldArray = useFieldArray({
+    control: form.control,
+    name: "languages",
   });
 
   const handleSubmit: SubmitHandler<z.infer<typeof UserDetailsFormSchema>> = (
@@ -71,6 +86,17 @@ export default function UserDetailsPage() {
     }));
 
     router.push("/signup/skills");
+  };
+
+  const handleAddLanguage = () => {
+    languagesFieldArray.append({
+      language: "",
+      languageLevel: "",
+    });
+  };
+
+  const handleRemoveLanguage = (index: number) => {
+    languagesFieldArray.remove(index);
   };
 
   return (
@@ -174,64 +200,85 @@ export default function UserDetailsPage() {
           )}
         />
 
-        <fieldset className="flex gap-4">
-          {/* TODO: Allow people to add more languages  */}
-          <FormField
-            control={form.control}
-            name="language"
-            render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel className={"text-base"}>Language</FormLabel>
-                <Select
-                  defaultValue={field.value}
-                  disabled={field.disabled}
-                  onValueChange={field.onChange}
-                >
-                  <FormControl>
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Language" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {/* TODO: Use languages from database */}
-                    <SelectItem value="bulgarian">Bulgarian</SelectItem>
-                    <SelectItem value="danish">Danish</SelectItem>
-                    <SelectItem value="spanish">Spanish</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <div className={"space-y-2"}>
+          {languagesFieldArray.fields.map((item, index) => (
+            <fieldset key={item.id} className="flex items-end gap-4">
+              {/* TODO: Allow people to add more languages  */}
+              <FormField
+                control={form.control}
+                name={`languages.${index}.language`}
+                render={({ field }) => (
+                  <FormItem className="space-y-0">
+                    <FormLabel className={"text-base"}>Language</FormLabel>
+                    <Select
+                      defaultValue={field.value}
+                      disabled={field.disabled}
+                      onValueChange={field.onChange}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-[180px]">
+                          <SelectValue placeholder="Language" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {/* TODO: Use languages from database */}
+                        <SelectItem value="bulgarian">Bulgarian</SelectItem>
+                        <SelectItem value="danish">Danish</SelectItem>
+                        <SelectItem value="spanish">Spanish</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="languageLevel"
-            render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel className={"text-base"}>Level</FormLabel>
-                <Select
-                  defaultValue={field.value}
-                  disabled={field.disabled}
-                  onValueChange={field.onChange}
+              <FormField
+                control={form.control}
+                name={`languages.${index}.languageLevel`}
+                render={({ field }) => (
+                  <FormItem className="space-y-0">
+                    <FormLabel className={"text-base"}>Level</FormLabel>
+                    <Select
+                      defaultValue={field.value}
+                      disabled={field.disabled}
+                      onValueChange={field.onChange}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-[180px]">
+                          <SelectValue placeholder="Level" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="beginner">Beginner</SelectItem>
+                        <SelectItem value="intermediate">
+                          Intermediate
+                        </SelectItem>
+                        <SelectItem value="advanced">Advanced</SelectItem>
+                        <SelectItem value="native">Native</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {languagesFieldArray.fields.length > 1 && (
+                <Button
+                  size={"icon"}
+                  type={"button"}
+                  variant={"destructive"}
+                  onClick={() => handleRemoveLanguage(index)}
                 >
-                  <FormControl>
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Level" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="beginner">Beginner</SelectItem>
-                    <SelectItem value="intermediate">Intermediate</SelectItem>
-                    <SelectItem value="advanced">Advanced</SelectItem>
-                    <SelectItem value="native">Native</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </fieldset>
+                  <CircleMinus />
+                </Button>
+              )}
+            </fieldset>
+          ))}
+
+          <Button size={"sm"} type={"button"} onClick={handleAddLanguage}>
+            <CirclePlus />
+            Add language
+          </Button>
+        </div>
 
         <Button
           variant="outline"

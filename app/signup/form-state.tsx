@@ -19,8 +19,12 @@ const initialState = {
     countryOfBirth: "",
     birthdate: new Date(),
     timezone: "",
-    language: "",
-    languageLevel: "",
+    languages: [
+      {
+        language: "",
+        languageLevel: "",
+      },
+    ],
   },
   skills: {
     skills: [
