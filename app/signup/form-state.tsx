@@ -23,8 +23,12 @@ const initialState = {
     languageLevel: "",
   },
   skills: {
-    category: "",
-    skill: "",
+    skills: [
+      {
+        category: "",
+        skill: "",
+      },
+    ],
     profileDescription: "",
   },
 };
