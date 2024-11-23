@@ -67,7 +67,8 @@ export default function SkillsPage() {
       skills: values,
     }));
 
-    router.push("/signup/learning");
+    //TODO: submit form to create user and also sign it in
+    router.push("/app");
   };
 
   const handleAddSkill = () => {
