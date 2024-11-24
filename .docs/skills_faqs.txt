@@ -1,0 +1,26 @@
+FAQs for the new Sign-up journey with only one type of user (both):
+
+Can I update my skills later?
+
+Absolutely! You can edit or add skills anytime after sign-up to keep your profile up-to-date as you gain more experience or new interests.
+
+How detailed should my skill descriptions be?
+
+Aim to provide a concise but informative description. For example, instead of just "Math," specify "Algebra and Calculus for high school students" or instead of just “Spanish” specify "Beginner's conversational Spanish."
+
+Can I list multiple skills I want to learn or teach?
+
+Yes, you can add as many skills as you’d like to both lists. This helps match you with a wider range of potential learners or teachers.
+
+What if I’m unsure about my teaching qualifications?
+
+If you're not formally certified but have experience (e.g., tutoring or personal study), mention that in your description. If you have formal education or certification, listing it under Education adds credibility.
+
+How do I get Chronos to learn if I don’t have anything to teach?
+
+At first you can use the welcome Chronos given to you, but then, for the beta version, you will have to give some classes to earn Chronos. It doesn’t need to be something academic or of high degree, it can be anything you are good at. After the beta version, payment methods will be introduced to purchase Chronos.
+
+I can’t find the teaching or learning category I want to add.
+
+Send us an email to info@chronocademy.com with the subject “category” and, in the message, specify which category you would like us to add. We’ll then send you a confirmation email when it’s been updated and you can add it from your profile.
+
