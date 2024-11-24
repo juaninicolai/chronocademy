@@ -89,13 +89,13 @@ export default function SkillsPage() {
   };
 
   return (
-    <>
+    <div className={"px-28 py-6"}>
       <Form {...form}>
         <div className={"space-y-4"}>
           <h3>Please fill in the information about your skills.</h3>
           <h3>
             If you are only interested in either teaching or learning a skill,
-            just leave on section blank.
+            just leave one section blank.
           </h3>
           <form
             className="space-y-4"
@@ -336,9 +336,9 @@ export default function SkillsPage() {
             </AccordionTrigger>
             <AccordionContent>
               Aim to provide a concise but informative description. For example,
-              instead of just "Math," specify "Algebra and Calculus for high
-              school students" or instead of just “Spanish” specify "Beginner's
-              conversational Spanish."
+              instead of just &#34;Math,&#34; specify &#34;Algebra and Calculus
+              for for high school students&#34; or instead of just “Spanish”
+              specify &#34;Beginner&#39;s conversational Spanish.&#34;
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
@@ -387,6 +387,6 @@ export default function SkillsPage() {
           </AccordionItem>
         </Accordion>
       </div>
-    </>
+    </div>
   );
 }
