@@ -7,26 +7,13 @@ import { useSignUpFormState } from "../form-state";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FAQ } from "./faq";
 import { SkillsForm } from "./skills-form";
-
-const SkillsFormSchema = z.object({
-  skills: z
-    .array(
-      z.object({
-        category: z.string().min(1),
-        skill: z.string().min(1),
-      }),
-    )
-    .min(1),
-  profileDescription: z.string().min(1),
-});
+import { SkillsFormSchema } from "./schema";
 
 export default function SkillsPage() {
-  const [, setSignUpFormState] = useSignUpFormState();
-  const router = useRouter();
+  const [formState] = useSignUpFormState();
 
   const form = useForm({
     resolver: zodResolver(SkillsFormSchema),
@@ -43,15 +30,7 @@ export default function SkillsPage() {
 
   const handleSubmit: SubmitHandler<z.infer<typeof SkillsFormSchema>> = (
     values,
-  ) => {
-    setSignUpFormState((prevState) => ({
-      ...prevState,
-      skills: values,
-    }));
-
-    //TODO: submit form to create user and also sign it in
-    router.push("/app");
-  };
+  ) => {};
 
   return (
     <div className={"px-28 py-6"}>

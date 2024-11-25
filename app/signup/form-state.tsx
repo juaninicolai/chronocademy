@@ -26,15 +26,6 @@ const initialState = {
       },
     ],
   },
-  skills: {
-    skills: [
-      {
-        category: "",
-        skill: "",
-      },
-    ],
-    profileDescription: "",
-  },
 };
 
 const SignUpFormStateContext = createContext<

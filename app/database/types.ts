@@ -11,16 +11,35 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
 
 export type Timestamp = ColumnType<Date, Date | string>;
 
-export interface Users {
-  created_at: Timestamp;
-  email: string;
+export interface UserData {
+  birthdate: Timestamp;
+  created_at: Generated<Timestamp>;
   first_name: string;
-  id: Generated<number>;
   last_name: string;
+  origin_country: string;
+  timezone: string;
+  updated_at: Generated<Timestamp>;
+  user_id: Generated<number>;
+}
+
+export interface UserLanguages {
+  created_at: Generated<Timestamp>;
+  language: string;
+  level: string;
+  updated_at: Generated<Timestamp>;
+  user_id: Generated<number>;
+}
+
+export interface Users {
+  created_at: Generated<Timestamp>;
+  email: string;
+  id: Generated<number>;
   password: string;
-  updated_at: Timestamp;
+  updated_at: Generated<Timestamp>;
 }
 
 export interface DB {
+  user_data: UserData;
+  user_languages: UserLanguages;
   users: Users;
 }
