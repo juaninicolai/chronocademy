@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Form } from "@/components/ui/form";
 import {} from "@/components/ui/select";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -11,6 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FAQ } from "./faq";
 import { SkillsForm } from "./skills-form";
 import { SkillsFormSchema } from "./schema";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function SkillsPage() {
   const [formState] = useSignUpFormState();
@@ -18,7 +26,13 @@ export default function SkillsPage() {
   const form = useForm({
     resolver: zodResolver(SkillsFormSchema),
     defaultValues: {
-      skills: [
+      teachingSkills: [
+        {
+          category: "",
+          skill: "",
+        },
+      ],
+      learningSkills: [
         {
           category: "",
           skill: "",
@@ -57,6 +71,26 @@ export default function SkillsPage() {
                 <SkillsForm type="learn" />
               </TabsContent>
             </Tabs>
+
+            <FormField
+              control={form.control}
+              name="profileDescription"
+              render={({ field }) => (
+                <FormItem className="space-y-0">
+                  <FormLabel className={"text-base"}>
+                    Profile description
+                  </FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Tell us a little bit about yourself, this information will be public in your profile."
+                      className="resize-none"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <Button
               variant="outline"
               type="submit"
