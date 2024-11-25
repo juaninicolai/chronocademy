@@ -203,7 +203,6 @@ export default function UserDetailsPage() {
         <div className={"space-y-2"}>
           {languagesFieldArray.fields.map((item, index) => (
             <fieldset key={item.id} className="flex items-end gap-4">
-              {/* TODO: Allow people to add more languages  */}
               <FormField
                 control={form.control}
                 name={`languages.${index}.language`}
