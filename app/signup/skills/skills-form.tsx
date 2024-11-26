@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/select";
 import { CircleMinus, CirclePlus } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import { SkillsFormValues } from "./schema";
 
 type SkillsFormProps = {
   type: "teach" | "learn";
@@ -23,7 +24,7 @@ type SkillsFormProps = {
 export function SkillsForm(props: SkillsFormProps) {
   const { type } = props;
 
-  const form = useFormContext();
+  const form = useFormContext<SkillsFormValues>();
 
   const skillsFieldName =
     type === "teach" ? "teachingSkills" : "learningSkills";

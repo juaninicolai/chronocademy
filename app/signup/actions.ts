@@ -46,6 +46,12 @@ export async function signUp(
     languages: parsedFormData.languages,
   };
 
+  const skillsFormData = {
+    profileDescription: parsedFormData.profileDescription,
+    teachingSkills: parsedFormData.teachingSkills,
+    learningSkills: parsedFormData.learningSkills,
+  };
+
   try {
     db.transaction().execute(async (trx) => {
       const insertUserResult = await trx
@@ -66,6 +72,7 @@ export async function signUp(
           first_name: signUpFormData.firstName,
           last_name: signUpFormData.lastName,
           timezone: userDetailsFormData.timezone,
+          description: skillsFormData.profileDescription,
         })
         .execute();
 
@@ -79,6 +86,14 @@ export async function signUp(
           })),
         )
         .execute();
+
+      // await trx.insertInto("user_skills").values(
+      //   skillsFormData.teachingSkills.map((skill) => ({
+      //     type: "teach",
+      //     user_id: insertUserResult.id,
+      //     skill_id:
+      //   })),
+      // );
     });
   } catch (error) {
     if (

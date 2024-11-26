@@ -17,13 +17,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FAQ } from "./faq";
 import { SkillsForm } from "./skills-form";
-import { SkillsFormSchema } from "./schema";
+import { SkillsFormSchema, SkillsFormValues } from "./schema";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function SkillsPage() {
   const [formState] = useSignUpFormState();
 
-  const form = useForm({
+  const form = useForm<SkillsFormValues>({
     resolver: zodResolver(SkillsFormSchema),
     defaultValues: {
       teachingSkills: [

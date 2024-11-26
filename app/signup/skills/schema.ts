@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export type SkillsFormValues = z.infer<typeof SkillsFormSchema>;
+
 export const SkillsFormSchema = z.object({
   teachingSkills: z
     .array(
