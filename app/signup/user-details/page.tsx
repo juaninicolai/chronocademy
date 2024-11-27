@@ -98,7 +98,7 @@ export default function UserDetailsPage() {
               >
                 <FormControl>
                   <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Country" />
+                    <SelectValue placeholder="Country of birth" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
