@@ -5,6 +5,9 @@
   - finish sign up transaction
   - countries, skills, timezone table seeding
   - validate email on next
+  - extras:
+    - disable add skill button when there is no skill 
+    - protect signup and login pages when there is an active session, redirect users to /app
 
 Nice to Have:
 
