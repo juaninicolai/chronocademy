@@ -21,10 +21,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { DBTypes } from "../database";
 import { Selectable } from "kysely";
 
-type Skills = Selectable<Pick<DBTypes.Skills, "id" | "category" | "skill">>[];
+export type Skill = Selectable<
+  Pick<DBTypes.Skills, "id" | "category" | "skill">
+>;
 
-export default function SkillsPageClient({ skills }: { skills: Skills }) {
-  console.log(skills);
+export default function SkillsPageClient({
+  availableSkills,
+}: {
+  availableSkills: Map<string, Skill[]>;
+}) {
   const [formState] = useSignUpFormState();
 
   const form = useForm<SkillsFormValues>({
@@ -69,10 +74,10 @@ export default function SkillsPageClient({ skills }: { skills: Skills }) {
                 <TabsTrigger value="learn">Learn</TabsTrigger>
               </TabsList>
               <TabsContent value="teach">
-                <SkillsForm type="teach" />
+                <SkillsForm type="teach" availableSkills={availableSkills} />
               </TabsContent>
               <TabsContent value="learn">
-                <SkillsForm type="learn" />
+                <SkillsForm type="learn" availableSkills={availableSkills} />
               </TabsContent>
             </Tabs>
 

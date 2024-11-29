@@ -1,5 +1,5 @@
 import { db } from "@/app/database";
-import SkillsPageClient from "./skills";
+import SkillsPageClient from "./skill";
 
 export default async function SkillsPage() {
   const skills = await db
@@ -7,5 +7,15 @@ export default async function SkillsPage() {
     .select(["id", "category", "skill"])
     .execute();
 
-  return <SkillsPageClient availableSkills={skills} />;
+  const availableSkills = skills.reduce<Map<string, typeof skills>>(
+    (acc, skill) => {
+      const categorySkills = acc.get(skill.category) ?? []; //nullish coalesce operator
+      categorySkills.push(skill);
+      acc.set(skill.category, categorySkills);
+      return acc;
+    },
+    new Map(),
+  );
+
+  return <SkillsPageClient availableSkills={availableSkills} />;
 }

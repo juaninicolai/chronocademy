@@ -16,13 +16,15 @@ import {
 import { CircleMinus, CirclePlus } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { SkillsFormValues } from "./schema";
+import { Skill } from "@/app/signup/skills/skill";
 
 type SkillsFormProps = {
   type: "teach" | "learn";
+  availableSkills: Map<string, Skill[]>;
 };
 
 export function SkillsForm(props: SkillsFormProps) {
-  const { type } = props;
+  const { type, availableSkills } = props;
 
   const form = useFormContext<SkillsFormValues>();
 
@@ -49,77 +51,84 @@ export function SkillsForm(props: SkillsFormProps) {
     <div>
       <h5>What skills would you like to {type}?</h5>
       <div className={"space-y-2"}>
-        {skillsFieldArray.fields.map((item, index) => (
-          <fieldset className={"flex items-end gap-4"} key={item.id}>
-            <FormField
-              control={form.control}
-              name={`${skillsFieldName}.${index}.category`}
-              render={({ field }) => (
-                <FormItem className="space-y-0">
-                  <FormLabel className={"text-base"}>Category</FormLabel>
-                  <Select
-                    defaultValue={field.value}
-                    disabled={field.disabled}
-                    onValueChange={field.onChange}
-                  >
-                    <FormControl>
-                      <SelectTrigger className="w-[280px]">
-                        <SelectValue placeholder="Category" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {/* TODO: Use categories from database */}
-                      <SelectItem value="languages">Languages</SelectItem>
-                      <SelectItem value="artsAndHumanities">
-                        Arts & Humanities
-                      </SelectItem>
-                      <SelectItem value="businessAndMarketing">
-                        Business & Marketing
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        {skillsFieldArray.fields.map((item, index) => {
+          console.log(item.category);
+          return (
+            <fieldset className={"flex items-end gap-4"} key={item.id}>
+              <FormField
+                control={form.control}
+                name={`${skillsFieldName}.${index}.category`}
+                render={({ field }) => (
+                  <FormItem className="space-y-0">
+                    <FormLabel className={"text-base"}>Category</FormLabel>
+                    <Select
+                      defaultValue={field.value}
+                      disabled={field.disabled}
+                      onValueChange={field.onChange}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-[280px]">
+                          <SelectValue placeholder="Category" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {/* TODO: Use categories from database */}
+                        {Array.from(
+                          availableSkills.keys().map((key) => (
+                            <SelectItem key={key} value={key}>
+                              {key}
+                            </SelectItem>
+                          )),
+                        )}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name={`${skillsFieldName}.${index}.skill`}
-              render={({ field }) => (
-                <FormItem className="space-y-0">
-                  <FormLabel className={"text-base"}>Skill</FormLabel>
-                  <Select
-                    defaultValue={field.value}
-                    disabled={field.disabled}
-                    onValueChange={field.onChange}
-                  >
-                    <FormControl>
-                      <SelectTrigger className="w-[280px]">
-                        <SelectValue placeholder="Skill" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="english">English</SelectItem>
-                      <SelectItem value="history">History</SelectItem>
-                      <SelectItem value="economics">Economics</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
+              <FormField
+                control={form.control}
+                name={`${skillsFieldName}.${index}.skill`}
+                render={({ field }) => (
+                  <FormItem className="space-y-0">
+                    <FormLabel className={"text-base"}>Skill</FormLabel>
+                    <Select
+                      defaultValue={field.value}
+                      disabled={field.disabled}
+                      onValueChange={field.onChange}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-[280px]">
+                          <SelectValue placeholder="Skill" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {Array.from(
+                          availableSkills.get(item.category)?.map((skill) => (
+                            <SelectItem key={skill.id} value={skill.id}>
+                              {skill.skill}
+                            </SelectItem>
+                          )) ?? [],
+                        )}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {skillsFieldArray.fields.length > 1 && (
+                <Button
+                  size={"icon"}
+                  variant={"destructive"}
+                  onClick={() => handleRemoveSkill(index)}
+                >
+                  <CircleMinus />
+                </Button>
               )}
-            />
-            {skillsFieldArray.fields.length > 1 && (
-              <Button
-                size={"icon"}
-                variant={"destructive"}
-                onClick={() => handleRemoveSkill(index)}
-              >
-                <CircleMinus />
-              </Button>
-            )}
-          </fieldset>
-        ))}
+            </fieldset>
+          );
+        })}
         <Button size={"sm"} type={"button"} onClick={handleAddSkill}>
           <CirclePlus />
           Add skill
