@@ -27,8 +27,15 @@ const handler = NextAuth({
 
         const user = await db
           .selectFrom("users")
-          .select(["id", "first_name", "last_name", "email", "password"])
-          .where("email", "=", credentials.email)
+          .innerJoin("user_data", "user_data.user_id", "users.id")
+          .select([
+            "users.id",
+            "users.email",
+            "users.password",
+            "user_data.first_name",
+            "user_data.last_name",
+          ])
+          .where("users.email", "=", credentials.email)
           .executeTakeFirst();
 
         if (user === undefined) {

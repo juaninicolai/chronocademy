@@ -4,21 +4,21 @@ import { db } from "@/app/database";
 import { hash } from "bcrypt";
 import { DatabaseError } from "pg";
 import { redirect } from "next/navigation";
-import { SignUpActionSchema, SignUpFormState } from "@/app/signup/schema";
+import { SignUpFormSchema, SignUpFormState } from "@/app/signup/schema";
 import { UserDetailsFormSchema } from "./user-details/schema";
 import { SkillsFormSchema } from "./skills/schema";
+import { z } from "zod";
 
 const SALT_ROUNDS = 8;
 
-export async function signUp(
-  _: SignUpFormState,
-  formData: FormData,
-): Promise<SignUpFormState> {
-  const validatedFormDataResult = await SignUpActionSchema.merge(
-    UserDetailsFormSchema,
-  )
-    .merge(SkillsFormSchema)
-    .safeParseAsync(Object.fromEntries(formData));
+type SignUpFullForm = z.infer<typeof SignUpFullFormSchema>;
+const SignUpFullFormSchema = SignUpFormSchema.merge(
+  UserDetailsFormSchema,
+).merge(SkillsFormSchema);
+
+export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
+  const validatedFormDataResult =
+    await SignUpFullFormSchema.safeParseAsync(values);
 
   if (!validatedFormDataResult.success) {
     console.log(validatedFormDataResult.error);

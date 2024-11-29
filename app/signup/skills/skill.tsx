@@ -15,11 +15,12 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FAQ } from "./faq";
-import { SkillsForm } from "./skills-form";
+import { SkillsForm } from "@/app/signup/skills/skills-form";
 import { SkillsFormSchema, SkillsFormValues } from "./schema";
 import { Textarea } from "@/components/ui/textarea";
-import { DBTypes } from "../database";
+import { DBTypes } from "../../database";
 import { Selectable } from "kysely";
+import { signUp } from "../actions";
 
 export type Skill = Selectable<
   Pick<DBTypes.Skills, "id" | "category" | "skill">
@@ -51,9 +52,25 @@ export default function SkillsPageClient({
     },
   });
 
-  const handleSubmit: SubmitHandler<z.infer<typeof SkillsFormSchema>> = (
-    values,
-  ) => {};
+  const handleSubmit: SubmitHandler<z.infer<typeof SkillsFormSchema>> = async (
+    skillsFormState,
+  ) => {
+    await signUp({
+      email: formState.signUp.email,
+      firstName: formState.signUp.firstName,
+      lastName: formState.signUp.lastName,
+      password: formState.signUp.password,
+
+      birthdate: formState.userDetails.birthdate,
+      countryOfBirth: formState.userDetails.countryOfBirth,
+      languages: formState.userDetails.languages,
+      timezone: formState.userDetails.timezone,
+
+      learningSkills: skillsFormState.learningSkills,
+      profileDescription: skillsFormState.profileDescription,
+      teachingSkills: skillsFormState.teachingSkills,
+    });
+  };
 
   return (
     <div className={"px-28 py-6"}>
