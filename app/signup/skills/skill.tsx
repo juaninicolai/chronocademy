@@ -21,6 +21,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { DBTypes } from "../../database";
 import { Selectable } from "kysely";
 import { signUp } from "../actions";
+import { signIn } from "next-auth/react";
 
 export type Skill = Selectable<
   Pick<DBTypes.Skills, "id" | "category" | "skill">
@@ -55,7 +56,7 @@ export default function SkillsPageClient({
   const handleSubmit: SubmitHandler<z.infer<typeof SkillsFormSchema>> = async (
     skillsFormState,
   ) => {
-    await signUp({
+    const r = await signUp({
       email: formState.signUp.email,
       firstName: formState.signUp.firstName,
       lastName: formState.signUp.lastName,
@@ -66,10 +67,23 @@ export default function SkillsPageClient({
       languages: formState.userDetails.languages,
       timezone: formState.userDetails.timezone,
 
-      learningSkills: skillsFormState.learningSkills,
       profileDescription: skillsFormState.profileDescription,
-      teachingSkills: skillsFormState.teachingSkills,
+      teachingSkills: skillsFormState.teachingSkills
+        .filter(({ skill }) => skill !== "")
+        .map(({ skill }) => Number(skill)),
+      learningSkills: skillsFormState.learningSkills
+        .filter(({ skill }) => skill !== "")
+        .map(({ skill }) => Number(skill)),
     });
+
+    console.log(r);
+
+    if (r.status === "ok") {
+      await signIn("credentials", {
+        email: formState.signUp.email,
+        password: formState.signUp.password,
+      });
+    }
   };
 
   return (

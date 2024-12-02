@@ -12,6 +12,7 @@ export const SignUpFormSchema = z.object({
 });
 
 export type SignUpFormState = {
+  status: "ok" | "invalid_form_data" | "user_already_exists";
   message: string;
   errors?: string[];
 };

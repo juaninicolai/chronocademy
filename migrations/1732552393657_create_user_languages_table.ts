@@ -10,7 +10,9 @@ export async function up(db: Kysely<DB>): Promise<void> {
     .addColumn("level", "text", (col) =>
       col
         .notNull()
-        .check(sql`level IN ('basic', 'intermediate', 'advanced', 'native')`),
+        .check(
+          sql`level IN ('beginner', 'intermediate', 'advanced', 'native')`,
+        ),
     )
     .addColumn("created_at", "timestamptz", (col) =>
       col.notNull().defaultTo(sql`NOW()`),

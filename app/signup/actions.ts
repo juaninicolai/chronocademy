@@ -7,13 +7,19 @@ import { redirect } from "next/navigation";
 import { SignUpFormSchema, SignUpFormState } from "@/app/signup/schema";
 import { UserDetailsFormSchema } from "./user-details/schema";
 import { z } from "zod";
-import { SkillsFormSchema } from "./skills/schema";
+import { signIn } from "next-auth/react";
 
 const SALT_ROUNDS = 8;
 
 type SignUpFullForm = z.infer<typeof SignUpFullFormSchema>;
-const SignUpFullFormSchema = SignUpFormSchema.and(UserDetailsFormSchema).and(
-  SkillsFormSchema,
+const SignUpFullFormSchema = SignUpFormSchema.merge(
+  UserDetailsFormSchema,
+).merge(
+  z.object({
+    profileDescription: z.string().min(1),
+    teachingSkills: z.array(z.number()),
+    learningSkills: z.array(z.number()),
+  }),
 );
 
 export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
@@ -22,6 +28,7 @@ export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
 
   if (!validatedFormDataResult.success) {
     return {
+      status: "invalid_form_data",
       message: "Invalid form data",
       errors: validatedFormDataResult.error.issues.map(
         (issue) => issue.message,
@@ -86,13 +93,24 @@ export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
         )
         .execute();
 
-      // await trx.insertInto("user_skills").values(
-      //   skillsFormData.teachingSkills.map((skill) => ({
-      //     type: "teach",
-      //     user_id: insertUserResult.id,
-      //     skill_id:
-      //   })),
-      // );
+      await trx
+        .insertInto("user_skills")
+        .values(
+          skillsFormData.teachingSkills
+            .map((skillId) => ({
+              user_id: insertUserResult.id,
+              type: "teach",
+              skill_id: skillId,
+            }))
+            .concat(
+              skillsFormData.learningSkills.map((skillId) => ({
+                user_id: insertUserResult.id,
+                type: "learn",
+                skill_id: skillId,
+              })),
+            ),
+        )
+        .execute();
     });
   } catch (error) {
     if (
@@ -101,11 +119,12 @@ export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
       error.constraint === "users_email_key"
     ) {
       return {
+        status: "user_already_exists",
         message: "User already exists",
       };
     }
     throw error;
   }
 
-  redirect("/");
+  return { status: "ok", message: "User signed up successfully" };
 }
