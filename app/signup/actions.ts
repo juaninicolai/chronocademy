@@ -6,22 +6,21 @@ import { DatabaseError } from "pg";
 import { redirect } from "next/navigation";
 import { SignUpFormSchema, SignUpFormState } from "@/app/signup/schema";
 import { UserDetailsFormSchema } from "./user-details/schema";
-import { SkillsFormSchema } from "./skills/schema";
 import { z } from "zod";
+import { SkillsFormSchema } from "./skills/schema";
 
 const SALT_ROUNDS = 8;
 
 type SignUpFullForm = z.infer<typeof SignUpFullFormSchema>;
-const SignUpFullFormSchema = SignUpFormSchema.merge(
-  UserDetailsFormSchema,
-).merge(SkillsFormSchema);
+const SignUpFullFormSchema = SignUpFormSchema.and(UserDetailsFormSchema).and(
+  SkillsFormSchema,
+);
 
 export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
   const validatedFormDataResult =
     await SignUpFullFormSchema.safeParseAsync(values);
 
   if (!validatedFormDataResult.success) {
-    console.log(validatedFormDataResult.error);
     return {
       message: "Invalid form data",
       errors: validatedFormDataResult.error.issues.map(

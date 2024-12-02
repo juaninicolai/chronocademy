@@ -15,11 +15,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { SignUpActionSchema } from "@/app/signup/schema";
+import { SignUpFormSchema } from "@/app/signup/schema";
 import { useRouter } from "next/navigation";
 import { useSignUpFormState } from "./form-state";
 
-const SignUpFormSchema = SignUpActionSchema.extend({
+const SignUpClientFormSchema = SignUpFormSchema.extend({
   confirmPassword: z.string(),
 }).refine(
   (values) => {
@@ -35,9 +35,9 @@ export default function SignUpPage() {
   const router = useRouter();
   const [, setSignUpFormState] = useSignUpFormState();
 
-  const form = useForm<z.infer<typeof SignUpFormSchema>>({
+  const form = useForm<z.infer<typeof SignUpClientFormSchema>>({
     mode: "onChange",
-    resolver: zodResolver(SignUpFormSchema),
+    resolver: zodResolver(SignUpClientFormSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -47,7 +47,7 @@ export default function SignUpPage() {
     },
   });
 
-  const handleSubmit: SubmitHandler<z.infer<typeof SignUpFormSchema>> = (
+  const handleSubmit: SubmitHandler<z.infer<typeof SignUpClientFormSchema>> = (
     values,
   ) => {
     setSignUpFormState((prevState) => ({
