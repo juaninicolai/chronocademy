@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { UserDetailsFormSchema } from "./user-details/schema";
 
 export const SignUpFormSchema = z.object({
   email: z.string().email(),
@@ -12,7 +13,18 @@ export const SignUpFormSchema = z.object({
 });
 
 export type SignUpFormState = {
-  status: "ok" | "invalid_form_data" | "user_already_exists";
+  status: "idle" | "ok" | "invalid_form_data" | "user_already_exists";
   message: string;
   errors?: string[];
 };
+
+export type SignUpFullForm = z.infer<typeof SignUpFullFormSchema>;
+export const SignUpFullFormSchema = SignUpFormSchema.merge(
+  UserDetailsFormSchema,
+).merge(
+  z.object({
+    profileDescription: z.string().min(1),
+    teachingSkills: z.array(z.number()),
+    learningSkills: z.array(z.number()),
+  }),
+);

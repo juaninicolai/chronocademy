@@ -21,7 +21,6 @@ const handler = NextAuth({
       },
 
       async authorize(credentials) {
-        console.log(true);
         if (credentials === undefined) {
           return null;
         }

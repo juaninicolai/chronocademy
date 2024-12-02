@@ -3,26 +3,18 @@
 import { db } from "@/app/database";
 import { hash } from "bcrypt";
 import { DatabaseError } from "pg";
-import { redirect } from "next/navigation";
-import { SignUpFormSchema, SignUpFormState } from "@/app/signup/schema";
-import { UserDetailsFormSchema } from "./user-details/schema";
-import { z } from "zod";
-import { signIn } from "next-auth/react";
+import {
+  SignUpFormState,
+  SignUpFullForm,
+  SignUpFullFormSchema,
+} from "./schema";
 
 const SALT_ROUNDS = 8;
 
-type SignUpFullForm = z.infer<typeof SignUpFullFormSchema>;
-const SignUpFullFormSchema = SignUpFormSchema.merge(
-  UserDetailsFormSchema,
-).merge(
-  z.object({
-    profileDescription: z.string().min(1),
-    teachingSkills: z.array(z.number()),
-    learningSkills: z.array(z.number()),
-  }),
-);
-
-export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
+export async function signUp(
+  _: SignUpFormState,
+  values: SignUpFullForm,
+): Promise<SignUpFormState> {
   const validatedFormDataResult =
     await SignUpFullFormSchema.safeParseAsync(values);
 
@@ -59,7 +51,7 @@ export async function signUp(values: SignUpFullForm): Promise<SignUpFormState> {
   };
 
   try {
-    db.transaction().execute(async (trx) => {
+    await db.transaction().execute(async (trx) => {
       const insertUserResult = await trx
         .insertInto("users")
         .values({

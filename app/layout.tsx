@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { MaybeLandingLayout } from "@/app/landing/landing";
 import { getServerSession } from "next-auth";
 import { SessionProvider } from "@/app/app/session";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -40,6 +41,7 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <MaybeLandingLayout>
             <main>{children}</main>
+            <Toaster />
           </MaybeLandingLayout>
         </SessionProvider>
       </body>
