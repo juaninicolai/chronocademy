@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export type SkillsFormValues = z.infer<typeof SkillsFormSchema>;
 
-const skillsSchema = z
+const skillsFilledSchema = z
   .array(
     z.object({
       category: z.string().min(1),
@@ -10,6 +10,14 @@ const skillsSchema = z
     }),
   )
   .min(1);
+const skillsEmptySchema = z
+  .array(
+    z.object({
+      category: z.literal(""),
+      skill: z.literal(""),
+    }),
+  )
+  .max(1);
 
 export const SkillsFormSchema = z
   .object({
@@ -18,18 +26,18 @@ export const SkillsFormSchema = z
   .and(
     z.union([
       z.object({
-        teachingSkills: skillsSchema,
-        learningSkills: skillsSchema.length(0),
+        teachingSkills: skillsFilledSchema,
+        learningSkills: skillsEmptySchema,
       }),
 
       z.object({
-        teachingSkills: skillsSchema.length(0),
-        learningSkills: skillsSchema,
+        teachingSkills: skillsEmptySchema,
+        learningSkills: skillsFilledSchema,
       }),
 
       z.object({
-        teachingSkills: skillsSchema,
-        learningSkills: skillsSchema,
+        teachingSkills: skillsFilledSchema,
+        learningSkills: skillsFilledSchema,
       }),
     ]),
   );
