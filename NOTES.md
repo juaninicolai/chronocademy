@@ -1,9 +1,8 @@
 - Implement Skills Page
 
-  - validate email on next
+  - validate email on next (partial work done)
   - initialize initial signup state as null to prevent pages from being accessible if not going through flow
   - use countries, timezone, language from database (add seed)
-  - disable add language by default
   - change birthdate to text input box
 
 - Refine:

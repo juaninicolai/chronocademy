@@ -55,6 +55,8 @@ export default function UserDetailsPage() {
     },
   });
 
+  const languages = form.watch("languages");
+
   const languagesFieldArray = useFieldArray({
     control: form.control,
     name: "languages",
@@ -256,7 +258,14 @@ export default function UserDetailsPage() {
             </fieldset>
           ))}
 
-          <Button size={"sm"} type={"button"} onClick={handleAddLanguage}>
+          <Button
+            size={"sm"}
+            type={"button"}
+            onClick={handleAddLanguage}
+            disabled={languages.some(
+              (field) => field.language === "" || field.languageLevel === "",
+            )}
+          >
             <CirclePlus />
             Add language
           </Button>
