@@ -15,9 +15,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { SignUpFormSchema } from "@/app/signup/schema";
+import {
+  CheckIfEmailIsTaken,
+  IsEmailTakenState,
+  SignUpFormSchema,
+} from "@/app/signup/schema";
 import { useRouter } from "next/navigation";
 import { useSignUpFormState } from "./form-state";
+import { checkIfEmailIsTaken } from "./actions";
+import { useFormState } from "react-dom";
 
 const SignUpClientFormSchema = SignUpFormSchema.extend({
   confirmPassword: z.string(),
@@ -35,6 +41,14 @@ export default function SignUpPage() {
   const router = useRouter();
   const [, setSignUpFormState] = useSignUpFormState();
 
+  const [actionState, checkIfEmailIsTakenAction] = useFormState<
+    CheckIfEmailIsTaken,
+    string
+  >(checkIfEmailIsTaken, {
+    status: false,
+    message: "",
+  });
+
   const form = useForm<z.infer<typeof SignUpClientFormSchema>>({
     mode: "onChange",
     resolver: zodResolver(SignUpClientFormSchema),
@@ -50,6 +64,8 @@ export default function SignUpPage() {
   const handleSubmit: SubmitHandler<z.infer<typeof SignUpClientFormSchema>> = (
     values,
   ) => {
+    checkIfEmailIsTakenAction(values.email);
+
     setSignUpFormState((prevState) => ({
       ...prevState,
       signUp: values,

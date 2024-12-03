@@ -28,3 +28,9 @@ export const SignUpFullFormSchema = SignUpFormSchema.merge(
     learningSkills: z.array(z.number()),
   }),
 );
+
+export type CheckIfEmailIsTaken = {
+  status: boolean;
+  message: string;
+  errors?: string[];
+};

@@ -4,6 +4,7 @@ import { db } from "@/app/database";
 import { hash } from "bcrypt";
 import { DatabaseError } from "pg";
 import {
+  CheckIfEmailIsTaken,
   SignUpFormState,
   SignUpFullForm,
   SignUpFullFormSchema,
@@ -55,7 +56,7 @@ export async function signUp(
       const insertUserResult = await trx
         .insertInto("users")
         .values({
-          email: signUpFormData.email,
+          email: signUpFormData.email.toLowerCase(),
           password: signUpFormData.hashedPassword,
         })
         .returning("id")
@@ -119,4 +120,27 @@ export async function signUp(
   }
 
   return { status: "ok", message: "User signed up successfully" };
+}
+
+export async function checkIfEmailIsTaken(
+  _: CheckIfEmailIsTaken,
+  email: string,
+): Promise<CheckIfEmailIsTaken> {
+  const user = await db
+    .selectFrom("users")
+    .select("id")
+    .where("email", "=", email.toLowerCase())
+    .executeTakeFirst();
+
+  if (user !== undefined) {
+    return {
+      status: true,
+      message: "Email is taken",
+    };
+  }
+
+  return {
+    status: false,
+    message: "Email is not taken",
+  };
 }
