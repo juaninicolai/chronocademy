@@ -160,7 +160,7 @@ export default function SkillsPageClient({
                     </FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell us a little bit about yourself, this information will be public in your profile."
+                        placeholder="Hello! My name is John and I am a software engineer. I have been working in the industry for 5 years and I am passionate about teaching others how to code."
                         className="resize-none"
                         {...field}
                       />

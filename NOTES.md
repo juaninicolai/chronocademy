@@ -8,8 +8,6 @@
 - Refine:
   - protect login pages when there is an active session, redirect users to /app (consider using layout)
   - make profile description non mandatory
-    - placeholder: example
-    - tip statement in a label
   - add "back" button in signup journey (try to save state when going back)
 
 Nice to Have:
