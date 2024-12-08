@@ -105,34 +105,6 @@ export default function UserDetailsPage() {
           />
           <FormField
             control={form.control}
-            name="countryOfBirth"
-            render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel className={"text-base"}>Country</FormLabel>
-                <Select
-                  defaultValue={field.value}
-                  disabled={field.disabled}
-                  onValueChange={field.onChange}
-                >
-                  <FormControl>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Country of birth" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {/* TODO: Use countries from database */}
-                    <SelectItem value="denmark">Denmark</SelectItem>
-                    <SelectItem value="argentina">Argentina</SelectItem>
-                    <SelectItem value="bulgaria">Bulgaria</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="birthdate"
             render={({ field }) => (
               <FormItem className="flex flex-col space-y-0">
@@ -143,7 +115,7 @@ export default function UserDetailsPage() {
                       <Button
                         variant={"outline"}
                         className={cn(
-                          "w-[240px] pl-3 text-left font-normal",
+                          "w-full pl-3 text-left font-normal",
                           !field.value && "text-muted-foreground",
                         )}
                       >
@@ -168,6 +140,34 @@ export default function UserDetailsPage() {
                     />
                   </PopoverContent>
                 </Popover>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="countryOfBirth"
+            render={({ field }) => (
+              <FormItem className="space-y-0">
+                <FormLabel className={"text-base"}>Country</FormLabel>
+                <Select
+                  defaultValue={field.value}
+                  disabled={field.disabled}
+                  onValueChange={field.onChange}
+                >
+                  <FormControl>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Country of birth" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {/* TODO: Use countries from database */}
+                    <SelectItem value="denmark">Denmark</SelectItem>
+                    <SelectItem value="argentina">Argentina</SelectItem>
+                    <SelectItem value="bulgaria">Bulgaria</SelectItem>
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}
