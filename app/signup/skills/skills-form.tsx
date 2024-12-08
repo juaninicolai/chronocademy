@@ -51,7 +51,9 @@ export function SkillsForm(props: SkillsFormProps) {
 
   return (
     <div>
-      <h5>What skills would you like to {type}?</h5>
+      <h5>
+        What skills would you like to <u>{type}</u>?
+      </h5>
       <div className={"space-y-2"}>
         {skillsFieldArray.fields.map((item, index) => (
           <fieldset className={"flex items-end gap-4"} key={item.id}>

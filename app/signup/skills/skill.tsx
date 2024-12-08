@@ -27,6 +27,7 @@ import { useFormState } from "react-dom";
 import { SignUpFormState } from "../schema";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+import Image from "next/image";
 
 export type Skill = Selectable<
   Pick<DBTypes.Skills, "id" | "category" | "skill">
@@ -74,7 +75,6 @@ export default function SkillsPageClient({
       toast({
         variant: "destructive",
         title: actionState.message,
-        // action: <ToastAction altText="Try again">Try again</ToastAction>,
       });
 
       return;
@@ -109,60 +109,77 @@ export default function SkillsPageClient({
   };
 
   return (
-    <div className={"px-28 py-6"}>
-      <Form {...form}>
-        <div className={"space-y-4"}>
-          <h3>Please fill in the information about your skills.</h3>
-          <h3>
-            If you are only interested in either teaching or learning a skill,
-            just leave one section blank.
-          </h3>
-          <form
-            className="space-y-4"
-            onSubmit={form.handleSubmit(handleSubmit)}
-          >
-            <Tabs defaultValue="teach" className="w-[400px]">
-              <TabsList>
-                <TabsTrigger value="teach">Teach</TabsTrigger>
-                <TabsTrigger value="learn">Learn</TabsTrigger>
-              </TabsList>
-              <TabsContent value="teach">
-                <SkillsForm type="teach" availableSkills={availableSkills} />
-              </TabsContent>
-              <TabsContent value="learn">
-                <SkillsForm type="learn" availableSkills={availableSkills} />
-              </TabsContent>
-            </Tabs>
-
-            <FormField
-              control={form.control}
-              name="profileDescription"
-              render={({ field }) => (
-                <FormItem className="space-y-0">
-                  <FormLabel className={"text-base"}>
-                    Profile description
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Tell us a little bit about yourself, this information will be public in your profile."
-                      className="resize-none"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button
-              variant="outline"
-              type="submit"
-              disabled={!form.formState.isValid}
+    <div className="bg-[#ECECEC] px-28 py-6 flex flex-col space-y-6">
+      <div>
+        <h2 className="font-inter text-secondary-black-500 font-extrabold">
+          Please fill in the information about your skills
+        </h2>
+        <h3 className="font-roboto text-h3 py-4">
+          Leave one section blank if you only want to teach or learn a skill
+        </h3>
+        <div className="flex justify-center bg-[#ECECEC]">
+          <Form {...form}>
+            <form
+              className="space-y-4 border-2 py-4 px-16 rounded-lg bg-white"
+              onSubmit={form.handleSubmit(handleSubmit)}
             >
-              Submit
-            </Button>
-          </form>
+              <Image
+                src={"/logo.svg"}
+                alt={"chronocademy logo"}
+                width={140}
+                height={76}
+                className={"mx-auto my-5"}
+              />
+              <div>
+                <Tabs defaultValue="teach" className="w-[576px]">
+                  <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="teach">Teach</TabsTrigger>
+                    <TabsTrigger value="learn">Learn</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="teach">
+                    <SkillsForm
+                      type="teach"
+                      availableSkills={availableSkills}
+                    />
+                  </TabsContent>
+                  <TabsContent value="learn">
+                    <SkillsForm
+                      type="learn"
+                      availableSkills={availableSkills}
+                    />
+                  </TabsContent>
+                </Tabs>
+              </div>
+              <FormField
+                control={form.control}
+                name="profileDescription"
+                render={({ field }) => (
+                  <FormItem className="w-[576px] space-y-0">
+                    <FormLabel className={"text-base"}>
+                      Profile description
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us a little bit about yourself, this information will be public in your profile."
+                        className="resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button
+                variant="outline"
+                type="submit"
+                disabled={!form.formState.isValid}
+              >
+                Submit
+              </Button>
+            </form>
+          </Form>
         </div>
-      </Form>
+      </div>
       <FAQ />
     </div>
   );
