@@ -9,12 +9,12 @@ export function FAQ() {
   return (
     <div>
       <div>
-        <h1 className="font-inter text-secondary-black-500 font-extrabold">
+        <h2 className="font-inter text-secondary-black-500 font-extrabold">
           Frequently Asked Questions
-        </h1>
-        <h2 className="font-roboto text-h2 py-4">
-          Get the answers to your questions straight away
         </h2>
+        <h3 className="font-roboto text-h3 py-4">
+          Get the answers to your questions straight away
+        </h3>
       </div>
       <div>
         <Accordion type="multiple">
