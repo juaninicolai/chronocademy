@@ -3,10 +3,10 @@
   - validate email on next (partial work done)
   - initialize initial signup state as null to prevent pages from being accessible if not going through flow
   - use countries, timezone, language from database (add seed)
+  - protect login pages when there is an active session, redirect users to /app (consider using layout)
 
 - Refine:
   - change birthdate to text input box
-  - protect login pages when there is an active session, redirect users to /app (consider using layout)
   - make profile description non mandatory
   - add "back" button in signup journey (try to save state when going back)
 
