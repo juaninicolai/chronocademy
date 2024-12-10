@@ -5,7 +5,6 @@ export async function up(db: Kysely<DB>): Promise<void> {
   await db.schema
     .createTable("user_data")
     .addColumn("user_id", "serial")
-    // TODO: Add foreign key constraint for countries table
     .addColumn("origin_country", "text", (col) => col.notNull())
     .addColumn("birthdate", "date", (col) => col.notNull())
     .addColumn("first_name", "text", (col) => col.notNull())

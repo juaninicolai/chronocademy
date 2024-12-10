@@ -36,8 +36,22 @@ import {
   UserDetailsFormSchema,
 } from "./schema";
 import Image from "next/image";
+import { Selectable } from "kysely";
+import { DBTypes } from "@/app/database";
 
-export default function UserDetailsPageClient() {
+export type Country = Selectable<Pick<DBTypes.Countries, "id" | "country">>;
+export type Timezone = Selectable<Pick<DBTypes.Timezones, "id" | "timezone">>;
+export type Language = Selectable<Pick<DBTypes.Languages, "id" | "language">>;
+
+export default function UserDetailsPageClient({
+  availableCountries,
+  availableTimezones,
+  availableLanguages,
+}: {
+  availableCountries: Country[];
+  availableTimezones: Timezone[];
+  availableLanguages: Language[];
+}) {
   const [, setSignUpFormState] = useSignUpFormState();
   const router = useRouter();
 
@@ -162,10 +176,14 @@ export default function UserDetailsPageClient() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {/* TODO: Use countries from database */}
-                    <SelectItem value="denmark">Denmark</SelectItem>
-                    <SelectItem value="argentina">Argentina</SelectItem>
-                    <SelectItem value="bulgaria">Bulgaria</SelectItem>
+                    {availableCountries.map((country) => (
+                      <SelectItem
+                        key={country.id}
+                        value={country.id.toString()}
+                      >
+                        {country.country}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -190,10 +208,14 @@ export default function UserDetailsPageClient() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {/* TODO: Use timezones from database */}
-                    <SelectItem value="gmt">GMT +0</SelectItem>
-                    <SelectItem value="gmt+2">GMT +1</SelectItem>
-                    <SelectItem value="gmt+3">GMT +3</SelectItem>
+                    {availableTimezones.map((timezone) => (
+                      <SelectItem
+                        key={timezone.id}
+                        value={timezone.id.toString()}
+                      >
+                        {timezone.timezone}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -221,10 +243,14 @@ export default function UserDetailsPageClient() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {/* TODO: Use languages from database */}
-                          <SelectItem value="bulgarian">Bulgarian</SelectItem>
-                          <SelectItem value="danish">Danish</SelectItem>
-                          <SelectItem value="spanish">Spanish</SelectItem>
+                          {availableLanguages.map((language) => (
+                            <SelectItem
+                              key={language.id}
+                              value={language.id.toString()}
+                            >
+                              {language.language}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                       <FormMessage />

@@ -1,5 +1,5 @@
 import { db } from "@/app/database";
-import SkillsPageClient from "./skill";
+import SkillsPageClient from "./skills";
 
 export default async function SkillsPage() {
   const skills = await db
