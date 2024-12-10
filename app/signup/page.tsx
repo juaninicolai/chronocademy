@@ -15,11 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  CheckIfEmailIsTaken,
-  IsEmailTakenState,
-  SignUpFormSchema,
-} from "@/app/signup/schema";
+import { CheckIfEmailIsTaken, SignUpFormSchema } from "@/app/signup/schema";
 import { useRouter } from "next/navigation";
 import { useSignUpFormState } from "./form-state";
 import { checkIfEmailIsTaken } from "./actions";
@@ -41,7 +37,7 @@ export default function SignUpPage() {
   const router = useRouter();
   const [, setSignUpFormState] = useSignUpFormState();
 
-  const [actionState, checkIfEmailIsTakenAction] = useFormState<
+  const [, checkIfEmailIsTakenAction] = useFormState<
     CheckIfEmailIsTaken,
     string
   >(checkIfEmailIsTaken, {

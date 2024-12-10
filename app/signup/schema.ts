@@ -21,13 +21,20 @@ export type SignUpFormState = {
 export type SignUpFullForm = z.infer<typeof SignUpFullFormSchema>;
 export const SignUpFullFormSchema = SignUpFormSchema.merge(
   UserDetailsFormSchema,
-).merge(
-  z.object({
-    profileDescription: z.string().min(1),
-    teachingSkills: z.array(z.number()),
-    learningSkills: z.array(z.number()),
-  }),
-);
+)
+  .merge(
+    z.object({
+      profileDescription: z.string().min(1),
+      teachingSkills: z.array(z.number()),
+      learningSkills: z.array(z.number()),
+    }),
+  )
+  .merge(
+    z.object({
+      countryOfBirth: z.number(),
+      timezone: z.number(),
+    }),
+  );
 
 export type CheckIfEmailIsTaken = {
   status: boolean;

@@ -16,7 +16,7 @@ import {
 import { CircleMinus, CirclePlus } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { SkillsFormValues } from "./schema";
-import { Skill } from "@/app/signup/skills/skill";
+import { Skill } from "@/app/signup/skills/skills";
 
 type SkillsFormProps = {
   type: "teach" | "learn";
@@ -119,15 +119,14 @@ export function SkillsForm(props: SkillsFormProps) {
                 </FormItem>
               )}
             />
-            {skillsFieldArray.fields.length > 1 && (
-              <Button
-                size={"icon"}
-                variant={"destructive"}
-                onClick={() => handleRemoveSkill(index)}
-              >
-                <CircleMinus />
-              </Button>
-            )}
+            <Button
+              disabled={skillsFieldArray.fields.length <= 1}
+              size={"icon"}
+              variant={"destructive"}
+              onClick={() => handleRemoveSkill(index)}
+            >
+              <CircleMinus />
+            </Button>
           </fieldset>
         ))}
         <Button

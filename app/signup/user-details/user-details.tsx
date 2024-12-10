@@ -287,16 +287,15 @@ export default function UserDetailsPageClient({
                     </FormItem>
                   )}
                 />
-                {languagesFieldArray.fields.length > 1 && (
-                  <Button
-                    size={"icon"}
-                    type={"button"}
-                    variant={"destructive"}
-                    onClick={() => handleRemoveLanguage(index)}
-                  >
-                    <CircleMinus />
-                  </Button>
-                )}
+                <Button
+                  disabled={languagesFieldArray.fields.length <= 1}
+                  size={"icon"}
+                  type={"button"}
+                  variant={"destructive"}
+                  onClick={() => handleRemoveLanguage(index)}
+                >
+                  <CircleMinus />
+                </Button>
               </fieldset>
             ))}
 

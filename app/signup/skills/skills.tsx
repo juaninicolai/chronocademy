@@ -95,9 +95,9 @@ export default function SkillsPageClient({
       lastName: signUpFormState.signUp.lastName,
       password: signUpFormState.signUp.password,
       birthdate: signUpFormState.userDetails.birthdate,
-      countryOfBirth: signUpFormState.userDetails.countryOfBirth,
+      countryOfBirth: Number(signUpFormState.userDetails.countryOfBirth),
       languages: signUpFormState.userDetails.languages,
-      timezone: signUpFormState.userDetails.timezone,
+      timezone: Number(signUpFormState.userDetails.timezone),
       profileDescription: skillsFormState.profileDescription,
       teachingSkills: skillsFormState.teachingSkills
         .filter(({ skill }) => skill !== "")
@@ -120,7 +120,7 @@ export default function SkillsPageClient({
         <div className="flex justify-center bg-[#ECECEC]">
           <Form {...form}>
             <form
-              className="space-y-4 border-2 py-4 px-16 rounded-lg bg-white"
+              className="space-y-4 border-2 py-4 px-16 rounded-[2rem] bg-white"
               onSubmit={form.handleSubmit(handleSubmit)}
             >
               <Image
@@ -131,7 +131,7 @@ export default function SkillsPageClient({
                 className={"mx-auto my-5"}
               />
               <div>
-                <Tabs defaultValue="teach" className="w-[576px]">
+                <Tabs defaultValue="teach">
                   <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="teach">Teach</TabsTrigger>
                     <TabsTrigger value="learn">Learn</TabsTrigger>
@@ -154,7 +154,7 @@ export default function SkillsPageClient({
                 control={form.control}
                 name="profileDescription"
                 render={({ field }) => (
-                  <FormItem className="w-[576px] space-y-0">
+                  <FormItem className="space-y-0">
                     <FormLabel className={"text-base"}>
                       Profile description
                     </FormLabel>
