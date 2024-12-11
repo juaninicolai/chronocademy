@@ -1,7 +1,5 @@
 Focus:
 
-- Validate email on Sign up page (partial work done)
-
 Nice to Have:
 
 - initialize initial signup state as null to prevent pages from being accessible if not going through flow
