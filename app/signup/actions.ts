@@ -80,7 +80,7 @@ export async function signUp(
         .values(
           userDetailsFormData.languages.map(({ language, languageLevel }) => ({
             user_id: insertUserResult.id,
-            language: language,
+            language_id: language,
             level: languageLevel,
           })),
         )

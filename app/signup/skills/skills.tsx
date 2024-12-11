@@ -96,7 +96,10 @@ export default function SkillsPageClient({
       password: signUpFormState.signUp.password,
       birthdate: signUpFormState.userDetails.birthdate,
       countryOfBirth: Number(signUpFormState.userDetails.countryOfBirth),
-      languages: signUpFormState.userDetails.languages,
+      languages: signUpFormState.userDetails.languages.map(languageObject => ({
+        language: Number(languageObject.language),
+        languageLevel: languageObject.languageLevel
+      })),
       timezone: Number(signUpFormState.userDetails.timezone),
       profileDescription: skillsFormState.profileDescription,
       teachingSkills: skillsFormState.teachingSkills
