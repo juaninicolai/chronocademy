@@ -123,7 +123,6 @@ export async function signUp(
 }
 
 export async function checkIfEmailIsTaken(
-  _: CheckIfEmailIsTaken,
   email: string,
 ): Promise<CheckIfEmailIsTaken> {
   const user = await db

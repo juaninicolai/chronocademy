@@ -19,7 +19,6 @@ import { SignUpFormSchema } from "@/app/signup/schema";
 import { useRouter } from "next/navigation";
 import { useSignUpFormState } from "./form-state";
 import { checkIfEmailIsTaken } from "./actions";
-import { useAsyncFn } from "react-use";
 
 const SignUpClientFormSchema = SignUpFormSchema.extend({
   confirmPassword: z.string(),
@@ -36,10 +35,6 @@ const SignUpClientFormSchema = SignUpFormSchema.extend({
 export default function SignUpPage() {
   const router = useRouter();
   const [, setSignUpFormState] = useSignUpFormState();
-
-  const [state, checkIfEmailExists] = useAsyncFn(async (email: string) => {
-      return await checkIfEmailIsTaken(state, email)
-  }, [])
 
   const form = useForm<z.infer<typeof SignUpClientFormSchema>>({
     mode: "onChange",
