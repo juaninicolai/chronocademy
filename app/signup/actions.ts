@@ -3,21 +3,25 @@
 import { db } from "@/app/database";
 import { hash } from "bcrypt";
 import { DatabaseError } from "pg";
-import { redirect } from "next/navigation";
-import { SignUpActionSchema, SignUpFormState } from "@/app/signup/schema";
+import {
+  CheckIfEmailIsTaken,
+  SignUpFormState,
+  SignUpFullForm,
+  SignUpFullFormSchema,
+} from "./schema";
 
 const SALT_ROUNDS = 8;
 
 export async function signUp(
-  prevState: SignUpFormState,
-  formData: FormData,
+  _: SignUpFormState,
+  values: SignUpFullForm,
 ): Promise<SignUpFormState> {
-  const validatedFormDataResult = await SignUpActionSchema.safeParseAsync(
-    Object.fromEntries(formData),
-  );
+  const validatedFormDataResult =
+    await SignUpFullFormSchema.safeParseAsync(values);
+
   if (!validatedFormDataResult.success) {
-    console.log(validatedFormDataResult.error);
     return {
+      status: "invalid_form_data",
       message: "Invalid form data",
       errors: validatedFormDataResult.error.issues.map(
         (issue) => issue.message,
@@ -27,19 +31,80 @@ export async function signUp(
 
   const parsedFormData = validatedFormDataResult.data;
 
-  const hashedPassword = await hash(parsedFormData.password, SALT_ROUNDS);
+  const signUpFormData = {
+    email: parsedFormData.email,
+    hashedPassword: await hash(parsedFormData.password, SALT_ROUNDS),
+    firstName: parsedFormData.firstName,
+    lastName: parsedFormData.lastName,
+  };
+
+  const userDetailsFormData = {
+    countryOfBirth: parsedFormData.countryOfBirth,
+    birthdate: parsedFormData.birthdate,
+    timezone: parsedFormData.timezone,
+    languages: parsedFormData.languages,
+  };
+
+  const skillsFormData = {
+    profileDescription: parsedFormData.profileDescription,
+    teachingSkills: parsedFormData.teachingSkills,
+    learningSkills: parsedFormData.learningSkills,
+  };
+
   try {
-    await db
-      .insertInto("users")
-      .values({
-        email: parsedFormData.email,
-        password: hashedPassword,
-        first_name: parsedFormData.firstName,
-        last_name: parsedFormData.lastName,
-        created_at: new Date(),
-        updated_at: new Date(),
-      })
-      .execute();
+    await db.transaction().execute(async (trx) => {
+      const insertUserResult = await trx
+        .insertInto("users")
+        .values({
+          email: signUpFormData.email.toLowerCase(),
+          password: signUpFormData.hashedPassword,
+        })
+        .returning("id")
+        .executeTakeFirstOrThrow();
+
+      await trx
+        .insertInto("user_data")
+        .values({
+          user_id: insertUserResult.id,
+          origin_country: userDetailsFormData.countryOfBirth,
+          birthdate: userDetailsFormData.birthdate,
+          first_name: signUpFormData.firstName,
+          last_name: signUpFormData.lastName,
+          timezone: userDetailsFormData.timezone,
+          description: skillsFormData.profileDescription,
+        })
+        .execute();
+
+      await trx
+        .insertInto("user_languages")
+        .values(
+          userDetailsFormData.languages.map(({ language, languageLevel }) => ({
+            user_id: insertUserResult.id,
+            language_id: language,
+            level: languageLevel,
+          })),
+        )
+        .execute();
+
+      await trx
+        .insertInto("user_skills")
+        .values(
+          skillsFormData.teachingSkills
+            .map((skillId) => ({
+              user_id: insertUserResult.id,
+              type: "teach",
+              skill_id: skillId,
+            }))
+            .concat(
+              skillsFormData.learningSkills.map((skillId) => ({
+                user_id: insertUserResult.id,
+                type: "learn",
+                skill_id: skillId,
+              })),
+            ),
+        )
+        .execute();
+    });
   } catch (error) {
     if (
       error instanceof DatabaseError &&
@@ -47,11 +112,34 @@ export async function signUp(
       error.constraint === "users_email_key"
     ) {
       return {
+        status: "user_already_exists",
         message: "User already exists",
       };
     }
     throw error;
   }
 
-  redirect("/");
+  return { status: "ok", message: "User signed up successfully" };
+}
+
+export async function checkIfEmailIsTaken(
+  email: string,
+): Promise<CheckIfEmailIsTaken> {
+  const user = await db
+    .selectFrom("users")
+    .select("id")
+    .where("email", "=", email.toLowerCase())
+    .executeTakeFirst();
+
+  if (user !== undefined) {
+    return {
+      status: true,
+      message: "Email is taken",
+    };
+  }
+
+  return {
+    status: false,
+    message: "Email is not taken",
+  };
 }

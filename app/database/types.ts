@@ -11,16 +11,78 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
 
 export type Timestamp = ColumnType<Date, Date | string>;
 
-export interface Users {
-  created_at: Timestamp;
-  email: string;
-  first_name: string;
+export interface Countries {
+  country: string;
+  created_at: Generated<Timestamp>;
   id: Generated<number>;
+  updated_at: Generated<Timestamp>;
+}
+
+export interface Languages {
+  created_at: Generated<Timestamp>;
+  id: Generated<number>;
+  language: string;
+  updated_at: Generated<Timestamp>;
+}
+
+export interface Skills {
+  category: string;
+  created_at: Generated<Timestamp>;
+  id: Generated<number>;
+  skill: string;
+  updated_at: Generated<Timestamp>;
+}
+
+export interface Timezones {
+  created_at: Generated<Timestamp>;
+  id: Generated<number>;
+  timezone: string;
+  updated_at: Generated<Timestamp>;
+}
+
+export interface UserData {
+  birthdate: Timestamp;
+  created_at: Generated<Timestamp>;
+  description: string;
+  first_name: string;
   last_name: string;
+  origin_country: Generated<number>;
+  timezone: Generated<number>;
+  updated_at: Generated<Timestamp>;
+  user_id: Generated<number>;
+}
+
+export interface UserLanguages {
+  created_at: Generated<Timestamp>;
+  language_id: Generated<number>;
+  level: string;
+  updated_at: Generated<Timestamp>;
+  user_id: Generated<number>;
+}
+
+export interface Users {
+  created_at: Generated<Timestamp>;
+  email: string;
+  id: Generated<number>;
   password: string;
-  updated_at: Timestamp;
+  updated_at: Generated<Timestamp>;
+}
+
+export interface UserSkills {
+  created_at: Generated<Timestamp>;
+  skill_id: Generated<number>;
+  type: string;
+  updated_at: Generated<Timestamp>;
+  user_id: Generated<number>;
 }
 
 export interface DB {
+  countries: Countries;
+  languages: Languages;
+  skills: Skills;
+  timezones: Timezones;
+  user_data: UserData;
+  user_languages: UserLanguages;
+  user_skills: UserSkills;
   users: Users;
 }

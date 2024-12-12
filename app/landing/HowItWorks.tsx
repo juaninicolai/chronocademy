@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Box from "@/app/landing/Box";
+import Image from "next/image";
 
 export default function HowItWorks() {
   const [isMobile, setIsMobile] = useState(false);
@@ -47,8 +48,9 @@ export default function HowItWorks() {
           platform.
         </>
       ),
+      extraIcon: "/NotInBeta.png", // Specify the path to the 'Not in Beta' image only for this box
     },
-  ];
+  ] as const;
 
   useEffect(() => {
     const handleResize = () => {
@@ -101,14 +103,23 @@ export default function HowItWorks() {
 
           {/* Box */}
           <div className="w-[85%] flex justify-center mx-auto">
-            {" "}
-            {/* Setting width to 93% for mobile */}
             <Box
               color={boxes[currentIndex].color}
               image={boxes[currentIndex].image}
               title={boxes[currentIndex].title}
               body={boxes[currentIndex].body}
             />
+            {/* Add "Not in Beta" badge if the current box is "Trade Chronos" */}
+            {boxes[currentIndex].title === "Trade Chronos" && (
+              <Image
+                src={boxes[currentIndex].extraIcon}
+                width={190}
+                height={56}
+                alt="Not in Beta"
+                className="absolute top-[+20px] right-[+10px] h-[25px] w-auto"
+                style={{ transform: "rotate(30deg)" }} // Rotate the badge by 20 degrees
+              />
+            )}
           </div>
 
           {/* Right Arrow */}
@@ -126,15 +137,24 @@ export default function HowItWorks() {
         /* Desktop View */
         <div className="flex flex-wrap justify-center gap-10 pt-8">
           {boxes.map((box, index) => (
-            <div key={index} className="w-full sm:w-[30%]">
-              {" "}
-              {/* Full width for mobile, smaller for desktop */}
+            <div key={index} className="w-full sm:w-[30%] relative">
               <Box
                 color={box.color}
                 image={box.image}
                 title={box.title}
                 body={box.body}
               />
+              {/* Add "Not in Beta" badge if this box is "Trade Chronos" */}
+              {box.title === "Trade Chronos" && (
+                <Image
+                  src={box.extraIcon}
+                  alt="Not in Beta"
+                  width={190}
+                  height={56}
+                  className="absolute top-[+20px] right-[+20px] h-[25px] w-auto"
+                  style={{ transform: "rotate(30deg)" }}
+                />
+              )}
             </div>
           ))}
         </div>

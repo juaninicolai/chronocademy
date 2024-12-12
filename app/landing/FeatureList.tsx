@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import ListItem from "@/app/landing/ListItem";
 import { useMediaQuery } from "react-responsive";
 
 const features = [
@@ -33,6 +33,7 @@ const features = [
     text: "Flexible Transactions",
     dialogText:
       "Use Chrono credits or real money to pay for classes. Keep your Chrono credits in your Wallet for future use or convert them into cash.",
+    extraIcon: "/NotInBeta.png", // Specify the path to the 'Not in Beta' image
   },
 ];
 
@@ -57,20 +58,34 @@ export default function FeatureList() {
             className="flex flex-col sm:cursor-pointer font-bold items-center space-y-4 relative w-1/6 pb-8"
             onClick={() => toggleDialog(index)}
           >
-            <ListItem src={feature.src} alt={feature.alt} text={feature.text} />
+            <Image
+              src={feature.src}
+              alt={feature.alt}
+              width={40}
+              height={40}
+              className="h-[40px] w-auto"
+            />
+            <span>{feature.text}</span>
+            {feature.extraIcon && (
+              <Image
+                src={feature.extraIcon}
+                alt="Not in Beta"
+                width={50}
+                height={25}
+                className="absolute top-[-10px] right-[-10px] h-[25px] w-auto"
+                style={{ transform: "rotate(30deg)" }}
+              />
+            )}
+
             <dialog className="absolute top-20 z-10" open={openDialogs[index]}>
-              <div
-                className={
-                  "flex flex-col cursor-pointer items-center justify-center space-y-2"
-                }
-              >
-                <p className={"text-center font-normal text-sm line-clamp-4"}>
+              <div className="flex flex-col cursor-pointer items-center justify-center space-y-2">
+                <p className="text-center font-normal text-sm line-clamp-4">
                   {feature.dialogText}
                 </p>
                 <IoIosArrowUp onClick={() => toggleDialog(index)} />
               </div>
             </dialog>
-            <div className={"hidden sm:block"}>
+            <div className="hidden sm:block">
               <IoIosArrowDown />
             </div>
           </div>
