@@ -5,6 +5,8 @@ export default async function SkillsPage() {
   const skills = await db
     .selectFrom("skills")
     .select(["id", "category", "skill"])
+    .orderBy("category", "asc")
+    .orderBy("skill", "asc")
     .execute();
 
   const availableSkills = skills.reduce<Map<string, typeof skills>>(
