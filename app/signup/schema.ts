@@ -33,13 +33,12 @@ export const SignUpFullFormSchema = SignUpFormSchema.merge(
     z.object({
       countryOfBirth: z.number(),
       timezone: z.number(),
-        languages: z
-        .array(
-            z.object({
-                language: z.number(),
-                languageLevel: z.string().min(1),
-            }),
-        )
+      languages: z.array(
+        z.object({
+          language: z.number(),
+          languageLevel: z.string().min(1),
+        }),
+      ),
     }),
   );
 

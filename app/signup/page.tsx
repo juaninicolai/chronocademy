@@ -48,16 +48,16 @@ export default function SignUpPage() {
     },
   });
 
-  const handleSubmit: SubmitHandler<z.infer<typeof SignUpClientFormSchema>> = async (
-    values,
-  ) => {
-      const isEmailTaken = await checkIfEmailIsTaken(values.email);
-      if (isEmailTaken.status) {
-        form.setError("email", {
-            type: "custom",
-            message: isEmailTaken.message,
-        });
-          return
+  const handleSubmit: SubmitHandler<
+    z.infer<typeof SignUpClientFormSchema>
+  > = async (values) => {
+    const isEmailTaken = await checkIfEmailIsTaken(values.email);
+    if (isEmailTaken.status) {
+      form.setError("email", {
+        type: "custom",
+        message: isEmailTaken.message,
+      });
+      return;
     }
 
     setSignUpFormState((prevState) => ({
