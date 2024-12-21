@@ -12,7 +12,10 @@
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
     "codegen": "kysely-codegen --out-file app/database/types.ts",
-    "kysely": "source ./.env && kysely"
+    "kysely": "source ./.env && kysely",
+    "kysely-codegen": "npm run kysely",
+    "postkysely-codegen": "npm run codegen",
+    "db-reset": "source ./.env && kysely migrate:rollback --all && kysely migrate:latest && kysely seed:run"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
