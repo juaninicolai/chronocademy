@@ -47,14 +47,6 @@ const config: Config = {
       roboto: ["var(--font-roboto)", "sans-serif"],
     },
     extend: {
-      screens: {
-        tablet: "640px",
-        // => @media (min-width: 640px) { ... }
-        laptop: "1024px",
-        // => @media (min-width: 1024px) { ... }
-        desktop: "1280px",
-        // => @media (min-width: 1280px) { ... }
-      },
       fontSize: {
         h1: ["28px", { lineHeight: "1.5" }],
         h2: ["24px", { lineHeight: "1.5" }],

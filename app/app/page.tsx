@@ -7,6 +7,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { db } from "../database";
+import { ProfileCardsGrid } from "./client";
 
 export default async function HomePage() {
   const profiles = await db
@@ -16,27 +17,29 @@ export default async function HomePage() {
     .execute();
 
   return (
-    <div className="grid gap-4 grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
-      {profiles
-        .concat(profiles)
-        .concat(profiles)
-        .concat(profiles)
-        .map((profile) => (
-          <Card key={profile.id} className="w-full">
-            <CardHeader>
-              <CardTitle>
-                {profile.first_name} {profile.last_name}
-              </CardTitle>
-              <CardDescription>{profile.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Card Content</p>
-            </CardContent>
-            <CardFooter>
-              <p>Card Footer</p>
-            </CardFooter>
-          </Card>
-        ))}
+    <div className="container mx-auto">
+      <ProfileCardsGrid>
+        {profiles
+          .concat(profiles)
+          .concat(profiles)
+          .concat(profiles)
+          .map((profile) => (
+            <Card key={profile.id} className="w-full">
+              <CardHeader>
+                <CardTitle>
+                  {profile.first_name} {profile.last_name}
+                </CardTitle>
+                <CardDescription>{profile.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card Content</p>
+              </CardContent>
+              <CardFooter>
+                <p>Card Footer</p>
+              </CardFooter>
+            </Card>
+          ))}
+      </ProfileCardsGrid>
     </div>
   );
 }
