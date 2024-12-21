@@ -6,8 +6,6 @@ export async function seed(db: Kysely<DB>): Promise<void> {
     return timezones.map((timezone) => ({ timezone }));
   };
 
-  await db.deleteFrom("timezones").execute();
-
   await db
     .insertInto("timezones")
     .values(

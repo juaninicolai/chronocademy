@@ -6,8 +6,6 @@ export async function seed(db: Kysely<DB>): Promise<void> {
     return countries.map((country) => ({ country }));
   };
 
-  await db.deleteFrom("countries").execute();
-
   await db
     .insertInto("countries")
     .values(

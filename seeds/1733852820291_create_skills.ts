@@ -4,39 +4,39 @@ import type { Kysely } from "kysely";
 export async function seed(db: Kysely<DB>): Promise<void> {
   const skillsByCategory = {
     Languages: [
-      "English",
-      "Spanish",
-      "French",
-      "Mandarin Chinese",
-      "German",
-      "Japanese",
-      "Italian",
       "Arabic",
+      "English",
+      "French",
+      "German",
+      "Italian",
+      "Japanese",
+      "Mandarin Chinese",
       "Portuguese",
       "Russian",
+      "Spanish",
     ],
     "Arts and Humanities": [
-      "History",
+      "Architecture",
       "Art",
+      "History",
       "Music",
       "Photography",
-      "Architecture",
     ],
 
     "Business and Marketing": [
-      "Marketing",
       "Economics",
       "Entrepreneurship",
-      "UX/UI Design",
       "Graphic Design",
+      "Marketing",
+      "UX/UI Design",
     ],
 
     "Science, Technology, Engineering, and Mathematics (STEM)": [
-      "Mathematics",
-      "Programming",
-      "Machine Learning",
       "Cybersecurity",
       "Engineering",
+      "Machine Learning",
+      "Mathematics",
+      "Programming",
     ],
 
     "Social Sciences": ["Psychology"],
@@ -45,8 +45,6 @@ export async function seed(db: Kysely<DB>): Promise<void> {
 
     "Culinary Arts": ["Cooking"],
   };
-
-  await db.deleteFrom("skills").execute();
 
   await db
     .insertInto("skills")
