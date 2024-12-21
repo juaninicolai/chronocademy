@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "tsc": "tsc",
     "prettier": "prettier --write .",
     "codegen": "kysely-codegen --out-file app/database/types.ts",
     "kysely": "source ./.env && kysely"
