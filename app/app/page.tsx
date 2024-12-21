@@ -1,15 +1,42 @@
-import { getServerSession } from "next-auth";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { db } from "../database";
 
 export default async function HomePage() {
-  const session = await getServerSession();
+  const profiles = await db
+    .selectFrom("users")
+    .innerJoin("user_data", "user_data.user_id", "users.id")
+    .selectAll()
+    .execute();
 
   return (
-    <>
-      {session !== null ? (
-        <h1>Hello, {session.user?.name}</h1>
-      ) : (
-        <h1>Hello, Omar! You&apos;re gay!</h1>
-      )}
-    </>
+    <div className="grid gap-4 grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
+      {profiles
+        .concat(profiles)
+        .concat(profiles)
+        .concat(profiles)
+        .map((profile) => (
+          <Card key={profile.id} className="w-full">
+            <CardHeader>
+              <CardTitle>
+                {profile.first_name} {profile.last_name}
+              </CardTitle>
+              <CardDescription>{profile.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Card Content</p>
+            </CardContent>
+            <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter>
+          </Card>
+        ))}
+    </div>
   );
 }

@@ -14,9 +14,9 @@ export default async function AppLayout({ children }: React.PropsWithChildren) {
     <>
       <SidebarProvider>
         <AppSidebar />
-        <main>
+        <main className="flex-1">
           <SidebarTrigger />
-          {children}
+          <div className="p-4">{children}</div>
         </main>
       </SidebarProvider>
     </>

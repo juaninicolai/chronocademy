@@ -40,7 +40,7 @@ export default async function RootLayout({
       <body className={classNames("w-full", inter.variable, roboto.variable)}>
         <SessionProvider session={session}>
           <MaybeLandingLayout>
-            <main>{children}</main>
+            {children}
             <Toaster />
           </MaybeLandingLayout>
         </SessionProvider>

@@ -12,7 +12,7 @@ export function MaybeLandingLayout({ children }: PropsWithChildren) {
     return (
       <>
         <Navbar />
-        {children}
+        <main>{children}</main>
         <Footer />
       </>
     );
