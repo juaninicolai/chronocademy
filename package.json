@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc",
+    "check": "run-p lint tsc prettier:check",
     "prettier": "prettier --write .",
+    "prettier:check": "prettier --check .",
     "codegen": "kysely-codegen --out-file app/database/types.ts",
     "kysely": "source ./.env && kysely"
   },
