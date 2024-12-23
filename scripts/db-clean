@@ -5,10 +5,16 @@ set -euo pipefail
 pg_user=chronocademy
 pg_db=chronocademy
 schema=$(mktemp)
+data=$(mktemp)
 
 docker compose exec postgres pg_dump -U "${pg_user}" --schema-only -d "${pg_db}" > "${schema}"
+docker compose exec postgres pg_dump -U "${pg_user}" --data-only -t 'kysely_migration' -t 'kysely_migration_lock' -d "${pg_db}" > "${data}"
 
 docker compose exec postgres dropdb -U "${pg_user}" "${pg_db}" --force
 docker compose exec postgres createdb -U "${pg_user}" "${pg_db}"
 
-docker compose exec postgres psql -U "${pg_user}" -d "${pg_db}" -c "$(cat "${schema}")" >/dev/null
+docker compose cp "${schema}" "postgres:/tmp/schema"
+docker compose exec postgres psql -U "${pg_user}" -d "${pg_db}" --file /tmp/schema > /dev/null
+
+docker compose cp "${data}" "postgres:/tmp/data"
+docker compose exec postgres psql -U "${pg_user}" -d "${pg_db}" --file /tmp/data > /dev/null

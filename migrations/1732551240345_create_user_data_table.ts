@@ -9,7 +9,6 @@ export async function up(db: Kysely<DB>): Promise<void> {
     .addColumn("birthdate", "date", (col) => col.notNull())
     .addColumn("first_name", "text", (col) => col.notNull())
     .addColumn("last_name", "text", (col) => col.notNull())
-    // TODO: Add foreign key constraint for timezones table
     .addColumn("timezone", "text", (col) => col.notNull())
     .addColumn("description", "text", (col) => col.notNull())
     .addColumn("created_at", "timestamptz", (col) =>

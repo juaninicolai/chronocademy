@@ -11,6 +11,10 @@ type User = {
   firstName: string;
   description: string;
   originCountry: string;
+  languages: {
+    language: string;
+    level: string;
+  }[];
 };
 
 export async function seed(db: Kysely<DB>): Promise<void> {
@@ -24,6 +28,10 @@ export async function seed(db: Kysely<DB>): Promise<void> {
       firstName: "Veselin",
       description: "This is Veselin's description",
       originCountry: "Bulgaria",
+      languages: [
+        { language: "English", level: "advanced" },
+        { language: "Bulgarian", level: "native" },
+      ],
     },
     {
       email: "juaninicolai@seed.com",
@@ -34,6 +42,10 @@ export async function seed(db: Kysely<DB>): Promise<void> {
       firstName: "Juani",
       description: "This is Juan's description",
       originCountry: "Argentina",
+      languages: [
+        { language: "Spanish", level: "native" },
+        { language: "English", level: "advanced" },
+      ],
     },
   ];
 
@@ -63,21 +75,46 @@ export async function seed(db: Kysely<DB>): Promise<void> {
       .executeTakeFirstOrThrow()
       .then(({ id }) => id);
 
+    const languagesPromise = db
+      .selectFrom("languages")
+      .select(["id", "languages.language"])
+      .where(
+        "language",
+        "in",
+        user.languages.map(({ language }) => language),
+      )
+      .execute();
+
     const userId = await userIdPromise;
     const timezoneId = await timezoneIdPromise;
     const countryId = await countryIdPromise;
+    const languages = await languagesPromise;
 
-    await db
-      .insertInto("user_data")
-      .values({
-        user_id: userId,
-        birthdate: user.birthdate,
-        last_name: user.lastName,
-        timezone: timezoneId,
-        first_name: user.firstName,
-        description: user.description,
-        origin_country: countryId,
-      })
-      .execute();
+    await Promise.all([
+      db
+        .insertInto("user_data")
+        .values({
+          user_id: userId,
+          birthdate: user.birthdate,
+          last_name: user.lastName,
+          timezone: timezoneId,
+          first_name: user.firstName,
+          description: user.description,
+          origin_country: countryId,
+        })
+        .execute(),
+      db
+        .insertInto("user_languages")
+        .values(
+          user.languages.map((userLanguage) => ({
+            user_id: userId,
+            language_id: languages.find(
+              (language) => language.language === userLanguage.language,
+            )?.id,
+            level: userLanguage.level,
+          })),
+        )
+        .execute(),
+    ]);
   }
 }
