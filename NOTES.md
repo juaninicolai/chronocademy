@@ -1,6 +1,5 @@
 Focus:
 
-- Teaching skills
 - Description and skills as search vector
 - Decide on what sort of navigation to use (app shell, layout)
   - https://flowbite.com/blocks/application/shells/

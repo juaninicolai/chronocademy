@@ -42,6 +42,16 @@ export default async function HomePage() {
           .whereRef("user_languages.user_id", "=", "users.id")
           .limit(4),
       ).as("languages"),
+
+      jsonArrayFrom(
+        eb
+          .selectFrom("user_skills")
+          .innerJoin("skills", "skills.id", "user_skills.skill_id")
+          .select("skills.skill")
+          .whereRef("user_skills.user_id", "=", "users.id")
+          .where("user_skills.type", "=", "teach")
+          .limit(4),
+      ).as("skills"),
     ])
     .execute();
 
@@ -84,6 +94,14 @@ export default async function HomePage() {
                       </HoverCard>
                     </>
                   )}
+                </p>
+                <p>
+                  Skills:{" "}
+                  {profile.skills
+                    .slice(0, 3)
+                    .map(({ skill }) => skill)
+                    .join(", ")}
+                  {profile.skills.length > 3 && ", ..."}
                 </p>
                 <p>
                   Speaks:{" "}
