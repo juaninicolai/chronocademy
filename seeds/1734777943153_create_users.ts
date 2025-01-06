@@ -26,7 +26,8 @@ export async function seed(db: Kysely<DB>): Promise<void> {
       lastName: "Ivanov",
       timezone: "Europe/Copenhagen",
       firstName: "Veselin",
-      description: "This is Veselin's description",
+      description:
+        "This is Veselin's description. It is a longer description. Yes, a very very very very very long description!!! Even longer than I was expecting it to have to be. How long does it have to be... for god's sake.",
       originCountry: "Bulgaria",
       languages: [
         { language: "English", level: "advanced" },

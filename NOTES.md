@@ -1,9 +1,6 @@
 Focus:
 
 - Teaching skills
-- Limit languages skills to 3
-- "Read More" after ellipsis on description
-- Randomness for avatars
 - Description and skills as search vector
 - Decide on what sort of navigation to use (app shell, layout)
   - https://flowbite.com/blocks/application/shells/

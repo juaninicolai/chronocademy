@@ -2,9 +2,28 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { db } from "../database";
 import { ProfileCardsGrid } from "./client";
 import Image from "next/image";
-import personPic from "@/public/person_pic.png";
+import Avatar1 from "@/public/avatars/1.png";
+import Avatar2 from "@/public/avatars/2.png";
+import Avatar3 from "@/public/avatars/3.png";
+import Avatar4 from "@/public/avatars/4.png";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { jsonArrayFrom } from "kysely/helpers/postgres";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import crypto from "crypto";
+
+const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
+
+// Returns the same random avatar consistently for the given ID.
+function getAvatar(id: number) {
+  const hash = crypto.createHash("sha256").update(id.toString()).digest("hex");
+  const hashInt = BigInt(`0x${hash}`);
+  const index = Number(hashInt % BigInt(4));
+  return avatars[index];
+}
 
 export default async function HomePage() {
   const profiles = await db
@@ -37,7 +56,11 @@ export default async function HomePage() {
             <Card key={profile.id} className="rounded-xl">
               <div className="relative">
                 <AspectRatio ratio={1 / 1}>
-                  <Image src={personPic} alt="" className="rounded-t-xl" />
+                  <Image
+                    src={getAvatar(profile.id)}
+                    alt=""
+                    className="rounded-t-xl w-full"
+                  />
                 </AspectRatio>
                 <CardHeader className="absolute bottom-0">
                   <CardTitle>
@@ -45,8 +68,23 @@ export default async function HomePage() {
                   </CardTitle>
                 </CardHeader>
               </div>
-              <CardContent className="pt-6">
-                <p>Description: {profile.description}</p>
+              <CardContent className="pt-6 space-y-2">
+                <p>
+                  Description: {profile.description.slice(0, 150).trimEnd()}
+                  {profile.description.length > 150 && (
+                    <>
+                      {"... "}
+                      <HoverCard>
+                        <HoverCardTrigger className="underline">
+                          Read more
+                        </HoverCardTrigger>
+                        <HoverCardContent className="w-96">
+                          {profile.description}
+                        </HoverCardContent>
+                      </HoverCard>
+                    </>
+                  )}
+                </p>
                 <p>
                   Speaks:{" "}
                   {profile.languages
