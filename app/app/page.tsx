@@ -20,7 +20,8 @@ export default async function HomePage() {
             "languages.language",
             eb.fn<string>("INITCAP", ["user_languages.level"]).as("level"),
           ])
-          .whereRef("user_languages.user_id", "=", "users.id"),
+          .whereRef("user_languages.user_id", "=", "users.id")
+          .limit(4),
       ).as("languages"),
     ])
     .execute();
@@ -49,8 +50,10 @@ export default async function HomePage() {
                 <p>
                   Speaks:{" "}
                   {profile.languages
+                    .slice(0, 3)
                     .map(({ language, level }) => `${language} (${level})`)
                     .join(", ")}
+                  {profile.languages.length > 3 && ", ..."}
                 </p>
               </CardContent>
             </Card>

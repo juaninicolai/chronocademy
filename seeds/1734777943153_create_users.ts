@@ -31,6 +31,8 @@ export async function seed(db: Kysely<DB>): Promise<void> {
       languages: [
         { language: "English", level: "advanced" },
         { language: "Bulgarian", level: "native" },
+        { language: "Russian", level: "beginner" },
+        { language: "Sign", level: "beginner" },
       ],
     },
     {
