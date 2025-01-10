@@ -1,6 +1,8 @@
 Focus:
 
-- Description and skills as search vector
+- Make "Read more" on click
+- Add "See more" on skills and languages
+- Name, description, skills and languages as search vector
 - Decide on what sort of navigation to use (app shell, layout)
   - https://flowbite.com/blocks/application/shells/
 
@@ -16,3 +18,6 @@ Nice to Have:
   - Handle unexpected signup action error
   - Display /api/auth/signin on /signin
   - At language secction make form scrollable (when adding 4 languages it moves up)
+  - Gender in form (user details) and assign avatar based on that (Male/Female/Other)
+- home page
+  - profile card editor to customize how people see you
