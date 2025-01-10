@@ -1,6 +1,5 @@
 Focus:
 
-- Add "See more" on skills and languages
 - Name, description, skills and languages as search vector
 - Decide on what sort of navigation to use (app shell, layout)
   - https://flowbite.com/blocks/application/shells/

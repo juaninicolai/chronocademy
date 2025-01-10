@@ -8,11 +8,6 @@ import Avatar3 from "@/public/avatars/3.png";
 import Avatar4 from "@/public/avatars/4.png";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { jsonArrayFrom } from "kysely/helpers/postgres";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import crypto from "crypto";
 import {
   Dialog,
@@ -116,7 +111,28 @@ export default async function HomePage() {
                     .slice(0, 3)
                     .map(({ skill }) => skill)
                     .join(", ")}
-                  {profile.skills.length > 3 && ", ..."}
+                  {profile.skills.length > 3 && (
+                    <>
+                      {", ... "}
+                      <Dialog>
+                        <DialogTrigger className="underline">
+                          See more
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle className="hidden">
+                              {`${profile.first_name} ${profile.last_name}'s skills`}
+                            </DialogTitle>
+                            <DialogDescription>
+                              {profile.skills
+                                .map(({ skill }) => skill)
+                                .join(", ")}
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
+                    </>
+                  )}
                 </p>
                 <p>
                   Speaks:{" "}
@@ -124,7 +140,31 @@ export default async function HomePage() {
                     .slice(0, 3)
                     .map(({ language, level }) => `${language} (${level})`)
                     .join(", ")}
-                  {profile.languages.length > 3 && ", ..."}
+                  {profile.languages.length > 3 && (
+                    <>
+                      {", ... "}
+                      <Dialog>
+                        <DialogTrigger className="underline">
+                          See more
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle className="hidden">
+                              {`${profile.first_name} ${profile.last_name}'s languages`}
+                            </DialogTitle>
+                            <DialogDescription>
+                              {profile.languages
+                                .map(
+                                  ({ language, level }) =>
+                                    `${language} (${level})`,
+                                )
+                                .join(", ")}
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
+                    </>
+                  )}
                 </p>
               </CardContent>
             </Card>
