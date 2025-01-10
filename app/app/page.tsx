@@ -14,6 +14,14 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import crypto from "crypto";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
 
@@ -84,14 +92,21 @@ export default async function HomePage() {
                   {profile.description.length > 150 && (
                     <>
                       {"... "}
-                      <HoverCard>
-                        <HoverCardTrigger className="underline">
+                      <Dialog>
+                        <DialogTrigger className="underline">
                           Read more
-                        </HoverCardTrigger>
-                        <HoverCardContent className="w-96">
-                          {profile.description}
-                        </HoverCardContent>
-                      </HoverCard>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle className="hidden">
+                              {`${profile.first_name} ${profile.last_name}'s description`}
+                            </DialogTitle>
+                            <DialogDescription>
+                              {profile.description}
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
                     </>
                   )}
                 </p>
