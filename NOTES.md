@@ -3,6 +3,7 @@ Focus:
 - Name, description, skills and languages as search vector
 - Decide on what sort of navigation to use (app shell, layout)
   - https://flowbite.com/blocks/application/shells/
+- Navbar + footer
 
 Nice to Have:
 
