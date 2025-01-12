@@ -1,7 +1,7 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { AppSidebar } from "./sidebar";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 export default async function AppLayout({ children }: React.PropsWithChildren) {
   const session = await getServerSession();
@@ -12,13 +12,11 @@ export default async function AppLayout({ children }: React.PropsWithChildren) {
 
   return (
     <>
-      <SidebarProvider>
-        <AppSidebar />
-        <main className="flex-1">
-          <SidebarTrigger />
-          <div className="p-4">{children}</div>
-        </main>
-      </SidebarProvider>
+      <Header />
+      <main className="flex-1">
+        <div className="p-4">{children}</div>
+      </main>
+      <Footer />
     </>
   );
 }

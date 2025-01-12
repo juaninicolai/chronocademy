@@ -17,6 +17,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
 
@@ -60,7 +61,17 @@ export default async function HomePage() {
 
   return (
     <div className="container mx-auto">
-      <ProfileCardsGrid>
+      <div
+        className={cn(
+          "grid",
+          "gap-4",
+          "grid-cols-1",
+          "sm:grid-cols-2",
+          "md:grid-cols-3",
+          "xl:grid-cols-4",
+          "2xl:grid-cols-5",
+        )}
+      >
         {profiles
           .concat(profiles)
           .concat(profiles)
@@ -169,7 +180,7 @@ export default async function HomePage() {
               </CardContent>
             </Card>
           ))}
-      </ProfileCardsGrid>
+      </div>
     </div>
   );
 }
