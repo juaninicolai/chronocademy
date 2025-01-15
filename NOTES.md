@@ -5,6 +5,13 @@ Focus:
 - Wrap all pages (landing and app) in a container so they're centered
 - FAQ
 - Inject Juan's body into the email link (lol)
+- Footer:
+  - left: quick links: report a bug, request a feature, terms and conditions, privacy policy
+  - middle: contact support (mail to support@chronocademy.com)
+  - right: logo (link to home)
+- Navbar:
+  - bigger size for name and avatar
+  - add "?" icon and route it to www.chronocademy.com/#faqs
 
 Nice to Have:
 
@@ -21,3 +28,4 @@ Nice to Have:
   - Gender in form (user details) and assign avatar based on that (Male/Female/Other)
 - home page
   - profile card editor to customize how people see you
+  - report a bug & request a feature: can we send via email metadata (or any private / hidden way) the user id? 
