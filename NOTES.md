@@ -5,9 +5,6 @@ Focus:
 - Wrap all pages (landing and app) in a container so they're centered
 - FAQ
 - Inject Juan's body into the email link (lol)
-- Navbar:
-  - bigger size for name and avatar
-  - add "?" icon and route it to www.chronocademy.com/#faqs
 
 Nice to Have:
 

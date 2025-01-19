@@ -3,7 +3,7 @@
 import Logo from "@/public/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { CircleUser } from "lucide-react";
+import { CircleHelp, CircleUser } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut, useSession } from "next-auth/react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   const session = useSession({ required: true });
@@ -33,7 +34,13 @@ export function Header() {
       </Link>
 
       <div className="flex gap-4">
-        <p className="leading-loose">
+        <Button asChild variant="ghost" size="icon" className="[&_svg]:size-7">
+          <Link href="/#faqs">
+            <CircleHelp size={30} />
+          </Link>
+        </Button>
+
+        <p className="leading-loose text-base">
           {session.status === "loading" ? (
             <Skeleton />
           ) : (
@@ -42,7 +49,7 @@ export function Header() {
         </p>
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <CircleUser />
+            <CircleUser size={30} />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem>Profile</DropdownMenuItem>
