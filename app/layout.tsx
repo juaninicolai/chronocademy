@@ -39,10 +39,12 @@ export default async function RootLayout({
       </head>
       <body className={classNames("w-full", inter.variable, roboto.variable)}>
         <SessionProvider session={session}>
-          <MaybeLandingLayout>
-            {children}
-            <Toaster />
-          </MaybeLandingLayout>
+          <div className="container mx-auto shadow-inner bg-slate-100">
+            <MaybeLandingLayout>
+              {children}
+              <Toaster />
+            </MaybeLandingLayout>
+          </div>
         </SessionProvider>
       </body>
     </html>

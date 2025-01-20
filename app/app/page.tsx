@@ -60,7 +60,7 @@ export default async function HomePage() {
     .execute();
 
   return (
-    <div className="container mx-auto">
+    <div>
       <div
         className={cn(
           "grid",

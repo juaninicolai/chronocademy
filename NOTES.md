@@ -2,7 +2,6 @@ Focus:
 
 - Name, description, skills and languages as search vector
 - Responsive navigation (hamburger)
-- Wrap all pages (landing and app) in a container so they're centered
 - FAQ
 
 Nice to Have:

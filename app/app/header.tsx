@@ -21,12 +21,13 @@ export function Header() {
   return (
     <header
       className={cn(
+        "bg-white",
         "h-16",
         "flex",
         "items-center",
         "justify-between",
         "pr-2",
-        "shadow-md",
+        "shadow",
       )}
     >
       <Link href="/" className="h-full">

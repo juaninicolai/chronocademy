@@ -9,10 +9,11 @@ export function Footer() {
   return (
     <footer
       className={cn(
+        "bg-white",
         "flex",
         "justify-between",
         "relative",
-        "before:shadow-md",
+        "before:shadow",
         "before:inset-0",
         "before:absolute",
         "before:rotate-180",
