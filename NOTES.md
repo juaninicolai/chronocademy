@@ -19,4 +19,5 @@ Nice to Have:
   - Gender in form (user details) and assign avatar based on that (Male/Female/Other)
 - home page
   - profile card editor to customize how people see you
+- footer
   - report a bug & request a feature: can we send via email metadata (or any private / hidden way) the user id?
