@@ -1,7 +1,6 @@
 Focus:
 
 - Name, description, skills and languages as search vector
-- Responsive navigation (hamburger)
 
 Nice to Have:
 

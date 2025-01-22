@@ -11,7 +11,10 @@ export function Footer() {
       className={cn(
         "bg-white",
         "flex",
-        "justify-between",
+        "flex-col",
+        "gap-4",
+        "md:flex-row",
+        "md:justify-between",
         "relative",
         "before:shadow",
         "before:inset-0",
