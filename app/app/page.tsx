@@ -65,7 +65,7 @@ export default async function HomePage() {
     .execute();
 
   return (
-    <div className="flex flex-col gap-10 items-center">
+    <div className="flex flex-col gap-8 items-center">
       <div
         className={cn(
           "grid",

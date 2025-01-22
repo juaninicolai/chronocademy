@@ -13,9 +13,7 @@ export default async function AppLayout({ children }: React.PropsWithChildren) {
   return (
     <>
       <Header />
-      <main className="flex-1">
-        <div className="p-4">{children}</div>
-      </main>
+      <main className="flex-1 px-4 py-8">{children}</main>
       <Footer />
     </>
   );
