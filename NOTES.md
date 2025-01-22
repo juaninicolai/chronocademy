@@ -15,7 +15,7 @@ Nice to Have:
   - Validate sign up form on change less often (Check debounce)
   - Handle unexpected signup action error
   - Display /api/auth/signin on /signin
-  - At language secction make form scrollable (when adding 4 languages it moves up)
+  - At language section make form scrollable (when adding 4 languages it moves up)
   - Gender in form (user details) and assign avatar based on that (Male/Female/Other)
 - home page
   - profile card editor to customize how people see you
