@@ -1,6 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { db } from "../database";
-import { ProfileCardsGrid } from "./client";
 import Image from "next/image";
 import Avatar1 from "@/public/avatars/1.png";
 import Avatar2 from "@/public/avatars/2.png";
@@ -18,6 +17,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
 
@@ -60,7 +65,7 @@ export default async function HomePage() {
     .execute();
 
   return (
-    <div>
+    <div className="flex flex-col gap-10 items-center">
       <div
         className={cn(
           "grid",
@@ -181,6 +186,47 @@ export default async function HomePage() {
             </Card>
           ))}
       </div>
+
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-center">How it works</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Accordion type="multiple">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Book a class with a teacher</AccordionTrigger>
+              <AccordionContent>
+                Browse through the teacher profiles and select one that fits
+                your needs. Check their available time slots and pick one that
+                works for you. Once you submit your booking request, the teacher
+                will review and either accept or suggest an alternative.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>
+                My booking request was declined
+              </AccordionTrigger>
+              <AccordionContent>
+                If the teacher cannot accommodate your chosen time, they may
+                respond with a suggested time for the class. You can review
+                their suggestion and decide if it works for you. If the teacher
+                declined the booking but didn’t suggest another timeslot, you
+                can either try another timeslot or check with another teacher.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="foo">
+                See a teacher{"`"}s availability before booking
+              </AccordionTrigger>
+              <AccordionContent>
+                Each teacher’s profile shows their available time slots, so you
+                can choose a time that fits both of you before submitting a
+                booking request.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </CardContent>
+      </Card>
     </div>
   );
 }
