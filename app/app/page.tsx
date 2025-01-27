@@ -23,6 +23,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 
 const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
 
@@ -66,6 +69,17 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col gap-8 items-center">
+      <div className="flex gap-1 w-full max-w-screen-md">
+        <Input
+          className="bg-white"
+          type="text"
+          placeholder="Search for a profile"
+        />
+        <Button className="flex-shrink-0" size="icon">
+          <Search />
+        </Button>
+      </div>
+
       <div
         className={cn(
           "grid",
@@ -79,6 +93,7 @@ export default async function HomePage() {
       >
         {profiles
           .concat(profiles)
+          // TODO: Remove and add more profiles to seed
           .concat(profiles)
           .concat(profiles)
           .map((profile) => (
