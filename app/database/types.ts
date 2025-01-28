@@ -48,6 +48,7 @@ export interface UserData {
   last_name: string;
   origin_country: Generated<number>;
   timezone: Generated<number>;
+  tsv: Generated<string | null>;
   updated_at: Generated<Timestamp>;
   user_id: Generated<number>;
 }

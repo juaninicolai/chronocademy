@@ -17,7 +17,7 @@
     "postkysely-codegen": "npm run codegen",
     "kysely-seedrun": "npm run db-clean && npm run kysely -- seed:run",
     "db-clean": "./scripts/db-clean",
-    "db-reset": "source ./.env && kysely migrate:rollback --all && kysely migrate:latest && kysely seed:run"
+    "db-reset": "./scripts/db-reset"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

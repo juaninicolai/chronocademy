@@ -37,7 +37,13 @@ function getAvatar(id: number) {
   return avatars[index];
 }
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ query?: string }>;
+}) {
+  const query = (await searchParams).query;
+
   const profiles = await db
     .selectFrom("users")
     .innerJoin("user_data", "user_data.user_id", "users.id")

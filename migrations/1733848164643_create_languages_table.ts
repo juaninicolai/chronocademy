@@ -37,5 +37,11 @@ export async function down(db: Kysely<DB>): Promise<void> {
     .dropConstraint("fk__languages__user_languages")
     .execute();
 
+  await db.schema
+    .alterTable("user_languages")
+    .dropColumn("language_id")
+    .addColumn("language", "text", (col) => col.notNull())
+    .execute();
+
   await db.schema.dropTable("languages").execute();
 }
