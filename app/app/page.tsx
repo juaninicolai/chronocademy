@@ -26,6 +26,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import { sql } from "kysely";
 
 const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
 
@@ -44,7 +45,7 @@ export default async function HomePage({
 }) {
   const query = (await searchParams).query;
 
-  const profiles = await db
+  let profilesQuery = db
     .selectFrom("users")
     .innerJoin("user_data", "user_data.user_id", "users.id")
     .selectAll()
@@ -70,8 +71,17 @@ export default async function HomePage({
           .where("user_skills.type", "=", "teach")
           .limit(4),
       ).as("skills"),
-    ])
-    .execute();
+    ]);
+
+  if (query !== undefined) {
+    profilesQuery = profilesQuery.whereRef(
+      "user_data.tsv",
+      "@@",
+      sql`websearch_to_tsquery('english', ${query})`,
+    );
+  }
+
+  const profiles = await profilesQuery.execute();
 
   return (
     <div className="flex flex-col gap-8 items-center">
