@@ -23,10 +23,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { sql } from "kysely";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
-import { sql } from "kysely";
 
 const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
 
@@ -43,7 +43,7 @@ export default async function HomePage({
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
-  const query = (await searchParams).query;
+  const query = (await searchParams).query?.trim();
 
   let profilesQuery = db
     .selectFrom("users")
@@ -73,7 +73,7 @@ export default async function HomePage({
       ).as("skills"),
     ]);
 
-  if (query !== undefined) {
+  if (query !== undefined && query !== "") {
     profilesQuery = profilesQuery.whereRef(
       "user_data.tsv",
       "@@",
@@ -85,15 +85,19 @@ export default async function HomePage({
 
   return (
     <div className="flex flex-col gap-8 items-center">
-      <div className="flex gap-1 w-full max-w-screen-md">
-        <Input
-          className="bg-white"
-          type="text"
-          placeholder="Search for a profile"
-        />
-        <Button className="flex-shrink-0" size="icon">
-          <Search />
-        </Button>
+      <div className="w-full max-w-screen-md">
+        <form className="flex gap-1">
+          <Input
+            name="query"
+            defaultValue={query}
+            className="bg-white"
+            type="text"
+            placeholder="Search for a profile"
+          />
+          <Button type="submit" className="flex-shrink-0" size="icon">
+            <Search />
+          </Button>
+        </form>
       </div>
 
       <div
@@ -107,115 +111,110 @@ export default async function HomePage({
           "2xl:grid-cols-5",
         )}
       >
-        {profiles
-          .concat(profiles)
-          // TODO: Remove and add more profiles to seed
-          .concat(profiles)
-          .concat(profiles)
-          .map((profile) => (
-            <Card key={profile.id} className="rounded-xl">
-              <div className="relative">
-                <AspectRatio ratio={1 / 1}>
-                  <Image
-                    src={getAvatar(profile.id)}
-                    alt=""
-                    className="rounded-t-xl w-full"
-                  />
-                </AspectRatio>
-                <CardHeader className="absolute bottom-0">
-                  <CardTitle>
-                    {profile.first_name} {profile.last_name}
-                  </CardTitle>
-                </CardHeader>
-              </div>
-              <CardContent className="pt-6 space-y-2">
-                <p>
-                  Description: {profile.description.slice(0, 150).trimEnd()}
-                  {profile.description.length > 150 && (
-                    <>
-                      {"... "}
-                      <Dialog>
-                        <DialogTrigger className="underline">
-                          Read more
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle className="hidden">
-                              {`${profile.first_name} ${profile.last_name}'s description`}
-                            </DialogTitle>
-                            <DialogDescription>
-                              {profile.description}
-                            </DialogDescription>
-                          </DialogHeader>
-                        </DialogContent>
-                      </Dialog>
-                    </>
-                  )}
-                </p>
-                <p>
-                  Skills:{" "}
-                  {profile.skills
-                    .slice(0, 3)
-                    .map(({ skill }) => skill)
-                    .join(", ")}
-                  {profile.skills.length > 3 && (
-                    <>
-                      {", ... "}
-                      <Dialog>
-                        <DialogTrigger className="underline">
-                          See more
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle className="hidden">
-                              {`${profile.first_name} ${profile.last_name}'s skills`}
-                            </DialogTitle>
-                            <DialogDescription>
-                              {profile.skills
-                                .map(({ skill }) => skill)
-                                .join(", ")}
-                            </DialogDescription>
-                          </DialogHeader>
-                        </DialogContent>
-                      </Dialog>
-                    </>
-                  )}
-                </p>
-                <p>
-                  Speaks:{" "}
-                  {profile.languages
-                    .slice(0, 3)
-                    .map(({ language, level }) => `${language} (${level})`)
-                    .join(", ")}
-                  {profile.languages.length > 3 && (
-                    <>
-                      {", ... "}
-                      <Dialog>
-                        <DialogTrigger className="underline">
-                          See more
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle className="hidden">
-                              {`${profile.first_name} ${profile.last_name}'s languages`}
-                            </DialogTitle>
-                            <DialogDescription>
-                              {profile.languages
-                                .map(
-                                  ({ language, level }) =>
-                                    `${language} (${level})`,
-                                )
-                                .join(", ")}
-                            </DialogDescription>
-                          </DialogHeader>
-                        </DialogContent>
-                      </Dialog>
-                    </>
-                  )}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        {profiles.map((profile) => (
+          <Card key={profile.id} className="rounded-xl">
+            <div className="relative">
+              <AspectRatio ratio={1 / 1}>
+                <Image
+                  src={getAvatar(profile.id)}
+                  alt=""
+                  className="rounded-t-xl w-full"
+                />
+              </AspectRatio>
+              <CardHeader className="absolute bottom-0">
+                <CardTitle>
+                  {profile.first_name} {profile.last_name}
+                </CardTitle>
+              </CardHeader>
+            </div>
+            <CardContent className="pt-6 space-y-2">
+              <p>
+                Description: {profile.description.slice(0, 150).trimEnd()}
+                {profile.description.length > 150 && (
+                  <>
+                    {"... "}
+                    <Dialog>
+                      <DialogTrigger className="underline">
+                        Read more
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle className="hidden">
+                            {`${profile.first_name} ${profile.last_name}'s description`}
+                          </DialogTitle>
+                          <DialogDescription>
+                            {profile.description}
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                )}
+              </p>
+              <p>
+                Skills:{" "}
+                {profile.skills
+                  .slice(0, 3)
+                  .map(({ skill }) => skill)
+                  .join(", ")}
+                {profile.skills.length > 3 && (
+                  <>
+                    {", ... "}
+                    <Dialog>
+                      <DialogTrigger className="underline">
+                        See more
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle className="hidden">
+                            {`${profile.first_name} ${profile.last_name}'s skills`}
+                          </DialogTitle>
+                          <DialogDescription>
+                            {profile.skills
+                              .map(({ skill }) => skill)
+                              .join(", ")}
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                )}
+              </p>
+              <p>
+                Speaks:{" "}
+                {profile.languages
+                  .slice(0, 3)
+                  .map(({ language, level }) => `${language} (${level})`)
+                  .join(", ")}
+                {profile.languages.length > 3 && (
+                  <>
+                    {", ... "}
+                    <Dialog>
+                      <DialogTrigger className="underline">
+                        See more
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle className="hidden">
+                            {`${profile.first_name} ${profile.last_name}'s languages`}
+                          </DialogTitle>
+                          <DialogDescription>
+                            {profile.languages
+                              .map(
+                                ({ language, level }) =>
+                                  `${language} (${level})`,
+                              )
+                              .join(", ")}
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                )}
+              </p>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
       <Card className="w-full">
