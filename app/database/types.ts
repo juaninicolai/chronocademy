@@ -22,6 +22,7 @@ export interface Languages {
   created_at: Generated<Timestamp>;
   id: Generated<number>;
   language: string;
+  tsv: Generated<string | null>;
   updated_at: Generated<Timestamp>;
 }
 
@@ -30,6 +31,7 @@ export interface Skills {
   created_at: Generated<Timestamp>;
   id: Generated<number>;
   skill: string;
+  tsv: Generated<string | null>;
   updated_at: Generated<Timestamp>;
 }
 

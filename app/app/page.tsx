@@ -45,43 +45,80 @@ export default async function HomePage({
 }) {
   const query = (await searchParams).query?.trim();
 
-  let profilesQuery = db
-    .selectFrom("users")
-    .innerJoin("user_data", "user_data.user_id", "users.id")
+  const profiles = await db
+    .with("profiles_raw", (db) => {
+      let cte = db
+        .selectFrom("users")
+        .innerJoin("user_data", "user_data.user_id", "users.id")
+        .innerJoin("user_languages", "user_languages.user_id", "users.id")
+        .innerJoin("languages", "languages.id", "user_languages.language_id")
+        .innerJoin("user_skills", "user_skills.user_id", "users.id")
+        .innerJoin("skills", "skills.id", "user_skills.skill_id")
+        .select([
+          "users.id",
+          "user_data.first_name",
+          "user_data.last_name",
+          "user_data.description",
+          "languages.language",
+          "user_languages.level",
+          "skills.skill",
+        ]);
+
+      if (query !== undefined && query !== "") {
+        cte = cte.where((eb) =>
+          eb.or([
+            eb(
+              "user_data.tsv",
+              "@@",
+              // @ts-expect-error because Kysely is being a PITA and doesn't seem to support combining with AND or OR using raw SQL
+              eb.val(sql`websearch_to_tsquery('english', ${query})`),
+            ),
+            eb(
+              "languages.tsv",
+              "@@",
+              // @ts-expect-error because Kysely is being a PITA and doesn't seem to support combining with AND or OR using raw SQL
+              eb.val(sql`websearch_to_tsquery('english', ${query})`),
+            ),
+            eb(
+              "skills.tsv",
+              "@@",
+              // @ts-expect-error because Kysely is being a PITA and doesn't seem to support combining with AND or OR using raw SQL
+              eb.val(sql`websearch_to_tsquery('english', ${query})`),
+            ),
+          ]),
+        );
+      }
+
+      return cte;
+    })
+    .with("profiles_distinct", (db) =>
+      db
+        .selectFrom("profiles_raw")
+        .select(["id", "first_name", "last_name", "description"])
+        .distinct(),
+    )
+    .selectFrom("profiles_distinct")
     .selectAll()
     .select((eb) => [
       jsonArrayFrom(
         eb
-          .selectFrom("user_languages")
-          .innerJoin("languages", "languages.id", "user_languages.language_id")
+          .selectFrom("profiles_raw")
           .select((eb) => [
-            "languages.language",
-            eb.fn<string>("INITCAP", ["user_languages.level"]).as("level"),
+            "language",
+            eb.fn<string>("INITCAP", ["level"]).as("level"),
           ])
-          .whereRef("user_languages.user_id", "=", "users.id")
-          .limit(4),
+          .distinct()
+          .whereRef("profiles_raw.id", "=", "id"),
       ).as("languages"),
-
       jsonArrayFrom(
         eb
-          .selectFrom("user_skills")
-          .innerJoin("skills", "skills.id", "user_skills.skill_id")
-          .select("skills.skill")
-          .whereRef("user_skills.user_id", "=", "users.id")
-          .where("user_skills.type", "=", "teach")
-          .limit(4),
+          .selectFrom("profiles_raw")
+          .select(["skill"])
+          .distinct()
+          .whereRef("profiles_raw.id", "=", "id"),
       ).as("skills"),
-    ]);
-
-  if (query !== undefined && query !== "") {
-    profilesQuery = profilesQuery.whereRef(
-      "user_data.tsv",
-      "@@",
-      sql`websearch_to_tsquery('english', ${query})`,
-    );
-  }
-
-  const profiles = await profilesQuery.execute();
+    ])
+    .execute();
 
   return (
     <div className="flex flex-col gap-8 items-center">
