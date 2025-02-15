@@ -30,7 +30,7 @@ export function Header() {
         "shadow",
       )}
     >
-      <Link href="/" className="h-full">
+      <Link href="/app" className="h-full">
         <Image src={Logo} alt="chronocademy logo" className="h-full" />
       </Link>
 

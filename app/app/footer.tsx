@@ -50,7 +50,7 @@ export function Footer() {
         </Button>
       </div>
 
-      <Link href="/" className="h-16">
+      <Link href="/app" className="h-16">
         <Image src={Logo} alt="chronocademy logo" className="h-full" />
       </Link>
     </footer>
