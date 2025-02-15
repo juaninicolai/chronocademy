@@ -14,9 +14,11 @@ import {
 import { signOut, useSession } from "next-auth/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export function Header() {
   const session = useSession({ required: true });
+  const router = useRouter();
 
   return (
     <header
@@ -53,7 +55,9 @@ export function Header() {
             <CircleUser size={30} />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => router.push("/app/profile")}>
+              Profile
+            </DropdownMenuItem>
             <DropdownMenuItem
               onSelect={() =>
                 signOut({
