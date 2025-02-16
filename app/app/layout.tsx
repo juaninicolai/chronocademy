@@ -2,9 +2,10 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export default async function AppLayout({ children }: React.PropsWithChildren) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (session === null) {
     redirect("/api/auth/signin");

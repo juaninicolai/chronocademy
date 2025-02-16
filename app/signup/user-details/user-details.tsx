@@ -166,7 +166,7 @@ export default function UserDetailsPageClient({
               <FormItem className="space-y-0">
                 <FormLabel className={"text-base"}>Country</FormLabel>
                 <Select
-                  defaultValue={field.value}
+                  value={field.value}
                   disabled={field.disabled}
                   onValueChange={field.onChange}
                 >
@@ -198,7 +198,7 @@ export default function UserDetailsPageClient({
               <FormItem className="space-y-0">
                 <FormLabel className={"text-base"}>Timezone</FormLabel>
                 <Select
-                  defaultValue={field.value}
+                  value={field.value}
                   disabled={field.disabled}
                   onValueChange={field.onChange}
                 >
@@ -233,7 +233,7 @@ export default function UserDetailsPageClient({
                     <FormItem className="space-y-0">
                       <FormLabel className={"text-base"}>Language</FormLabel>
                       <Select
-                        defaultValue={field.value}
+                        value={field.value}
                         disabled={field.disabled}
                         onValueChange={field.onChange}
                       >
@@ -265,7 +265,7 @@ export default function UserDetailsPageClient({
                     <FormItem className="space-y-0">
                       <FormLabel className={"text-base"}>Level</FormLabel>
                       <Select
-                        defaultValue={field.value}
+                        value={field.value}
                         disabled={field.disabled}
                         onValueChange={field.onChange}
                       >

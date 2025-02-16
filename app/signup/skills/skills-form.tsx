@@ -64,7 +64,7 @@ export function SkillsForm(props: SkillsFormProps) {
                 <FormItem className="space-y-0">
                   <FormLabel className={"text-base"}>Category</FormLabel>
                   <Select
-                    defaultValue={field.value}
+                    value={field.value}
                     disabled={field.disabled}
                     onValueChange={field.onChange}
                   >
@@ -93,7 +93,7 @@ export function SkillsForm(props: SkillsFormProps) {
                 <FormItem className="space-y-0">
                   <FormLabel className={"text-base"}>Skill</FormLabel>
                   <Select
-                    defaultValue={field.value}
+                    value={field.value}
                     disabled={field.disabled}
                     onValueChange={field.onChange}
                   >

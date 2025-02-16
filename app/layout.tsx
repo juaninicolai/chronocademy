@@ -7,6 +7,7 @@ import { MaybeLandingLayout } from "@/app/landing/landing";
 import { getServerSession } from "next-auth";
 import { SessionProvider } from "@/app/app/session";
 import { Toaster } from "@/components/ui/toaster";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 export const metadata: Metadata = {
   title: "Chronocademy",
@@ -30,7 +31,7 @@ const roboto = Roboto({
 export default async function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   return (
     <html lang="en">

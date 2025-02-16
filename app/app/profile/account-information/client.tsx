@@ -1,0 +1,225 @@
+"use client";
+
+import { DBTypes } from "@/app/database";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { Selectable } from "kysely";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  AccountInformationFormSchema,
+  timeBefore100Years,
+  timeBefore18Years,
+} from "./schema";
+import { useFormState } from "react-dom";
+import { updateAccountInformation } from "./actions";
+
+const FormID = "account-information-form";
+
+const AccountInformationClientFormSchema = AccountInformationFormSchema.merge(
+  z.object({
+    countryOfBirth: z.string(),
+  }),
+);
+
+// TODO: This is repeated from sign up form
+export type Country = Selectable<Pick<DBTypes.Countries, "id" | "country">>;
+export type Timezone = Selectable<Pick<DBTypes.Timezones, "id" | "timezone">>;
+export type Language = Selectable<Pick<DBTypes.Languages, "id" | "language">>;
+
+export function AccountInformationClient({
+  availableCountries,
+  defaultValues,
+}: {
+  availableCountries: Country[];
+  availableTimezones: Timezone[];
+  availableLanguages: Language[];
+  defaultValues: z.infer<typeof AccountInformationClientFormSchema>;
+}) {
+  const [, updateAccountInformationAction] = useFormState(
+    updateAccountInformation,
+    {
+      status: "idle",
+      message: "",
+    },
+  );
+
+  const form = useForm({
+    resolver: zodResolver(AccountInformationClientFormSchema),
+    defaultValues,
+  });
+
+  const handleSubmit = (
+    values: z.infer<typeof AccountInformationClientFormSchema>,
+  ) => {
+    updateAccountInformationAction({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      birthdate: values.birthdate,
+      countryOfBirth: Number(values.countryOfBirth),
+      profileDescription: values.profileDescription,
+    });
+  };
+
+  return (
+    <>
+      <CardContent>
+        <Form {...form}>
+          <form id={FormID} onSubmit={form.handleSubmit(handleSubmit)}>
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>First name</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Last name</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="birthdate"
+              render={({ field }) => (
+                // TODO: This is repeated from sign up form
+                <FormItem className="flex flex-col space-y-0">
+                  <FormLabel className={"text-base"}>Birthdate</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-full pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground",
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>Pick a date</span>
+                          )}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        captionLayout="dropdown"
+                        fromYear={timeBefore100Years.getFullYear()}
+                        toYear={timeBefore18Years.getFullYear()}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="countryOfBirth"
+              render={({ field }) => (
+                <FormItem className="space-y-0">
+                  <FormLabel className={"text-base"}>Country</FormLabel>
+                  <Select
+                    value={field.value}
+                    disabled={field.disabled}
+                    onValueChange={field.onChange}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Country of birth" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {availableCountries.map((country) => (
+                        <SelectItem
+                          key={country.id}
+                          value={country.id.toString()}
+                        >
+                          {country.country}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="profileDescription"
+              render={({ field }) => (
+                <FormItem className="space-y-0">
+                  <FormLabel className={"text-base"}>
+                    Profile description
+                  </FormLabel>
+                  <FormControl>
+                    <Textarea className="resize-none" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </form>
+        </Form>
+      </CardContent>
+
+      <CardFooter>
+        <Button type="submit" form={FormID} disabled={!form.formState.isDirty}>
+          Update
+        </Button>
+      </CardFooter>
+    </>
+  );
+}

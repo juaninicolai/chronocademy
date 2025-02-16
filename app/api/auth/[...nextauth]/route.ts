@@ -1,9 +1,9 @@
-import NextAuth, { User as NextUser } from "next-auth";
+import NextAuth, { AuthOptions, User as NextUser } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { db } from "@/app/database";
 import { compare } from "bcrypt";
 
-const handler = NextAuth({
+export const authOptions: AuthOptions = {
   theme: {
     colorScheme: "light",
     logo: "/logo.svg",
@@ -65,6 +65,14 @@ const handler = NextAuth({
       },
     }),
   ],
-});
+  callbacks: {
+    async session(params) {
+      params.session.user.id = Number(params.token.sub!);
+      return params.session;
+    },
+  },
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
