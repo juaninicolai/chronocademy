@@ -4,6 +4,7 @@ import { AccountInformationClient } from "./client";
 import { db } from "@/app/database";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { jsonArrayFrom } from "kysely/helpers/postgres";
 
 export default async function AccountInformationPage() {
   const availableCountries = await db
@@ -27,15 +28,22 @@ export default async function AccountInformationPage() {
   const user = (await getServerSession(authOptions))!.user!;
 
   const defaultValues = await db
-    .selectFrom("user_data")
-    .select([
-      "first_name",
-      "last_name",
+    .selectFrom("users")
+    .innerJoin("user_data", "user_data.user_id", "users.id")
+    .select((eb) => [
+      "user_data.first_name",
+      "user_data.last_name",
       "user_data.birthdate",
-      "origin_country",
-      "description",
+      "user_data.origin_country",
+      "user_data.description",
+      jsonArrayFrom(
+        eb
+          .selectFrom("user_languages")
+          .select(["language_id", "level"])
+          .where("user_id", "=", user.id!),
+      ).as("languages"),
     ])
-    .where("user_id", "=", user.id!)
+    .where("users.id", "=", user.id!)
     .executeTakeFirstOrThrow();
 
   return (
@@ -54,6 +62,11 @@ export default async function AccountInformationPage() {
             birthdate: defaultValues.birthdate,
             countryOfBirth: defaultValues.origin_country.toString(),
             profileDescription: defaultValues.description,
+            languages: defaultValues.languages.map((language) => ({
+              language: language.language_id.toString(),
+              languageLevel: language.level,
+              action: "none",
+            })),
           }}
         />
       </Card>

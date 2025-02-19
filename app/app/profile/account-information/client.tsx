@@ -30,8 +30,8 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { Selectable } from "kysely";
-import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { CalendarIcon, CircleMinus, CirclePlus } from "lucide-react";
+import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 import {
   AccountInformationFormSchema,
@@ -46,6 +46,13 @@ const FormID = "account-information-form";
 const AccountInformationClientFormSchema = AccountInformationFormSchema.merge(
   z.object({
     countryOfBirth: z.string(),
+    languages: z.array(
+      AccountInformationFormSchema.shape.languages.element.merge(
+        z.object({
+          language: z.string().min(1),
+        }),
+      ),
+    ),
   }),
 );
 
@@ -56,6 +63,7 @@ export type Language = Selectable<Pick<DBTypes.Languages, "id" | "language">>;
 
 export function AccountInformationClient({
   availableCountries,
+  availableLanguages,
   defaultValues,
 }: {
   availableCountries: Country[];
@@ -85,7 +93,31 @@ export function AccountInformationClient({
       birthdate: values.birthdate,
       countryOfBirth: Number(values.countryOfBirth),
       profileDescription: values.profileDescription,
+      languages: values.languages.map((language) => ({
+        language: Number(language.language),
+        languageLevel: language.languageLevel,
+      })),
     });
+
+    form.reset(values);
+  };
+
+  const languages = form.watch("languages");
+
+  const languagesFieldArray = useFieldArray({
+    control: form.control,
+    name: "languages",
+  });
+
+  const handleAddLanguage = () => {
+    languagesFieldArray.append({
+      language: "",
+      languageLevel: "",
+    });
+  };
+
+  const handleRemoveLanguage = (index: number) => {
+    languagesFieldArray.remove(index);
   };
 
   return (
@@ -211,12 +243,107 @@ export function AccountInformationClient({
                 </FormItem>
               )}
             />
+
+            <div>
+              {languagesFieldArray.fields.map((item, index) => (
+                <fieldset key={item.id} className="flex items-end gap-4">
+                  <FormField
+                    control={form.control}
+                    name={`languages.${index}.language`}
+                    render={({ field }) => (
+                      <FormItem className="space-y-0">
+                        <FormLabel className={"text-base"}>Language</FormLabel>
+                        <Select
+                          value={field.value}
+                          disabled={field.disabled}
+                          onValueChange={field.onChange}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-[180px]">
+                              <SelectValue placeholder="Language" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {availableLanguages.map((language) => (
+                              <SelectItem
+                                key={language.id}
+                                value={language.id.toString()}
+                              >
+                                {language.language}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name={`languages.${index}.languageLevel`}
+                    render={({ field }) => (
+                      <FormItem className="space-y-0">
+                        <FormLabel className={"text-base"}>Level</FormLabel>
+                        <Select
+                          value={field.value}
+                          disabled={field.disabled}
+                          onValueChange={field.onChange}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-[180px]">
+                              <SelectValue placeholder="Level" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="beginner">Beginner</SelectItem>
+                            <SelectItem value="intermediate">
+                              Intermediate
+                            </SelectItem>
+                            <SelectItem value="advanced">Advanced</SelectItem>
+                            <SelectItem value="native">Native</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button
+                    disabled={languagesFieldArray.fields.length <= 1}
+                    size={"icon"}
+                    type={"button"}
+                    variant={"destructive"}
+                    onClick={() => handleRemoveLanguage(index)}
+                  >
+                    <CircleMinus />
+                  </Button>
+                </fieldset>
+              ))}
+
+              <Button
+                className="space-y-0"
+                size={"sm"}
+                type={"button"}
+                onClick={handleAddLanguage}
+                disabled={languages.some(
+                  (field) =>
+                    field.language === "" || field.languageLevel === "",
+                )}
+              >
+                <CirclePlus />
+                Add language
+              </Button>
+            </div>
           </form>
         </Form>
       </CardContent>
 
       <CardFooter>
-        <Button type="submit" form={FormID} disabled={!form.formState.isDirty}>
+        <Button
+          type="submit"
+          form={FormID}
+          disabled={!form.formState.isDirty || form.formState.isSubmitting}
+        >
           Update
         </Button>
       </CardFooter>

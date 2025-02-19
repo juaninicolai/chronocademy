@@ -20,6 +20,12 @@ export const AccountInformationFormSchema = z.object({
   birthdate: z.date().min(timeBefore100Years).max(timeBefore18Years),
   countryOfBirth: z.number(),
   profileDescription: z.string().min(1),
+  languages: z.array(
+    z.object({
+      language: z.number(),
+      languageLevel: z.string().min(1),
+    }),
+  ),
 });
 
 export type AccountInformationFormState = {
