@@ -12,5 +12,9 @@ export default async function SignUpLayout({ children }: PropsWithChildren) {
     redirect("/app");
   }
 
-  return <SignUpFormStateProvider>{children}</SignUpFormStateProvider>;
+  return (
+    <div className="absolute inset-0">
+      <SignUpFormStateProvider>{children}</SignUpFormStateProvider>;
+    </div>
+  );
 }
