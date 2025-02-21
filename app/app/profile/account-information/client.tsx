@@ -120,6 +120,7 @@ export function AccountInformationClient({
     languagesFieldArray.remove(index);
   };
 
+  // TODO: This is repeated from sign up form
   return (
     <>
       <CardContent>
@@ -157,7 +158,6 @@ export function AccountInformationClient({
               control={form.control}
               name="birthdate"
               render={({ field }) => (
-                // TODO: This is repeated from sign up form
                 <FormItem className="flex flex-col space-y-0">
                   <FormLabel className={"text-base"}>Birthdate</FormLabel>
                   <Popover>

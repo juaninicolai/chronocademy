@@ -1,39 +1,51 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { db } from "@/app/database";
+import { TeachingSkillsClient } from "./client";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { TabsContent } from "@/components/ui/tabs";
 
 export default async function TeachingSkillsPage() {
+  const availableSkills = db
+    .selectFrom("skills")
+    .select(["id", "category", "skill"])
+    .orderBy("category", "asc")
+    .orderBy("skill", "asc")
+    .execute()
+    .then((skills) =>
+      skills.reduce<Map<string, typeof skills>>((acc, skill) => {
+        const categorySkills = acc.get(skill.category) ?? [];
+        categorySkills.push(skill);
+        acc.set(skill.category, categorySkills);
+        return acc;
+      }, new Map()),
+    );
+
+  const user = (await getServerSession(authOptions))!.user!;
+
+  const defaultValues = await db
+    .selectFrom("user_skills")
+    .innerJoin("skills", "skills.id", "user_skills.skill_id")
+    .select(["user_skills.skill_id", "skills.category"])
+    .where("user_id", "=", user.id)
+    .where("type", "=", "teach")
+    .execute();
+
   return (
     <TabsContent value="teaching-skills">
       <Card>
         <CardHeader>
-          <CardTitle>Password</CardTitle>
-          <CardDescription>
-            Change your password here. After saving, you{"'"}ll be logged out.
-          </CardDescription>
+          <CardTitle>Teaching skills</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2">
-          <div className="space-y-1">
-            <Label htmlFor="current">Current password</Label>
-            <Input id="current" type="password" />
-          </div>
-          <div className="space-y-1">
-            <Label htmlFor="new">New password</Label>
-            <Input id="new" type="password" />
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button>Save password</Button>
-        </CardFooter>
+        <TeachingSkillsClient
+          availableSkills={await availableSkills}
+          defaultValues={{
+            skills: defaultValues.map((skill) => ({
+              category: skill.category,
+              skill: skill.skill_id.toString(),
+            })),
+          }}
+        />
       </Card>
     </TabsContent>
   );
