@@ -18,6 +18,9 @@ type User = {
   teachingSkills: {
     skill: string;
   }[];
+  learningSkills: {
+    skill: string;
+  }[];
 };
 
 export async function seed(db: Kysely<DB>): Promise<void> {
@@ -43,6 +46,12 @@ export async function seed(db: Kysely<DB>): Promise<void> {
         { skill: "Architecture" },
         { skill: "Engineering" },
       ],
+      learningSkills: [
+        { skill: "Spanish" },
+        { skill: "History" },
+        { skill: "Marketing" },
+        { skill: "UX/UI Design" },
+      ],
     },
     {
       email: "juaninicolai@seed.com",
@@ -62,6 +71,11 @@ export async function seed(db: Kysely<DB>): Promise<void> {
         { skill: "History" },
         { skill: "Marketing" },
         { skill: "UX/UI Design" },
+      ],
+      learningSkills: [
+        { skill: "English" },
+        { skill: "Architecture" },
+        { skill: "Engineering" },
       ],
     },
   ];
@@ -118,11 +132,25 @@ export async function seed(db: Kysely<DB>): Promise<void> {
             .execute()
         : Promise.resolve([]);
 
+    const learningSkillsPromise =
+      user.teachingSkills.length > 0
+        ? db
+            .selectFrom("skills")
+            .select(["id", "skill"])
+            .where(
+              "skill",
+              "in",
+              user.learningSkills.map(({ skill }) => skill),
+            )
+            .execute()
+        : Promise.resolve([]);
+
     const userId = await userIdPromise;
     const timezoneId = await timezoneIdPromise;
     const countryId = await countryIdPromise;
     const languages = await languagesPromise;
     const teachingSkills = await teachingSkillsPromise;
+    const learningSkills = await learningSkillsPromise;
 
     const insertPromises = [];
 
@@ -169,6 +197,24 @@ export async function seed(db: Kysely<DB>): Promise<void> {
               skill_id: teachingSkills.find(
                 (teachingSkills) =>
                   teachingSkills.skill === userTeachingSkill.skill,
+              )?.id,
+            })),
+          )
+          .execute(),
+      );
+    }
+
+    if (user.learningSkills.length > 0) {
+      insertPromises.push(
+        db
+          .insertInto("user_skills")
+          .values(
+            user.learningSkills.map((userlearningSkill) => ({
+              type: "learn",
+              user_id: userId,
+              skill_id: learningSkills.find(
+                (learningSkills) =>
+                  learningSkills.skill === userlearningSkill.skill,
               )?.id,
             })),
           )
