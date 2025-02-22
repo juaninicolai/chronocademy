@@ -31,7 +31,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { Selectable } from "kysely";
 import { CalendarIcon, CircleMinus, CirclePlus } from "lucide-react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 import {
   AccountInformationFormSchema,
@@ -40,11 +40,15 @@ import {
 } from "./schema";
 import { useFormState } from "react-dom";
 import { updateAccountInformation } from "./actions";
+import { useState } from "react";
+import Image from "next/image";
+import Avatar1 from "@/public/avatars/1.png";
 
 const FormID = "account-information-form";
 
 const AccountInformationClientFormSchema = AccountInformationFormSchema.merge(
   z.object({
+    picture: z.instanceof(File).nullable(),
     countryOfBirth: z.string(),
     languages: z.array(
       AccountInformationFormSchema.shape.languages.element.merge(
@@ -65,12 +69,16 @@ export function AccountInformationClient({
   availableCountries,
   availableLanguages,
   defaultValues,
+  defaultPictureUrl,
 }: {
   availableCountries: Country[];
   availableTimezones: Timezone[];
   availableLanguages: Language[];
   defaultValues: z.infer<typeof AccountInformationClientFormSchema>;
+  defaultPictureUrl: string | null;
 }) {
+  const [pictureUrl, setPictureUrl] = useState(defaultPictureUrl);
+
   const [, updateAccountInformationAction] = useFormState(
     updateAccountInformation,
     {
@@ -84,10 +92,17 @@ export function AccountInformationClient({
     defaultValues,
   });
 
-  const handleSubmit = (
-    values: z.infer<typeof AccountInformationClientFormSchema>,
-  ) => {
+  const handleSubmit: SubmitHandler<
+    z.infer<typeof AccountInformationClientFormSchema>
+  > = (values) => {
+    let pictureFormData: FormData | null = null;
+    if (values.picture !== null) {
+      pictureFormData = new FormData();
+      pictureFormData.set("file", values.picture);
+    }
+
     updateAccountInformationAction({
+      picture: pictureFormData,
       firstName: values.firstName,
       lastName: values.lastName,
       birthdate: values.birthdate,
@@ -126,6 +141,37 @@ export function AccountInformationClient({
       <CardContent>
         <Form {...form}>
           <form id={FormID} onSubmit={form.handleSubmit(handleSubmit)}>
+            <Image
+              src={pictureUrl ?? Avatar1}
+              alt=""
+              width={150}
+              height={150}
+              className="w-[150px] h-[150px] object-cover"
+            />
+
+            <FormField
+              control={form.control}
+              name="picture"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Profile picture</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="file"
+                      {...field}
+                      onChange={(event) => {
+                        const file = event.target.files![0];
+                        field.onChange(file);
+                        setPictureUrl(URL.createObjectURL(file));
+                      }}
+                      value={undefined}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="firstName"

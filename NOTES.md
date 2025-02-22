@@ -1,8 +1,6 @@
 Focus:
 
 - Profile/Account Information (priority 1) (upload/edit a picture)
-- Profile/Teaching Skills (priority 2) (edit only)
-- Profile/Learning Preferences (priority 3) (edit only)
 
 Nice to Have:
 

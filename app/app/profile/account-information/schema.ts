@@ -15,6 +15,7 @@ export type AccountInformationForm = z.infer<
   typeof AccountInformationFormSchema
 >;
 export const AccountInformationFormSchema = z.object({
+  picture: z.instanceof(FormData).nullable(),
   firstName: z.string().trim().min(2),
   lastName: z.string().trim().min(2),
   birthdate: z.date().min(timeBefore100Years).max(timeBefore18Years),

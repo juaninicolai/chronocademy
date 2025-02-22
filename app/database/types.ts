@@ -63,6 +63,13 @@ export interface UserLanguages {
   user_id: Generated<number>;
 }
 
+export interface UserPictures {
+  blob: Buffer;
+  created_at: Generated<Timestamp>;
+  updated_at: Generated<Timestamp>;
+  user_id: Generated<number>;
+}
+
 export interface Users {
   created_at: Generated<Timestamp>;
   email: string;
@@ -86,6 +93,7 @@ export interface DB {
   timezones: Timezones;
   user_data: UserData;
   user_languages: UserLanguages;
+  user_pictures: UserPictures;
   user_skills: UserSkills;
   users: Users;
 }

@@ -28,9 +28,29 @@ export async function updateAccountInformation(
 
   const parsedFormData = validatedFormDataResult.data;
 
+  // TODO: We have to validate the file type and size
+  let pictureBuffer: Buffer | null = null;
+  if (parsedFormData.picture !== null) {
+    const pictureFile = parsedFormData.picture.get("file") as File;
+    const pictureArrayBuffer = await pictureFile.arrayBuffer();
+    pictureBuffer = Buffer.from(pictureArrayBuffer);
+  }
+
   const user = (await getServerSession(authOptions))!.user!;
 
   await db.transaction().execute(async (trx) => {
+    if (pictureBuffer !== null) {
+      await trx
+        .insertInto("user_pictures")
+        .values({ user_id: user.id, blob: pictureBuffer })
+        .onConflict((oc) =>
+          oc.column("user_id").doUpdateSet((eb) => ({
+            blob: eb.ref("excluded.blob"),
+          })),
+        )
+        .execute();
+    }
+
     await trx
       .updateTable("user_data")
       .set({

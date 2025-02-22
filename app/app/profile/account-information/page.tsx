@@ -46,6 +46,11 @@ export default async function AccountInformationPage() {
     .where("users.id", "=", user.id!)
     .executeTakeFirstOrThrow();
 
+  const picture = await db
+    .selectFrom("user_pictures")
+    .where("user_id", "=", user.id)
+    .executeTakeFirst();
+
   return (
     <TabsContent value="account-information">
       <Card>
@@ -57,6 +62,7 @@ export default async function AccountInformationPage() {
           availableTimezones={availableTimezones}
           availableLanguages={availableLanguages}
           defaultValues={{
+            picture: null,
             firstName: defaultValues.first_name,
             lastName: defaultValues.last_name,
             birthdate: defaultValues.birthdate,
@@ -68,6 +74,9 @@ export default async function AccountInformationPage() {
               action: "none",
             })),
           }}
+          defaultPictureUrl={
+            picture !== undefined ? `/app/profile/picture/${user.id}` : null
+          }
         />
       </Card>
     </TabsContent>
