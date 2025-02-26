@@ -1,6 +1,7 @@
 Focus:
 
 - Profile/Account Information (priority 1) (upload/edit a picture)
+- Footer goes up when main window has a small / low height. Ww should consider adding a min-height property to the whole main section
 
 Nice to Have:
 
