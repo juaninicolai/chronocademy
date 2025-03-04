@@ -62,7 +62,8 @@ export default async function HomePage({
           "languages.language",
           "user_languages.level",
           "skills.skill",
-        ]);
+        ])
+        .where("user_skills.type", "=", "teach");
 
       if (query !== undefined && query !== "") {
         cte = cte.where((eb) =>
@@ -108,14 +109,14 @@ export default async function HomePage({
             eb.fn<string>("INITCAP", ["level"]).as("level"),
           ])
           .distinct()
-          .whereRef("profiles_raw.id", "=", "id"),
+          .whereRef("profiles_raw.id", "=", "profiles_distinct.id"),
       ).as("languages"),
       jsonArrayFrom(
         eb
           .selectFrom("profiles_raw")
           .select(["skill"])
           .distinct()
-          .whereRef("profiles_raw.id", "=", "id"),
+          .whereRef("profiles_raw.id", "=", "profiles_distinct.id"),
       ).as("skills"),
     ])
     .execute();

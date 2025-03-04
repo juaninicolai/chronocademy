@@ -3,7 +3,7 @@ import { TabsContent } from "@/components/ui/tabs";
 import { AccountInformationClient } from "./client";
 import { db } from "@/app/database";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]";
 import { jsonArrayFrom } from "kysely/helpers/postgres";
 
 export default async function AccountInformationPage() {
@@ -71,7 +71,6 @@ export default async function AccountInformationPage() {
             languages: defaultValues.languages.map((language) => ({
               language: language.language_id.toString(),
               languageLevel: language.level,
-              action: "none",
             })),
           }}
           defaultPictureUrl={

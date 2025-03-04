@@ -7,7 +7,7 @@ import {
   TeachingSkillsFormState,
 } from "./schema";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]";
 
 export async function updateTeachingSkills(
   _: TeachingSkillsFormState,

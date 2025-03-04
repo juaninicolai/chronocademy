@@ -7,7 +7,7 @@ import { MaybeLandingLayout } from "@/app/landing/landing";
 import { getServerSession } from "next-auth";
 import { SessionProvider } from "@/app/app/session";
 import { Toaster } from "@/components/ui/toaster";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]";
 
 export const metadata: Metadata = {
   title: "Chronocademy",

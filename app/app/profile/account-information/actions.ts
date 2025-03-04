@@ -7,7 +7,7 @@ import {
   AccountInformationFormState,
 } from "./schema";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]";
 
 export async function updateAccountInformation(
   _: AccountInformationFormState,
