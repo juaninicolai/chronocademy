@@ -384,7 +384,7 @@ export function AccountInformationClient({
         </Form>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="flex-row-reverse">
         <Button
           type="submit"
           form={FormID}

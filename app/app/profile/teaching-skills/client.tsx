@@ -185,7 +185,7 @@ export function TeachingSkillsClient({
         </Form>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="flex-row-reverse">
         <Button
           type="submit"
           form={FormID}

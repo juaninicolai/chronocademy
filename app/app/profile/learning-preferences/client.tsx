@@ -188,7 +188,7 @@ export function LearningPreferencesClient({
         </Form>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="flex-row-reverse">
         <Button
           type="submit"
           form={FormID}

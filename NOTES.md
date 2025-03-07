@@ -1,7 +1,6 @@
 Focus:
 
 - Profile/Account Information (2 columns, with language, and description full-width, bottom-right, spacing)
-- Bottom right for all the update buttons
 
 Nice to Have:
 
