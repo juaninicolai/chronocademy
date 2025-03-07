@@ -122,7 +122,7 @@ export default async function HomePage({
     .execute();
 
   return (
-    <div className="flex flex-col gap-8 items-center">
+    <div className="flex-1 flex flex-col gap-8 items-center justify-between">
       <div className="w-full max-w-screen-md">
         <form className="flex gap-1">
           <Input

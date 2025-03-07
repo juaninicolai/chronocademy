@@ -2,7 +2,6 @@ Focus:
 
 - Profile/Account Information (2 columns, with language, and description full-width, bottom-right, spacing)
 - Bottom right for all the update buttons
-- Footer goes up when main window has a small / low height. Ww should consider adding a min-height property to the whole main section
 
 Nice to Have:
 
