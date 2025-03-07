@@ -97,7 +97,11 @@ export function LearningPreferencesClient({
     <>
       <CardContent>
         <Form {...form}>
-          <form id={FormID} onSubmit={form.handleSubmit(handleSubmit)}>
+          <form
+            id={FormID}
+            onSubmit={form.handleSubmit(handleSubmit)}
+            className="space-y-2"
+          >
             {skillsFieldArray.fields.map((item, index) => (
               <fieldset className={"flex items-end gap-4"} key={item.id}>
                 <FormField

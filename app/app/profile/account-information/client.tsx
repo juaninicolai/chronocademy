@@ -140,157 +140,165 @@ export function AccountInformationClient({
     <>
       <CardContent>
         <Form {...form}>
-          <form id={FormID} onSubmit={form.handleSubmit(handleSubmit)}>
-            <Image
-              src={pictureUrl ?? Avatar1}
-              alt=""
-              width={150}
-              height={150}
-              className="w-[150px] h-[150px] object-cover"
-            />
+          <form
+            id={FormID}
+            onSubmit={form.handleSubmit(handleSubmit)}
+            className="flex gap-8"
+          >
+            <div className="flex-1 max-w-[36rem]">
+              <div className="flex gap-4">
+                <Image
+                  src={pictureUrl ?? Avatar1}
+                  alt=""
+                  width={150}
+                  height={150}
+                  className="w-[150px] h-[150px] object-cover"
+                />
 
-            <FormField
-              control={form.control}
-              name="picture"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Profile picture</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="file"
-                      {...field}
-                      onChange={(event) => {
-                        const file = event.target.files![0];
-                        field.onChange(file);
-                        setPictureUrl(URL.createObjectURL(file));
-                      }}
-                      value={undefined}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="firstName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>First name</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="lastName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Last name</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="birthdate"
-              render={({ field }) => (
-                <FormItem className="flex flex-col space-y-0">
-                  <FormLabel className={"text-base"}>Birthdate</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
+                <FormField
+                  control={form.control}
+                  name="picture"
+                  render={({ field }) => (
+                    <FormItem className="flex-1">
+                      <FormLabel>Profile picture</FormLabel>
                       <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            "w-full pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground",
-                          )}
-                        >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
+                        <Input
+                          type="file"
+                          {...field}
+                          onChange={(event) => {
+                            const file = event.target.files![0];
+                            field.onChange(file);
+                            setPictureUrl(URL.createObjectURL(file));
+                          }}
+                          value={undefined}
+                        />
                       </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        captionLayout="dropdown"
-                        fromYear={timeBefore100Years.getFullYear()}
-                        toYear={timeBefore18Years.getFullYear()}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
-            <FormField
-              control={form.control}
-              name="countryOfBirth"
-              render={({ field }) => (
-                <FormItem className="space-y-0">
-                  <FormLabel className={"text-base"}>Country</FormLabel>
-                  <Select
-                    value={field.value}
-                    disabled={field.disabled}
-                    onValueChange={field.onChange}
-                  >
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>First name</FormLabel>
                     <FormControl>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Country of birth" />
-                      </SelectTrigger>
+                      <Input {...field} />
                     </FormControl>
-                    <SelectContent>
-                      {availableCountries.map((country) => (
-                        <SelectItem
-                          key={country.id}
-                          value={country.id.toString()}
-                        >
-                          {country.country}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="profileDescription"
-              render={({ field }) => (
-                <FormItem className="space-y-0">
-                  <FormLabel className={"text-base"}>
-                    Profile description
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea className="resize-none" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Last name</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <div>
+              <FormField
+                control={form.control}
+                name="birthdate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col space-y-0">
+                    <FormLabel className={"text-base"}>Birthdate</FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-full pl-3 text-left font-normal",
+                              !field.value && "text-muted-foreground",
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          captionLayout="dropdown"
+                          fromYear={timeBefore100Years.getFullYear()}
+                          toYear={timeBefore18Years.getFullYear()}
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="countryOfBirth"
+                render={({ field }) => (
+                  <FormItem className="space-y-0">
+                    <FormLabel className={"text-base"}>Country</FormLabel>
+                    <Select
+                      value={field.value}
+                      disabled={field.disabled}
+                      onValueChange={field.onChange}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Country of birth" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {availableCountries.map((country) => (
+                          <SelectItem
+                            key={country.id}
+                            value={country.id.toString()}
+                          >
+                            {country.country}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="profileDescription"
+                render={({ field }) => (
+                  <FormItem className="space-y-0">
+                    <FormLabel className={"text-base"}>
+                      Profile description
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea className="resize-none" {...field} rows={10} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="flex-none space-y-2">
               {languagesFieldArray.fields.map((item, index) => (
                 <fieldset key={item.id} className="flex items-end gap-4">
                   <FormField
