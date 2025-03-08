@@ -95,7 +95,7 @@ export function LearningPreferencesClient({
   // TODO: This is repeated from sign up form
   return (
     <>
-      <CardContent>
+      <CardContent className="flex justify-center">
         <Form {...form}>
           <form
             id={FormID}

@@ -143,7 +143,7 @@ export function AccountInformationClient({
           <form
             id={FormID}
             onSubmit={form.handleSubmit(handleSubmit)}
-            className="flex gap-8"
+            className="flex justify-center gap-8"
           >
             <div className="flex-1 max-w-[36rem]">
               <div className="flex gap-4">
