@@ -44,7 +44,7 @@ export async function updateTeachingSkills(
         parsedFormData.skills.map((skill) => ({
           user_id: user.id,
           type: "teach",
-          skill_id: Number(skill),
+          skill_id: skill,
         })),
       )
       .execute();

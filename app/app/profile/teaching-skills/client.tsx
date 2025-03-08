@@ -26,6 +26,9 @@ import { Selectable } from "kysely";
 import { DBTypes } from "@/app/database";
 import { updateTeachingSkills } from "./actions";
 import { useFormState } from "react-dom";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
 
 const FormID = "teaching-skills-form";
 
@@ -35,6 +38,8 @@ const TeachingSkillsClientFormSchema = TeachingSkillsFormSchema.merge(
       z.object({
         category: z.string().min(1),
         skill: z.string().min(1),
+        description: z.string().min(1),
+        price: z.number().positive(),
       }),
     ),
   }),
@@ -65,7 +70,11 @@ export function TeachingSkillsClient({
     values: z.infer<typeof TeachingSkillsClientFormSchema>,
   ) => {
     updateTeachingSkillsAction({
-      skills: values.skills.map((skill) => skill.skill),
+      skills: values.skills.map((skill) => ({
+        id: Number(skill.skill),
+        description: skill.description,
+        price: skill.price,
+      })),
     });
 
     form.reset(values);
@@ -82,6 +91,8 @@ export function TeachingSkillsClient({
     skillsFieldArray.append({
       category: "",
       skill: "",
+      description: "",
+      price: 0,
     });
   };
 
@@ -97,80 +108,124 @@ export function TeachingSkillsClient({
           <form
             id={FormID}
             onSubmit={form.handleSubmit(handleSubmit)}
-            className="space-y-2"
+            className="space-y-4"
           >
             {skillsFieldArray.fields.map((item, index) => (
-              <fieldset className={"flex items-end gap-4"} key={item.id}>
-                <FormField
-                  control={form.control}
-                  name={`skills.${index}.category`}
-                  render={({ field }) => (
-                    <FormItem className="space-y-0">
-                      <FormLabel className={"text-base"}>Category</FormLabel>
-                      <Select
-                        value={field.value}
-                        disabled={field.disabled}
-                        onValueChange={field.onChange}
-                      >
-                        <FormControl>
-                          <SelectTrigger className="w-[280px]">
-                            <SelectValue placeholder="Category" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {Array.from(availableSkills.keys()).map((key) => (
-                            <SelectItem key={key} value={key}>
-                              {key}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name={`skills.${index}.skill`}
-                  render={({ field }) => (
-                    <FormItem className="space-y-0">
-                      <FormLabel className={"text-base"}>Skill</FormLabel>
-                      <Select
-                        value={field.value}
-                        disabled={field.disabled}
-                        onValueChange={field.onChange}
-                      >
-                        <FormControl>
-                          <SelectTrigger className="w-[280px]">
-                            <SelectValue placeholder="Skill" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {availableSkills
-                            .get(watchSkillsFieldArray[index].category)
-                            ?.map((skill) => (
-                              <SelectItem
-                                key={skill.id}
-                                value={skill.id.toString()}
-                              >
-                                {skill.skill}
+              <fieldset className={"flex flex-col gap-2"} key={item.id}>
+                <div className="flex items-end gap-4">
+                  <FormField
+                    control={form.control}
+                    name={`skills.${index}.category`}
+                    render={({ field }) => (
+                      <FormItem className="space-y-0">
+                        <FormLabel className={"text-base"}>Category</FormLabel>
+                        <Select
+                          value={field.value}
+                          disabled={field.disabled}
+                          onValueChange={field.onChange}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-[280px]">
+                              <SelectValue placeholder="Category" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {Array.from(availableSkills.keys()).map((key) => (
+                              <SelectItem key={key} value={key}>
+                                {key}
                               </SelectItem>
                             ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button
-                  disabled={skillsFieldArray.fields.length <= 1}
-                  size={"icon"}
-                  variant={"destructive"}
-                  onClick={() => handleRemoveSkill(index)}
-                >
-                  <CircleMinus />
-                </Button>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name={`skills.${index}.skill`}
+                    render={({ field }) => (
+                      <FormItem className="space-y-0">
+                        <FormLabel className={"text-base"}>Skill</FormLabel>
+                        <Select
+                          value={field.value}
+                          disabled={field.disabled}
+                          onValueChange={field.onChange}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-[280px]">
+                              <SelectValue placeholder="Skill" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {availableSkills
+                              .get(watchSkillsFieldArray[index].category)
+                              ?.map((skill) => (
+                                <SelectItem
+                                  key={skill.id}
+                                  value={skill.id.toString()}
+                                >
+                                  {skill.skill}
+                                </SelectItem>
+                              ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button
+                    disabled={skillsFieldArray.fields.length <= 1}
+                    size={"icon"}
+                    variant={"destructive"}
+                    onClick={() => handleRemoveSkill(index)}
+                  >
+                    <CircleMinus />
+                  </Button>
+                </div>
+
+                <div className="flex gap-4">
+                  <FormField
+                    control={form.control}
+                    name={`skills.${index}.description`}
+                    render={({ field }) => (
+                      <FormItem className="space-y-0 flex-grow-[1]">
+                        <FormLabel className={"text-base"}>
+                          Lesson description
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea {...field} rows={5} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name={`skills.${index}.price`}
+                    render={({ field }) => (
+                      <FormItem className="space-y-0 max-w-32">
+                        <FormLabel className={"text-base"}>
+                          Lesson price
+                        </FormLabel>
+                        <FormControl>
+                          <div className="flex gap-2 items-center">
+                            <Input type="number" {...field} />
+                            <p className="text-base font-black">€/h</p>
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                {index < skillsFieldArray.fields.length - 1 && (
+                  <Separator className="mt-4" />
+                )}
               </fieldset>
             ))}
 

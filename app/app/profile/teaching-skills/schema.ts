@@ -2,7 +2,13 @@ import { z } from "zod";
 
 export type TeachingSkillsForm = z.infer<typeof TeachingSkillsFormSchema>;
 export const TeachingSkillsFormSchema = z.object({
-  skills: z.array(z.string()),
+  skills: z.array(
+    z.object({
+      id: z.number(),
+      description: z.string(),
+      price: z.number().positive(),
+    }),
+  ),
 });
 
 export type TeachingSkillsFormState = {
