@@ -114,7 +114,7 @@ export default function SkillsPageClient({
   };
 
   return (
-    <div className="bg-[#ECECEC] px-28 py-6 flex flex-col space-y-6">
+    <div className="bg-[#ECECEC] size-full px-28 py-6 flex flex-col space-y-6">
       <div>
         <h2 className="font-inter text-secondary-black-500 font-extrabold">
           Please fill in the information about your skills
