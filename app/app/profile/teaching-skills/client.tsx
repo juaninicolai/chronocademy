@@ -38,8 +38,8 @@ const TeachingSkillsClientFormSchema = TeachingSkillsFormSchema.merge(
       z.object({
         category: z.string().min(1),
         skill: z.string().min(1),
-        description: z.string().min(1),
-        price: z.number().positive(),
+        description: z.string(),
+        price: z.number().nonnegative(),
       }),
     ),
   }),
@@ -213,7 +213,15 @@ export function TeachingSkillsClient({
                         </FormLabel>
                         <FormControl>
                           <div className="flex gap-2 items-center">
-                            <Input type="number" {...field} />
+                            <Input
+                              min={0}
+                              step={0.1}
+                              type="number"
+                              {...field}
+                              onChange={(event) =>
+                                field.onChange(Number(event.target.value))
+                              }
+                            />
                             <p className="text-base font-black">€/h</p>
                           </div>
                         </FormControl>

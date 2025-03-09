@@ -6,7 +6,7 @@ export const TeachingSkillsFormSchema = z.object({
     z.object({
       id: z.number(),
       description: z.string(),
-      price: z.number().positive(),
+      price: z.number().nonnegative(),
     }),
   ),
 });

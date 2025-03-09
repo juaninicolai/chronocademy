@@ -26,7 +26,12 @@ export default async function TeachingSkillsPage() {
   const defaultValues = await db
     .selectFrom("user_skills")
     .innerJoin("skills", "skills.id", "user_skills.skill_id")
-    .select(["user_skills.skill_id", "skills.category"])
+    .select([
+      "user_skills.skill_id",
+      "user_skills.description",
+      "user_skills.price",
+      "skills.category",
+    ])
     .where("user_id", "=", user.id)
     .where("type", "=", "teach")
     .execute();
@@ -43,6 +48,8 @@ export default async function TeachingSkillsPage() {
             skills: defaultValues.map((skill) => ({
               category: skill.category,
               skill: skill.skill_id.toString(),
+              description: skill.description ?? "",
+              price: Number(skill.price ?? ""),
             })),
           }}
         />

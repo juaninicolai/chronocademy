@@ -9,6 +9,8 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   ? ColumnType<S, I | undefined, U>
   : ColumnType<T, T | undefined, T>;
 
+export type Numeric = ColumnType<string, number | string>;
+
 export type Timestamp = ColumnType<Date, Date | string>;
 
 export interface Countries {
@@ -80,6 +82,8 @@ export interface Users {
 
 export interface UserSkills {
   created_at: Generated<Timestamp>;
+  description: string | null;
+  price: Numeric | null;
   skill_id: Generated<number>;
   type: string;
   updated_at: Generated<Timestamp>;
