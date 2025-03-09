@@ -117,7 +117,7 @@ export function TeachingSkillsClient({
                     control={form.control}
                     name={`skills.${index}.category`}
                     render={({ field }) => (
-                      <FormItem className="space-y-0">
+                      <FormItem className="space-y-0 flex-1">
                         <FormLabel className={"text-base"}>Category</FormLabel>
                         <Select
                           value={field.value}
@@ -125,7 +125,7 @@ export function TeachingSkillsClient({
                           onValueChange={field.onChange}
                         >
                           <FormControl>
-                            <SelectTrigger className="w-[280px]">
+                            <SelectTrigger className="max-w-32 sm:max-w-[280px]">
                               <SelectValue placeholder="Category" />
                             </SelectTrigger>
                           </FormControl>
@@ -146,7 +146,7 @@ export function TeachingSkillsClient({
                     control={form.control}
                     name={`skills.${index}.skill`}
                     render={({ field }) => (
-                      <FormItem className="space-y-0">
+                      <FormItem className="space-y-0 flex-1">
                         <FormLabel className={"text-base"}>Skill</FormLabel>
                         <Select
                           value={field.value}
@@ -154,7 +154,7 @@ export function TeachingSkillsClient({
                           onValueChange={field.onChange}
                         >
                           <FormControl>
-                            <SelectTrigger className="w-[280px]">
+                            <SelectTrigger className="max-w-32 sm:max-w-[280px]">
                               <SelectValue placeholder="Skill" />
                             </SelectTrigger>
                           </FormControl>
@@ -207,12 +207,12 @@ export function TeachingSkillsClient({
                     control={form.control}
                     name={`skills.${index}.price`}
                     render={({ field }) => (
-                      <FormItem className="space-y-0 max-w-32">
+                      <FormItem className="space-y-0">
                         <FormLabel className={"text-base"}>
                           Lesson price
                         </FormLabel>
                         <FormControl>
-                          <div className="flex gap-2 items-center">
+                          <div className="flex gap-2 items-center max-w-20 sm:max-w-32">
                             <Input
                               min={0}
                               step={0.1}

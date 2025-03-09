@@ -52,7 +52,7 @@ export default async function AccountInformationPage() {
     .executeTakeFirst();
 
   return (
-    <TabsContent value="account-information">
+    <TabsContent value="account-information" className="mt-16">
       <Card>
         <CardHeader>
           <CardTitle>Account information</CardTitle>

@@ -108,7 +108,7 @@ export function LearningPreferencesClient({
                   control={form.control}
                   name={`skills.${index}.category`}
                   render={({ field }) => (
-                    <FormItem className="space-y-0">
+                    <FormItem className="space-y-0 flex-1">
                       <FormLabel className={"text-base"}>Category</FormLabel>
                       <Select
                         value={field.value}
@@ -116,7 +116,7 @@ export function LearningPreferencesClient({
                         onValueChange={field.onChange}
                       >
                         <FormControl>
-                          <SelectTrigger className="w-[280px]">
+                          <SelectTrigger className="max-w-[280px]">
                             <SelectValue placeholder="Category" />
                           </SelectTrigger>
                         </FormControl>
@@ -137,7 +137,7 @@ export function LearningPreferencesClient({
                   control={form.control}
                   name={`skills.${index}.skill`}
                   render={({ field }) => (
-                    <FormItem className="space-y-0">
+                    <FormItem className="space-y-0 flex-1">
                       <FormLabel className={"text-base"}>Skill</FormLabel>
                       <Select
                         value={field.value}
@@ -145,7 +145,7 @@ export function LearningPreferencesClient({
                         onValueChange={field.onChange}
                       >
                         <FormControl>
-                          <SelectTrigger className="w-[280px]">
+                          <SelectTrigger className="max-w-[280px]">
                             <SelectValue placeholder="Skill" />
                           </SelectTrigger>
                         </FormControl>

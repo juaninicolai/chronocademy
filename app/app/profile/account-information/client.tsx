@@ -143,7 +143,13 @@ export function AccountInformationClient({
           <form
             id={FormID}
             onSubmit={form.handleSubmit(handleSubmit)}
-            className="flex justify-center gap-8"
+            className={cn(
+              "flex",
+              "justify-center",
+              "gap-8",
+              "flex-col",
+              "md:flex-row",
+            )}
           >
             <div className="flex-1 max-w-[36rem]">
               <div className="flex gap-4">
@@ -152,7 +158,7 @@ export function AccountInformationClient({
                   alt=""
                   width={150}
                   height={150}
-                  className="w-[150px] h-[150px] object-cover"
+                  className="max-w-[150px] h-[150px] object-cover"
                 />
 
                 <FormField
@@ -305,7 +311,7 @@ export function AccountInformationClient({
                     control={form.control}
                     name={`languages.${index}.language`}
                     render={({ field }) => (
-                      <FormItem className="space-y-0">
+                      <FormItem className="space-y-0 flex-1">
                         <FormLabel className={"text-base"}>Language</FormLabel>
                         <Select
                           value={field.value}
@@ -313,7 +319,7 @@ export function AccountInformationClient({
                           onValueChange={field.onChange}
                         >
                           <FormControl>
-                            <SelectTrigger className="w-[180px]">
+                            <SelectTrigger className="max-w-[180px]">
                               <SelectValue placeholder="Language" />
                             </SelectTrigger>
                           </FormControl>
@@ -337,7 +343,7 @@ export function AccountInformationClient({
                     control={form.control}
                     name={`languages.${index}.languageLevel`}
                     render={({ field }) => (
-                      <FormItem className="space-y-0">
+                      <FormItem className="space-y-0 flex-1">
                         <FormLabel className={"text-base"}>Level</FormLabel>
                         <Select
                           value={field.value}
@@ -345,7 +351,7 @@ export function AccountInformationClient({
                           onValueChange={field.onChange}
                         >
                           <FormControl>
-                            <SelectTrigger className="w-[180px]">
+                            <SelectTrigger className="max-w-[180px]">
                               <SelectValue placeholder="Level" />
                             </SelectTrigger>
                           </FormControl>
