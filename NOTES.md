@@ -1,3 +1,11 @@
+Fix:
+- bring back read more on home page user cards
+- learning skills looks broken on mobile version (tested on iPhone 14 Pro Max)
+- Titles of profile tabs, to be centered aligned instead of to the left
+- For user's public page, if there is no data
+  - e.g: no teaching description, hide that part
+  - e.g: if there is no learning skill at all, just don't show "I am interested in: ..." at all
+
 Focus:
 
 - Profile/Account Information (2 columns, with language, and description full-width, bottom-right, spacing)
