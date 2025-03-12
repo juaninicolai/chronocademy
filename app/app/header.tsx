@@ -55,7 +55,7 @@ export function Header() {
             <CircleUser size={30} />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem onSelect={() => router.push("/app/profile")}>
+            <DropdownMenuItem onSelect={() => router.push("/app/user/profile")}>
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem

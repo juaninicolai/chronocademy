@@ -7,7 +7,7 @@ import { PropsWithChildren } from "react";
 export function TabsClient({ children }: PropsWithChildren) {
   const router = useRouter();
   const pathname = usePathname();
-  const tabKeyMatches = /(\/app\/profile)\/(.+)\/?/.exec(pathname);
+  const tabKeyMatches = /(\/app\/user\/profile)\/(.+)\/?/.exec(pathname);
   const pathnameWithoutTabKey = tabKeyMatches?.[1];
   const tabKey = tabKeyMatches?.[2];
 

@@ -32,7 +32,7 @@ export default async function LearningPreferencesPage() {
     .execute();
 
   return (
-    <TabsContent value="learning-preferences" className="mt-16">
+    <TabsContent value="learning-preferences" className="mt-16 sm:mt-2">
       <Card>
         <CardHeader>
           <CardTitle>Learning preferences</CardTitle>

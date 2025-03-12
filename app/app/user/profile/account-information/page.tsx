@@ -52,7 +52,7 @@ export default async function AccountInformationPage() {
     .executeTakeFirst();
 
   return (
-    <TabsContent value="account-information" className="mt-16">
+    <TabsContent value="account-information" className="mt-16 sm:mt-2">
       <Card>
         <CardHeader>
           <CardTitle>Account information</CardTitle>
@@ -74,7 +74,9 @@ export default async function AccountInformationPage() {
             })),
           }}
           defaultPictureUrl={
-            picture !== undefined ? `/app/profile/picture/${user.id}` : null
+            picture !== undefined
+              ? `/app/user/profile/picture/${user.id}`
+              : null
           }
         />
       </Card>

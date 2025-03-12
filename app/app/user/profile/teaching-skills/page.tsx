@@ -37,7 +37,7 @@ export default async function TeachingSkillsPage() {
     .execute();
 
   return (
-    <TabsContent value="teaching-skills" className="mt-16">
+    <TabsContent value="teaching-skills" className="mt-16 sm:mt-2">
       <Card>
         <CardHeader>
           <CardTitle>Teaching skills</CardTitle>
