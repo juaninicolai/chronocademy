@@ -2,10 +2,6 @@ Fix:
 
 - learning skills looks broken on mobile version (tested on iPhone 14 Pro Max)
 
-Focus:
-
-- Profile/Account Information (2 columns, with language, and description full-width, bottom-right, spacing)
-
 Nice to Have:
 
 - signup journey
