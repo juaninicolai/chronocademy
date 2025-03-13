@@ -100,15 +100,20 @@ export function LearningPreferencesClient({
           <form
             id={FormID}
             onSubmit={form.handleSubmit(handleSubmit)}
-            className="space-y-2"
+            className="w-full sm:w-auto space-y-2"
           >
             {skillsFieldArray.fields.map((item, index) => (
-              <fieldset className={"flex items-end gap-4"} key={item.id}>
+              <fieldset
+                className={
+                  "flex flex-col items-end sm:flex-row sm:items-end gap-4"
+                }
+                key={item.id}
+              >
                 <FormField
                   control={form.control}
                   name={`skills.${index}.category`}
                   render={({ field }) => (
-                    <FormItem className="space-y-0 flex-1">
+                    <FormItem className="space-y-0 flex-1 w-full">
                       <FormLabel className={"text-base"}>Category</FormLabel>
                       <Select
                         value={field.value}
@@ -116,7 +121,7 @@ export function LearningPreferencesClient({
                         onValueChange={field.onChange}
                       >
                         <FormControl>
-                          <SelectTrigger className="max-w-[280px]">
+                          <SelectTrigger className="sm:max-w-[280px]">
                             <SelectValue placeholder="Category" />
                           </SelectTrigger>
                         </FormControl>
@@ -137,7 +142,7 @@ export function LearningPreferencesClient({
                   control={form.control}
                   name={`skills.${index}.skill`}
                   render={({ field }) => (
-                    <FormItem className="space-y-0 flex-1">
+                    <FormItem className="space-y-0 flex-1 w-full">
                       <FormLabel className={"text-base"}>Skill</FormLabel>
                       <Select
                         value={field.value}
@@ -145,7 +150,7 @@ export function LearningPreferencesClient({
                         onValueChange={field.onChange}
                       >
                         <FormControl>
-                          <SelectTrigger className="max-w-[280px]">
+                          <SelectTrigger className="sm:max-w-[280px]">
                             <SelectValue placeholder="Skill" />
                           </SelectTrigger>
                         </FormControl>
@@ -166,6 +171,7 @@ export function LearningPreferencesClient({
                     </FormItem>
                   )}
                 />
+
                 <Button
                   disabled={skillsFieldArray.fields.length <= 1}
                   size={"icon"}

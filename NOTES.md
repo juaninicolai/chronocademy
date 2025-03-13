@@ -1,7 +1,3 @@
-Fix:
-
-- learning skills looks broken on mobile version (tested on iPhone 14 Pro Max)
-
 Nice to Have:
 
 - signup journey
