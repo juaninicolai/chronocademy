@@ -35,7 +35,7 @@ export default async function LearningPreferencesPage() {
     <TabsContent value="learning-preferences" className="mt-16 sm:mt-2">
       <Card>
         <CardHeader>
-          <CardTitle>Learning preferences</CardTitle>
+          <CardTitle className="text-center">Learning preferences</CardTitle>
         </CardHeader>
         <LearningPreferencesClient
           availableSkills={await availableSkills}

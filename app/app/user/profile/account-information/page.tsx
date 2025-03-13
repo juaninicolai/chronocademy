@@ -50,7 +50,7 @@ export default async function AccountInformationPage() {
     <TabsContent value="account-information" className="mt-16 sm:mt-2">
       <Card>
         <CardHeader>
-          <CardTitle>Account information</CardTitle>
+          <CardTitle className="text-center">Account information</CardTitle>
         </CardHeader>
         <AccountInformationClient
           availableCountries={availableCountries}

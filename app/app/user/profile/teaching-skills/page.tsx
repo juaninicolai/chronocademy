@@ -40,7 +40,7 @@ export default async function TeachingSkillsPage() {
     <TabsContent value="teaching-skills" className="mt-16 sm:mt-2">
       <Card>
         <CardHeader>
-          <CardTitle>Teaching skills</CardTitle>
+          <CardTitle className="text-center">Teaching skills</CardTitle>
         </CardHeader>
         <TeachingSkillsClient
           availableSkills={await availableSkills}
