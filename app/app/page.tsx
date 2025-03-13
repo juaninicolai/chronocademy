@@ -147,8 +147,8 @@ export default async function HomePage({
                     className="rounded-t-xl w-full"
                   />
                 </AspectRatio>
-                <CardHeader className="absolute bottom-0">
-                  <CardTitle>
+                <CardHeader className="absolute inset-0 top-auto">
+                  <CardTitle className="text-center text-white mix-blend-difference">
                     {profile.first_name} {profile.last_name}
                   </CardTitle>
                 </CardHeader>
