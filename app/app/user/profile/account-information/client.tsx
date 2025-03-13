@@ -41,8 +41,6 @@ import {
 import { useFormState } from "react-dom";
 import { updateAccountInformation } from "./actions";
 import { useState } from "react";
-import Image from "next/image";
-import Avatar1 from "@/public/avatars/1.png";
 
 const FormID = "account-information-form";
 
@@ -75,7 +73,7 @@ export function AccountInformationClient({
   availableTimezones: Timezone[];
   availableLanguages: Language[];
   defaultValues: z.infer<typeof AccountInformationClientFormSchema>;
-  defaultPictureUrl: string | null;
+  defaultPictureUrl: string;
 }) {
   const [pictureUrl, setPictureUrl] = useState(defaultPictureUrl);
 
@@ -153,11 +151,11 @@ export function AccountInformationClient({
           >
             <div className="flex-1 max-w-[36rem]">
               <div className="flex gap-4">
-                <Image
-                  src={pictureUrl ?? Avatar1}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  // TODO: Investigate how to do this better
+                  src={pictureUrl}
                   alt=""
-                  width={150}
-                  height={150}
                   className="max-w-[150px] h-[150px] object-cover"
                 />
 

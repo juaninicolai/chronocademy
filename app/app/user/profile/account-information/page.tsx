@@ -46,11 +46,6 @@ export default async function AccountInformationPage() {
     .where("users.id", "=", user.id!)
     .executeTakeFirstOrThrow();
 
-  const picture = await db
-    .selectFrom("user_pictures")
-    .where("user_id", "=", user.id)
-    .executeTakeFirst();
-
   return (
     <TabsContent value="account-information" className="mt-16 sm:mt-2">
       <Card>
@@ -73,11 +68,7 @@ export default async function AccountInformationPage() {
               languageLevel: language.level,
             })),
           }}
-          defaultPictureUrl={
-            picture !== undefined
-              ? `/app/user/profile/picture/${user.id}`
-              : null
-          }
+          defaultPictureUrl={`/app/user/profile/picture/${user.id}`}
         />
       </Card>
     </TabsContent>

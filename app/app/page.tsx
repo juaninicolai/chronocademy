@@ -1,21 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { db } from "../database";
-import Image from "next/image";
-import Avatar1 from "@/public/avatars/1.png";
-import Avatar2 from "@/public/avatars/2.png";
-import Avatar3 from "@/public/avatars/3.png";
-import Avatar4 from "@/public/avatars/4.png";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { jsonArrayFrom } from "kysely/helpers/postgres";
-import crypto from "crypto";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import {
   Accordion,
@@ -28,16 +14,6 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-const avatars = [Avatar1, Avatar2, Avatar3, Avatar4];
-
-// Returns the same random avatar consistently for the given ID.
-function getAvatar(id: number) {
-  const hash = crypto.createHash("sha256").update(id.toString()).digest("hex");
-  const hashInt = BigInt(`0x${hash}`);
-  const index = Number(hashInt % BigInt(4));
-  return avatars[index];
-}
 
 export default async function HomePage({
   searchParams,
@@ -155,8 +131,10 @@ export default async function HomePage({
             <Card className="rounded-xl size-full">
               <div className="relative">
                 <AspectRatio ratio={1 / 1}>
-                  <Image
-                    src={getAvatar(profile.id)}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/app/user/profile/picture/${profile.id}`}
+                    // TODO: Investigate how to do this better
                     alt=""
                     className="rounded-t-xl w-full"
                   />
