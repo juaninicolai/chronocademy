@@ -79,45 +79,51 @@ export default async function ProfileIdPage({
         </div>
       </div>
 
-      <div>
-        <p className="text-base">I speak:</p>
-        <div className="flex flex-col ml-4 gap-2">
-          {profile.languages.map((language) => (
-            <div key={language.id} className="flex gap-2 items-stretch">
-              <p className="text-base">{language.language}</p>
-              <Badge variant="outline">{language.level}</Badge>
-            </div>
-          ))}
+      {profile.languages.length > 0 && (
+        <div>
+          <p className="text-base">I speak:</p>
+          <div className="flex flex-col ml-4 gap-2">
+            {profile.languages.map((language) => (
+              <div key={language.id} className="flex gap-2 items-stretch">
+                <p className="text-base">{language.language}</p>
+                <Badge variant="outline">{language.level}</Badge>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      <div>
-        <p className="text-base">I can teach:</p>
-        <div className="flex flex-col ml-4 gap-2">
-          {profile.teaching_skills.map((skill) => (
-            <div key={skill.id} className="flex gap-2 items-stretch">
-              <p className="text-base">{skill.skill}</p>
-              {skill.price !== null && (
-                <>
-                  <Separator orientation="vertical" className="h-auto" />
-                  <p className="text-base font-black">{skill.price} €/h</p>
-                </>
-              )}
-            </div>
-          ))}
+      {profile.teaching_skills.length > 0 && (
+        <div>
+          <p className="text-base">I can teach:</p>
+          <div className="flex flex-col ml-4 gap-2">
+            {profile.teaching_skills.map((skill) => (
+              <div key={skill.id} className="flex gap-2 items-stretch">
+                <p className="text-base">{skill.skill}</p>
+                {skill.price !== null && (
+                  <>
+                    <Separator orientation="vertical" className="h-auto" />
+                    <p className="text-base font-black">{skill.price} €/h</p>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      <div>
-        <p className="text-base">I am interested in:</p>
-        <div className="flex flex-col ml-4 gap-2">
-          {profile.learning_skills.map((skill) => (
-            <p key={skill.id} className="text-base">
-              {skill.skill}
-            </p>
-          ))}
+      {profile.learning_skills.length > 0 && (
+        <div>
+          <p className="text-base">I am interested in:</p>
+          <div className="flex flex-col ml-4 gap-2">
+            {profile.learning_skills.map((skill) => (
+              <p key={skill.id} className="text-base">
+                {skill.skill}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

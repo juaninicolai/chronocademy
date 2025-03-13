@@ -1,9 +1,6 @@
 Fix:
 
 - learning skills looks broken on mobile version (tested on iPhone 14 Pro Max)
-- For user's public page, if there is no data
-  - e.g: no teaching description, hide that part
-  - e.g: if there is no learning skill at all, just don't show "I am interested in: ..." at all
 
 Focus:
 
