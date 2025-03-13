@@ -1,5 +1,5 @@
 Fix:
-- bring back read more on home page user cards
+
 - learning skills looks broken on mobile version (tested on iPhone 14 Pro Max)
 - Titles of profile tabs, to be centered aligned instead of to the left
 - For user's public page, if there is no data

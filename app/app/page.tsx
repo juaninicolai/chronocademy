@@ -14,6 +14,14 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  Dialog,
+  DialogTitle,
+  DialogHeader,
+  DialogContent,
+  DialogTrigger,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export default async function HomePage({
   searchParams,
@@ -127,8 +135,8 @@ export default async function HomePage({
         )}
       >
         {profiles.map((profile) => (
-          <Link key={profile.id} href={`/app/profile/${profile.id}`}>
-            <Card className="rounded-xl size-full">
+          <Card key={profile.id} className="rounded-xl size-full">
+            <Link href={`/app/profile/${profile.id}`}>
               <div className="relative">
                 <AspectRatio ratio={1 / 1}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -145,30 +153,94 @@ export default async function HomePage({
                   </CardTitle>
                 </CardHeader>
               </div>
-              <CardContent className="pt-6 space-y-2">
-                <p>
-                  Description: {profile.description.slice(0, 150).trimEnd()}
-                  {profile.description.length > 150 && "..."}
-                </p>
-                <p>
-                  Skills:{" "}
-                  {profile.skills
-                    .slice(0, 3)
-                    .map(({ skill }) => skill)
-                    .join(", ")}
-                  {profile.skills.length > 3 && ", ..."}
-                </p>
-                <p>
-                  Speaks:{" "}
-                  {profile.languages
-                    .slice(0, 3)
-                    .map(({ language, level }) => `${language} (${level})`)
-                    .join(", ")}
-                  {profile.languages.length > 3 && ", ..."}
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+            </Link>
+            <CardContent className="pt-6 space-y-2">
+              <p>
+                Description: {profile.description.slice(0, 150).trimEnd()}
+                {profile.description.length > 150 && (
+                  <>
+                    {"... "}
+                    <Dialog>
+                      <DialogTrigger className="underline">
+                        Read more
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle className="hidden">
+                            {`${profile.first_name} ${profile.last_name}'s description`}
+                          </DialogTitle>
+                          <DialogDescription>
+                            {profile.description}
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                )}
+              </p>
+              <p>
+                Skills:{" "}
+                {profile.skills
+                  .slice(0, 3)
+                  .map(({ skill }) => skill)
+                  .join(", ")}
+                {profile.skills.length > 3 && (
+                  <>
+                    {", ... "}
+                    <Dialog>
+                      <DialogTrigger className="underline">
+                        See more
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle className="hidden">
+                            {`${profile.first_name} ${profile.last_name}'s skills`}
+                          </DialogTitle>
+                          <DialogDescription>
+                            {profile.skills
+                              .map(({ skill }) => skill)
+                              .join(", ")}
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                )}
+              </p>
+              <p>
+                Speaks:{" "}
+                {profile.languages
+                  .slice(0, 3)
+                  .map(({ language, level }) => `${language} (${level})`)
+                  .join(", ")}
+                {profile.languages.length > 3 && (
+                  <>
+                    {", ... "}
+                    <Dialog>
+                      <DialogTrigger className="underline">
+                        See more
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle className="hidden">
+                            {`${profile.first_name} ${profile.last_name}'s languages`}
+                          </DialogTitle>
+                          <DialogDescription>
+                            {profile.languages
+                              .map(
+                                ({ language, level }) =>
+                                  `${language} (${level})`,
+                              )
+                              .join(", ")}
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                )}
+              </p>
+            </CardContent>
+          </Card>
         ))}
       </div>
 
